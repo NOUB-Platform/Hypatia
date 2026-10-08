@@ -1419,22 +1419,21 @@ app.get("/api/drive/noub-idle-status", async (req, res) => {
   }
 });
 
-// Serve static assets from dist if available (for production build preview)
-const distPath = path.join(process.cwd(), "dist");
-app.use(express.static(distPath));
-
-// Start Server with Vite or Static
+// Serve Vite in dev or static in production
 async function startServer() {
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env.NODE_ENV === "production") {
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.get("*", (_req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
+    });
+  } else {
+    // In dev mode, mount Vite middleware to serve index.html, /src/main.tsx, and HMR
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
-  } else {
-    app.get("*", (_req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
   }
 
   app.listen(PORT, "0.0.0.0", () => {
