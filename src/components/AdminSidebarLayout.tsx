@@ -45,7 +45,8 @@ import {
   Clock,
   Sparkle,
   Radio,
-  Activity
+  Activity,
+  Download
 } from 'lucide-react';
 import { ProjectItem, TabType } from '../types';
 import { KaggleWhiteLionModal } from './KaggleWhiteLionModal';
@@ -891,6 +892,20 @@ export const AdminSidebarLayout: React.FC<AdminSidebarLayoutProps> = ({
                 27U
               </span>
             </button>
+
+            {/* Download Standalone Single-File HTML Button */}
+            <a
+              href="/api/system/download-standalone-html"
+              download="hypatia_mashweer_standalone.html"
+              title="تحميل المنظومة بالكامل كملف HTML واحد مستقل يعمل على أي متصفح بدون سيرفر"
+              className="px-2.5 py-1.5 rounded-2xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95"
+            >
+              <Download className="w-4 h-4 shrink-0" />
+              <span className="hidden lg:inline">ملف HTML مستقل</span>
+              <span className="px-1.5 py-0.2 rounded-full bg-teal-900/40 text-teal-100 font-mono text-[9px] font-bold">
+                100%
+              </span>
+            </a>
 
             {/* Continuous Inquiries Alert Button */}
             <button

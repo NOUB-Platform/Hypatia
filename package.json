@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && cp ./script.js ./dist/script.js && cp ./style.css ./dist/style.css && cp ./noub_local.html ./dist/noub_local.html && cp ./public/run_local.bat ./dist/run_local.bat && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "vite build && cp ./script.js ./dist/script.js && cp ./style.css ./dist/style.css && cp ./hypatia_single_file.html ./dist/hypatia_single_file.html && cp ./noub_local.html ./dist/noub_local.html && cp ./public/run_local.bat ./dist/run_local.bat && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",

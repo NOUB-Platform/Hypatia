@@ -81,6 +81,16 @@ app.get("/api/health", (_req, res) => {
   });
 });
 
+// Serve Standalone Single-File HTML
+app.get(["/hypatia_single_file.html", "/standalone", "/single-file"], (_req, res) => {
+  res.sendFile(path.join(process.cwd(), "hypatia_single_file.html"));
+});
+
+// Download Standalone Single-File HTML
+app.get("/api/system/download-standalone-html", (_req, res) => {
+  res.download(path.join(process.cwd(), "hypatia_single_file.html"), "hypatia_mashweer_standalone.html");
+});
+
 // 1. General Executive Chat Endpoint
 app.post("/api/chat", async (req, res) => {
   try {

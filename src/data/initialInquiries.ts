@@ -405,7 +405,7 @@ export const INITIAL_SYSTEM_INQUIRIES: SystemInquiry[] = [
     id: 'inq-4b-dr-failover-test',
     question: 'متى تم آخر اختبار محاكاة لانقطاع خط الفايبر الرئيسي لبرنامج 4B والتحويل التلقائي للخط الاحتياطي DR؟',
     context: 'خط 10.10.40.10 يحتاج للتحويل التلقائي إلى 10.10.40.11 خلال أقل من ثانيتين لمنع توقف طلبات رحلات تطبيق 4B.',
-    category: 'infrastructure',
+    category: 'telecom_servers',
     urgency: 'high',
     inputType: 'options',
     options: [
@@ -420,7 +420,7 @@ export const INITIAL_SYSTEM_INQUIRIES: SystemInquiry[] = [
     id: 'inq-4b-server-latency',
     question: 'هل معدل تأخير الاستجابة (Latency) لخادم 4B ومزامنة التطبيق يقل عن 5ms في مقر المعادي؟',
     context: 'ضروري لضمان سرعة إرسال طلبات المشاوير لكباتن 4B واستقبال إحداثيات GPS باللحظة الصفرية.',
-    category: 'infrastructure',
+    category: 'telecom_servers',
     urgency: 'medium',
     inputType: 'yes_no',
     options: [

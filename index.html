@@ -17,5 +17,16 @@
   <body class="bg-[#f8fafc] text-slate-800 antialiased overflow-x-hidden">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Fallback: If Vite is not running (e.g. static hosting on GitHub Pages, Supabase Storage, or direct file open)
+      // and React did not mount within 1.5s, seamlessly route to the standalone single-file version.
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        if (root && root.children.length === 0) {
+          console.warn('Vite React app did not mount within timeout; activating standalone Hypatia engine.');
+          window.location.replace('hypatia_single_file.html');
+        }
+      }, 1500);
+    </script>
   </body>
 </html>

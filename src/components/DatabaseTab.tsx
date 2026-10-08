@@ -17,7 +17,8 @@ import {
   UploadCloud,
   FileSpreadsheet,
   Zap,
-  Info
+  Info,
+  Download
 } from 'lucide-react';
 import { ProjectItem } from '../types';
 import { 
@@ -256,6 +257,16 @@ export const DatabaseTab: React.FC<DatabaseTabProps> = ({
             {copiedMasterSql ? <Check className="w-3.5 h-3.5 text-teal-600" /> : <Copy className="w-3.5 h-3.5 text-slate-400" />}
             <span>{copiedMasterSql ? 'تم نسخ الجداول!' : 'نسخ Schema (الـ 50 جدول)'}</span>
           </button>
+
+          <a
+            href="/api/system/download-standalone-html"
+            download="hypatia_mashweer_standalone.html"
+            className="px-3 py-2 rounded-xl bg-teal-50 hover:bg-teal-100 border border-teal-300 text-xs font-bold text-teal-900 flex items-center gap-1.5 transition"
+            title="تحميل المنظومة بالكامل كملف HTML مستقل يعمل بدون خوادم"
+          >
+            <Download className="w-3.5 h-3.5 text-teal-700" />
+            <span>تحميل المنظومة (ملف HTML مستقل)</span>
+          </a>
         </div>
       </div>
 

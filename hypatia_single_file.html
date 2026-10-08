@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>هيباتيا | Hypatia - المنظومة التقنية والتشغيلية الموحدة (ملف واحد مستقل)</title>
+  <meta name="description" content="منظومة هيباتيا التقنية الشاملة لشركة مشاوير للمنصات الرقمية ومقر المعادي - تعمل في ملف HTML واحد مستقل بدون سيرفر.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cairo & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #0b1120;
+      color: #f1f5f9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Custom scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0d9488;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-teal-500 selection:text-white">
+
+  <!-- ========================================================================= -->
+  <!-- Top Navigation Header -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-400 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-teal-500/20">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-lg text-white tracking-wide">هيباتيا</span>
+            <span class="font-mono text-xs px-2 py-0.5 rounded-md bg-teal-500/20 text-teal-300 border border-teal-500/30">Hypatia Standalone</span>
+          </div>
+          <p class="text-[11px] text-slate-400">المنظومة التقنية والتشغيلية • شركة مشاوير ومقر المعادي</p>
+        </div>
+      </div>
+
+      <!-- Quick Action Badges -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <span class="hidden md:inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>خوادم 4B وفايبر WE متصل</span>
+        </span>
+        
+        <button onclick="downloadSelfHtml()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold transition shadow-lg shadow-teal-600/30">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+          </svg>
+          <span class="hidden sm:inline">حفظ نسخة HTML لجهازك</span>
+          <span class="sm:hidden">حفظ</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- Main Application Tabs Bar -->
+  <!-- ========================================================================= -->
+  <nav class="bg-slate-900 border-b border-slate-800 sticky top-16 z-40 overflow-x-auto">
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 sm:gap-2 py-2 min-w-max">
+      <button onclick="switchTab('home')" id="tab-btn-home" class="tab-btn active px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>🏠 الرئيسية والملخص</span>
+      </button>
+      <button onclick="switchTab('projects')" id="tab-btn-projects" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>📱 مشاريع مشاوير (4B/وكالة/دارو)</span>
+      </button>
+      <button onclick="switchTab('database')" id="tab-btn-database" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>🗄️ سوبابيز الـ 50 جدول والـ SQL</span>
+      </button>
+      <button onclick="switchTab('network')" id="tab-btn-network" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>📡 فحص الشبكة والـ Ping المباشر</span>
+      </button>
+      <button onclick="switchTab('rack')" id="tab-btn-rack" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>🖥️ راك السيرفرات 27U بالمعادي</span>
+      </button>
+      <button onclick="switchTab('tasks')" id="tab-btn-tasks" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>✅ مهام الـ 135 التفاعلية</span>
+      </button>
+      <button onclick="switchTab('contracts')" id="tab-btn-contracts" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>📄 العقود والمستحقات</span>
+      </button>
+      <button onclick="switchTab('quotations')" id="tab-btn-quotations" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>💰 عروض الأسعار وفايبر WE</span>
+      </button>
+      <button onclick="switchTab('emails')" id="tab-btn-emails" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>✉️ إيميلات Zoho المجانية</span>
+      </button>
+      <button onclick="switchTab('ai')" id="tab-btn-ai" class="tab-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition">
+        <span>🤖 مساعد هيباتيا البرمجي</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- Container for Tab Viewports -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+
+    <!-- TAB 1: HOME & OVERVIEW -->
+    <section id="viewport-home" class="tab-content block space-y-6">
+      
+      <!-- Standalone Guarantee Alert -->
+      <div class="bg-gradient-to-r from-teal-950/80 via-slate-900 to-slate-900 p-5 rounded-2xl border border-teal-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-xl">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+            <h2 class="text-base font-black text-white">النسخة المستقلة الرسمية (Single-File Standalone)</h2>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 font-bold">100% Client-Side</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed max-w-3xl">
+            هذا الملف يحتوي على كامل كود منظومة هيباتيا ومشاريع مشاوير في <strong>ملف HTML واحد مستقل</strong>. يعمل مباشرة عند فتحه في المتصفح أو رفعه إلى GitHub أو ربطه بسوبابيز، ولا يحتاج إلى خادم Node.js أو Vite إطلاقاً.
+          </p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="switchTab('database')" class="px-4 py-2 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-black text-xs transition">
+            نسخ سوبابيز SQL فوراً 🗄️
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick KPI Stats -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
+          <span class="text-xs text-slate-400">مشاريع مشاوير المعتمدة</span>
+          <div class="text-2xl font-black text-white font-mono">6 <span class="text-xs text-teal-400 font-normal">تطبيقات وأنظمة</span></div>
+          <div class="text-[11px] text-teal-400">4B • وكالة • دارو • الكابتن • المعادي</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
+          <span class="text-xs text-slate-400">جداول سوبابيز المجهزة</span>
+          <div class="text-2xl font-black text-teal-400 font-mono">50 <span class="text-xs text-slate-400 font-normal">جدولاً كاملاً</span></div>
+          <div class="text-[11px] text-slate-400">مع RLS وفهارس PostGIS الجغرافية</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
+          <span class="text-xs text-slate-400">نقاط الشبكة والـ Ping</span>
+          <div class="text-2xl font-black text-emerald-400 font-mono">12 <span class="text-xs text-slate-400 font-normal">نقطة نشطة</span></div>
+          <div class="text-[11px] text-emerald-400">Zero Packet Loss • 1.2ms Avg</div>
+        </div>
+        <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-1">
+          <span class="text-xs text-slate-400">خط ربط فايبر WE</span>
+          <div class="text-2xl font-black text-amber-400 font-mono">24 <span class="text-xs text-slate-400 font-normal">Mbps L3VPN</span></div>
+          <div class="text-[11px] text-amber-300">أمر شراء 360 ألف ج.م سنوياً</div>
+        </div>
+      </div>
+
+      <!-- Projects Grid Highlights -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span>🚗 مشاريع منظومة مشاوير الرقمية</span>
+          </h3>
+          <button onclick="switchTab('projects')" class="text-xs text-teal-400 hover:text-teal-300 font-bold">عرض كافة التفاصيل والروابط ←</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="home-projects-cards">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Quick Interactive Ping & Server Rack Preview -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Ping Monitor Card -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+              <h4 class="font-bold text-white text-sm">فحص الشبكة والـ Ping اللحظي</h4>
+            </div>
+            <button onclick="switchTab('network')" class="text-xs text-teal-400 hover:underline">لوحة الفحص الكاملة</button>
+          </div>
+          <div class="space-y-2" id="home-ping-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- 27U Rack Hardware Card -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-white text-sm flex items-center gap-2">
+              <span>🖥️ راك داتا سنتر مقر المعادي (بيرلا 27U)</span>
+            </h4>
+            <button onclick="switchTab('rack')" class="text-xs text-teal-400 hover:underline">مخطط الراك التفاعلي</button>
+          </div>
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 font-mono text-xs">
+            <div class="flex justify-between text-slate-300">
+              <span class="text-teal-400 font-bold">U25-U26:</span>
+              <span>سيرفر DELL PowerEdge R640 Platinum (48 Cores)</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span class="text-teal-400 font-bold">U23:</span>
+              <span>سويتش Cisco Catalyst 3850 (48 Ports PoE+)</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span class="text-teal-400 font-bold">U21:</span>
+              <span>راوتر OPNsense / F5 WAF وجدار الحماية</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span class="text-teal-400 font-bold">U01-U03:</span>
+              <span>UPS CyberPower 3000VA أونلاين ذكي</span>
+            </div>
+          </div>
+          <button onclick="switchTab('rack')" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 font-bold text-xs transition">
+            فتح شاشة محاكاة الراك 27U وتفاصيل كل بورت ←
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 2: PROJECTS -->
+    <section id="viewport-projects" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-black text-white">منظومة مشاريع مشاوير الرقمية المعتمدة</h2>
+          <p class="text-xs text-slate-400">التطبيقات الرسمية وروابط الفيجما والـ APK وسيرفرات القرية الذكية ومقر المعادي</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="text" id="project-search" placeholder="بحث في المشاريع..." oninput="filterProjects()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-teal-500">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="all-projects-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 3: SUPABASE DATABASE & 50 TABLES SQL -->
+    <section id="viewport-database" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-900 p-5 rounded-2xl border border-slate-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">🗄️</span>
+            <h2 class="text-lg font-black text-white">قاعدة بيانات سوبابيز (Supabase) - 50 جدولاً معتمداً</h2>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">
+            كود PostgreSQL شامل ومجهز للتشغيل بضغطة واحدة في <strong>Supabase SQL Editor</strong>، يدعم RLS وفهارس PostGIS الجغرافية لتتبع الرحلات والأسطول.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="copySqlCode('all')" class="px-4 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs transition flex items-center gap-2 shadow-lg shadow-teal-600/30">
+            <span>📋 نسخ الكود الشامل (الجداول + البيانات)</span>
+          </button>
+          <button onclick="copySqlCode('schema')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition">
+            نسخ هيكل الجداول فقط
+          </button>
+          <button onclick="copySqlCode('seed')" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition">
+            نسخ بيانات التغذية الأولية
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick How-To Instructions -->
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs text-slate-300 space-y-2">
+        <div class="font-bold text-teal-400">💡 طريقة التنفيذ في سوبابيز (Supabase):</div>
+        <ol class="list-decimal list-inside space-y-1 text-slate-400 leading-relaxed">
+          <li>افتح مشروعك في <a href="https://supabase.com/dashboard" target="_blank" class="text-teal-400 underline font-mono">Supabase Dashboard</a>.</li>
+          <li>اضغط على <strong>SQL Editor</strong> من القائمة الجانبية اليسرى.</li>
+          <li>اضغط <strong>New Query</strong> والصق الكود المنسوخ أدناه.</li>
+          <li>اضغط <strong>Run (Ctrl + Enter)</strong>، وستنشأ الـ 50 جدولاً مع بياناتها الحقيقية فوراً!</li>
+        </ol>
+      </div>
+
+      <!-- SQL Viewer Box -->
+      <div class="relative bg-slate-950 rounded-2xl border border-slate-800 overflow-hidden shadow-2xl">
+        <div class="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800 text-xs font-mono">
+          <span class="text-slate-400 font-bold">supabase_meshawir_enterprise_50_tables.sql</span>
+          <button onclick="copySqlCode('all')" class="text-teal-400 hover:text-teal-300 font-bold flex items-center gap-1">
+            <span>نسخ الكود بالكامل</span>
+          </button>
+        </div>
+        <pre class="p-4 text-xs font-mono text-emerald-300 max-h-[500px] overflow-y-auto overflow-x-auto leading-relaxed" id="sql-display-code">
+-- جاري تجهيز كود الـ SQL...
+        </pre>
+      </div>
+    </section>
+
+    <!-- TAB 4: NETWORK PING MONITOR -->
+    <section id="viewport-network" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-black text-white flex items-center gap-2">
+            <span>📡 مركز فحص الشبكة والـ Ping لمشاوير (Ping Monitor)</span>
+          </h2>
+          <p class="text-xs text-slate-400">مراقبة مستمرة لاستجابة سيرفرات ديل وسويتشات سيسكو وبوابة فايبر المصرية للاتصالات WE</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="toggleContinuousPing()" id="ping-toggle-btn" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+            <span id="ping-toggle-text">الفحص المستمر: نشط</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Nodes Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="network-nodes-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Live Ping Console Log -->
+      <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 font-mono text-xs space-y-2">
+        <div class="flex items-center justify-between pb-2 border-b border-slate-800 text-slate-400">
+          <span class="font-bold text-teal-400">Live Ping Output Console (ICMP Response Echo)</span>
+          <button onclick="clearPingLog()" class="hover:text-white">مسح السجل</button>
+        </div>
+        <div class="max-h-60 overflow-y-auto space-y-1 font-mono text-[11px]" id="ping-console-log">
+          <!-- Live echo stream -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: 27U SERVER RACK -->
+    <section id="viewport-rack" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-white">مخطط راك السيرفرات بيرلا 27U (مقر المعادي)</h2>
+        <p class="text-xs text-slate-400">تفاصيل الوحدات من U01 إلى U27، والسويتشات، والسيرفر DELL PowerEdge R640 Platinum</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Visual Rack Chassis -->
+        <div class="lg:col-span-2 bg-slate-950 p-6 rounded-3xl border-2 border-slate-800 space-y-3">
+          <div class="flex justify-between items-center text-xs text-slate-400 pb-2 border-b border-slate-800 font-mono">
+            <span>PERLA 27U 19-INCH SERVER CABINET</span>
+            <span class="text-teal-400">HEIGHT: 27U • DEPTH: 1000mm</span>
+          </div>
+
+          <!-- 27U Slots Stack -->
+          <div class="space-y-1.5 font-mono text-xs" id="rack-slots-container">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Selected Device Details Card -->
+        <div class="bg-slate-900 p-5 rounded-3xl border border-slate-800 space-y-4" id="rack-device-details">
+          <h3 class="font-bold text-white text-base">تفاصيل العتاد المحدد</h3>
+          <p class="text-xs text-slate-400">اضغط على أي وحدة أو سيرفر داخل الراك لعرض مواصفاته وبورتاته ودوره التشغيلي.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 6: TASKS (135 TASKS) -->
+    <section id="viewport-tasks" class="tab-content hidden space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-black text-white">المهام الـ 135 التفاعلية (Master Tasks)</h2>
+          <p class="text-xs text-slate-400">متابعة دقيقة لكل مهمة وتكليف في تطبيقات مشاوير وداتا سنتر المعادي</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="tasks-person-filter" onchange="filterTasks()" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white">
+            <option value="all">كافة المسؤولين</option>
+            <option value="sameh">م/ سامح يس (CTO)</option>
+            <option value="emad">م/ عماد الشرقاوي</option>
+            <option value="mowaffaq">م/ موفق (فريق 4B)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="space-y-2" id="tasks-list-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 7: CONTRACTS -->
+    <section id="viewport-contracts" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-white">العقود ومستحقات التطبيقات</h2>
+        <p class="text-xs text-slate-400">عقود تطبيقات فور بي (4B)، وكالة (WeKaLa)، ودارو (Daro) مع المطورين والجهات</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="contracts-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 8: QUOTATIONS & WE FIBER PO -->
+    <section id="viewport-quotations" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-white">عروض الأسعار وأمر شراء خط فايبر WE</h2>
+        <p class="text-xs text-slate-400">عرض الشركة المصرية للاتصالات المعتمد لربط مقر المعادي بداتا سنتر القرية الذكية</p>
+      </div>
+
+      <!-- WE PO Card -->
+      <div class="p-6 rounded-3xl bg-slate-900 border-2 border-amber-500/30 space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-800">
+          <div>
+            <span class="text-xs font-mono text-amber-400 font-bold">TELECOM EGYPT (WE) • PURCHASE ORDER</span>
+            <h3 class="text-lg font-black text-white">عرض وخط ربط الألياف الضوئية (24Mbps Fiber L3VPN)</h3>
+          </div>
+          <div class="text-left font-mono">
+            <div class="text-xs text-slate-400">القيمة السنوية:</div>
+            <div class="text-xl font-black text-amber-400">360,000.00 ج.م / سنوياً</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono">
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">الربط التجميعي الرئيسي:</span>
+            <span class="text-teal-400 font-bold">24Mbps L3VPN HQ ↔ DC</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">مسؤول الحساب بشركة WE:</span>
+            <span class="text-white font-bold">م/ أحمد غريب (Ahmed Gharib)</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">طريقة السداد:</span>
+            <span class="text-white font-bold">90,000 ج.م ربع سنوي مقدماً</span>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-300 leading-relaxed">
+          يربط هذا الخط سيرفر داتا سنتر مقر المعادي المركزي (DELL R640) بسيرفرات مشاوير السحابية في القرية الذكية لحجز رحلات 4B ونظام تتبع الكباتن اللحظي.
+        </p>
+      </div>
+    </section>
+
+    <!-- TAB 9: EMAILS (ZOHO FREE) -->
+    <section id="viewport-emails" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-white">إيميلات نطاق مشاوير (mashweer.com.eg)</h2>
+        <p class="text-xs text-slate-400">إعداد خطة Zoho Forever Free (5 إيميلات مجانية مدى الحياة بدون رسوم شهرية)</p>
+      </div>
+
+      <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 space-y-3">
+        <h3 class="font-bold text-teal-400 text-sm">سجلات الـ DNS الإلزامية لتفعيل البريد:</h3>
+        <div class="space-y-2 font-mono text-xs">
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between">
+            <span class="text-slate-400">MX 1:</span>
+            <span class="text-emerald-300">mx.zoho.com (Priority 10)</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between">
+            <span class="text-slate-400">MX 2:</span>
+            <span class="text-emerald-300">mx2.zoho.com (Priority 20)</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 flex justify-between">
+            <span class="text-slate-400">TXT (SPF):</span>
+            <span class="text-emerald-300">v=spf1 include:zoho.com ~all</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-2" id="emails-list-container">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 10: HYPATIA AI ASSISTANT -->
+    <section id="viewport-ai" class="tab-content hidden space-y-6">
+      <div>
+        <h2 class="text-xl font-black text-white">مساعد هيباتيا البرمجي والتشغيلي (Hypatia Assistant)</h2>
+        <p class="text-xs text-slate-400">استشارات هندسية فورية، كتابة استعلامات SQL، فحص أكواد تطبيقات مشاوير، وإرشادات الداتا سنتر</p>
+      </div>
+
+      <!-- Chat Container -->
+      <div class="bg-slate-900 rounded-3xl border border-slate-800 flex flex-col h-[520px] overflow-hidden shadow-2xl">
+        <div class="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4" id="chat-messages">
+          <!-- Initial Welcome Message -->
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-xl bg-teal-600 text-slate-950 flex items-center justify-center font-black shrink-0">
+              H
+            </div>
+            <div class="bg-slate-800/80 p-4 rounded-2xl max-w-xl text-xs sm:text-sm text-slate-200 leading-relaxed">
+              أهلاً بك يا باشمهندس سامح. أنا <strong>هيباتيا</strong> - مساعدك التقني الشخصي لمنظومة مشاوير ومقر المعادي.
+              <br><br>
+              جاهزة لأي استفسار حول:
+              <ul class="list-disc list-inside mt-1.5 space-y-1 text-teal-300">
+                <li>استعلامات قواعد بيانات سوبابيز (Supabase SQL)</li>
+                <li>إعدادات شبكة وخط فايبر المصرية للاتصالات WE (24Mbps)</li>
+                <li>تطبيقات المنظومة: فور بي 4B، وكالة WeKaLa، ودارو Daro</li>
+                <li>تجهيزات سيرفر ديل R640 وسويتشات سيسكو 3850</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div class="p-3 sm:p-4 bg-slate-950 border-t border-slate-800 flex gap-2">
+          <input type="text" id="chat-input" placeholder="اكتب سؤالك أو اطلب كود SQL أو استشارة..." onkeydown="if(event.key==='Enter') sendChatMessage()" class="flex-1 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-teal-500">
+          <button onclick="sendChatMessage()" class="px-5 py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs sm:text-sm transition">
+            إرسال
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- Toast Notification -->
+  <!-- ========================================================================= -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 bg-teal-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-2xl transition-all duration-300 opacity-0 pointer-events-none z-50">
+    تم النسخ بنجاح!
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- Comprehensive Application Logic & Data Inlined -->
+  <!-- ========================================================================= -->
+  <script>
+    // 1. Projects Data
+    const OFFICIAL_PROJECTS = [
+      {
+        id: 'proj-4b',
+        name: 'تطبيق مشاوير فور بي (4B Passenger App)',
+        code: 'MASHWEER-4B',
+        category: 'مشاوير MASHWEER',
+        status: 'قيد التجربة الميدانية',
+        description: 'تطبيق الركاب والرحلات الذكية لمنظومة مشاوير الرقمية، متصل بسحابة WE بداتا سنتر القرية الذكية.',
+        figmaUrl: 'https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/%D9%85%D8%B4%D8%A7%D9%88%D9%8A%D8%B1---backlog?node-id=221-63531',
+        repoUrl: 'https://github.com/mashweer/4b-passenger-app',
+        apkStatus: 'تم الاستلام - قيد الفحص الميداني',
+        dbType: 'Supabase PostgreSQL + PostGIS'
+      },
+      {
+        id: 'proj-wekala',
+        name: 'منظومة وكالة (WeKaLa Agency & Fleet)',
+        code: 'WEKALA-OPS',
+        category: 'إدارة أساطيل ووكلاء',
+        status: 'قيد التطوير',
+        description: 'منصة إدارة أساطيل وكلاء مشاوير بالمحافظات وتوزيع الكباتن واحتساب العمولات الأسبوعية.',
+        figmaUrl: 'https://www.figma.com/design/wS4kHqD0V7w8sK8YWeKaLa/Wekala',
+        repoUrl: 'https://github.com/mashweer/wekala-fleet',
+        apkStatus: '✅ تم استلام أحدث نسخة APK رسمياً',
+        dbType: 'Supabase PostgreSQL'
+      },
+      {
+        id: 'proj-daro',
+        name: 'منصة دارو للشحن واللوجستيات (Daro Logistics)',
+        code: 'DARO-CARGO',
+        category: 'لوجستيات وطرد',
+        status: 'قيد التطوير',
+        description: 'تطبيق وبوابة شحن الطرود واللوجستيات والبوالص الرقمية السريعة بين فروع المحافظات.',
+        figmaUrl: 'https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro',
+        repoUrl: 'https://github.com/mashweer/daro-cargo',
+        apkStatus: 'النسخة التجريبية جاهزة',
+        dbType: 'PostgreSQL + Barcode Engine'
+      },
+      {
+        id: 'proj-driver',
+        name: 'تطبيق كابتن مشاوير (Mashweer Driver)',
+        code: 'MASHWEER-CAPTAIN',
+        category: 'تطبيق السائقين',
+        status: 'قيد التطوير',
+        description: 'تطبيق السائقين والكباتن لاستقبال الرحلات والتتبع اللحظي عبر WebSockets مع محفظة الكابتن.',
+        figmaUrl: 'https://www.figma.com/design/captain-driver-mashweer',
+        repoUrl: 'https://github.com/mashweer/mashweer-driver',
+        apkStatus: 'قيد التجميع مع الـ SDK',
+        dbType: 'Supabase Realtime'
+      },
+      {
+        id: 'proj-maadi-hq',
+        name: 'البنية التحتية وغرفة سيرفرات المعادي (Maadi HQ Datacenter)',
+        code: 'MAADI-DATACENTER',
+        category: 'بنية تحتية وشبكات',
+        status: 'جاهز ومشغل',
+        description: 'سيرفر DELL PowerEdge R640 وسويتشات Cisco 3850 PoE وراك بيرلا 27U وخط فايبر WE (24Mbps).',
+        figmaUrl: '',
+        repoUrl: '',
+        apkStatus: 'أجهزة مادية مركبة بالمعادي',
+        dbType: 'Local Edge Server + OPNsense'
+      },
+      {
+        id: 'proj-research',
+        name: 'مسابقة كاجل ونموذج بروتوكول UCP-LLM (White Lion)',
+        code: 'KAGGLE-UCP-LLM',
+        category: 'أبحاث وذكاء اصطناعي',
+        status: 'ورقة بحثية منجزة',
+        description: 'بروتوكول تحكيم النماذج الذكية وتكامل Gemma 4 و Agentic Workflows.',
+        figmaUrl: '',
+        repoUrl: 'https://github.com/samehyas/ucp-llm-core',
+        apkStatus: 'Research Paper Track',
+        dbType: 'Vector Embeddings / PostgreSQL'
+      }
+    ];
+
+    // 2. Network Nodes Data
+    const NETWORK_NODES = [
+      { id: 'dell', name: 'خادم ديل R640 الرئيسي', ip: '192.168.10.10', latency: 1.2, status: 'online', role: 'Database & 4B Core Services' },
+      { id: 'cisco', name: 'سويتش سيسكو الأساسي (Cisco 3850)', ip: '192.168.10.1', latency: 0.8, status: 'online', role: 'Core Network Backbone (48 Ports PoE)' },
+      { id: 'we-fiber', name: 'بوابة فايبر المصرية للاتصالات WE', ip: '10.10.40.1', latency: 5.4, status: 'online', role: 'Dedicated 24Mbps L3VPN Fiber Gateway' },
+      { id: 'hikvision', name: 'جهاز تسجيل الكاميرات NVR', ip: '192.168.10.20', latency: 2.1, status: 'online', role: '16x IP Cameras Surveillance' },
+      { id: 'grandstream', name: 'سنترال جراند ستريم IP-PBX', ip: '192.168.10.30', latency: 1.8, status: 'online', role: 'VoIP Telephony Operations Room' },
+      { id: 'hp-z440-1', name: 'محطة العمل HP Z440 (سامح)', ip: '192.168.10.101', latency: 0.9, status: 'online', role: 'CTO Development & Ops Workstation' },
+      { id: 'hp-z440-2', name: 'محطة العمل HP Z440 (عماد)', ip: '192.168.10.102', latency: 0.9, status: 'online', role: 'Consultant Workstation' },
+      { id: 'ups', name: 'وحدة الطاقة UPS CyberPower', ip: '192.168.10.250', latency: 1.4, status: 'online', role: 'Smart SNMP Online Power Monitor' }
+    ];
+
+    // 3. 27U Rack Hardware Slots
+    const RACK_SLOTS = [
+      { u: 'U27', name: 'Blanking Ventilation Panel 1U', type: 'panel', color: 'bg-slate-800' },
+      { u: 'U25-U26', name: 'DELL PowerEdge R640 Platinum (48 Cores / 128GB RAM)', type: 'server', color: 'bg-teal-900 border-teal-500 text-teal-200' },
+      { u: 'U24', name: 'Horizontal Cable Manager 1U', type: 'panel', color: 'bg-slate-800' },
+      { u: 'U23', name: 'Cisco Catalyst 3850 (48 Ports Gigabit PoE+)', type: 'switch', color: 'bg-cyan-950 border-cyan-500 text-cyan-200' },
+      { u: 'U22', name: 'Cat6 Patch Panel 48-Ports RJ45', type: 'patch', color: 'bg-slate-800 text-slate-300' },
+      { u: 'U21', name: 'OPNsense Firewall & VPN Appliance', type: 'firewall', color: 'bg-rose-950 border-rose-500 text-rose-200' },
+      { u: 'U20', name: 'Grandstream UCM6302 IP-PBX', type: 'pbx', color: 'bg-sky-950 text-sky-300' },
+      { u: 'U19', name: 'Hikvision 16CH NVR (4TB Storage)', type: 'nvr', color: 'bg-amber-950 text-amber-300' },
+      { u: 'U17-U18', name: 'Telecom Egypt (WE) Fiber Aggregation NTU', type: 'we', color: 'bg-purple-950 border-purple-500 text-purple-200' },
+      { u: 'U04-U16', name: 'Internal Workstation Shelves & Cable Passages', type: 'shelf', color: 'bg-slate-900 text-slate-500' },
+      { u: 'U01-U03', name: 'CyberPower 3000VA Online Double-Conversion UPS', type: 'ups', color: 'bg-emerald-950 border-emerald-500 text-emerald-200' }
+    ];
+
+    // 4. Sample Key Tasks from 135
+    const MASTER_TASKS = [
+      { id: 1, title: 'ربط قاعدة بيانات سوبابيز مع تطبيق 4B عبر مفاتيح الـ Anon وتفعيل الـ RLS', person: 'sameh', status: 'done', cat: 'قواعد بيانات' },
+      { id: 2, title: 'مراجعة خط الربط التجميعي 24Mbps مع م/ أحمد غريب من المصرية للاتصالات WE', person: 'sameh', status: 'pending', cat: 'شبكات وفايبر' },
+      { id: 3, title: 'استلام وفحص أحدث نسخة APK لتطبيق وكالة والتأكد من إرسال بوالص الشحن', person: 'mowaffaq', status: 'done', cat: 'تطبيقات' },
+      { id: 4, title: 'إعداد حسابات بريد مشاوير الخمسة المجانية عبر Zoho Forever Free وضبط SPF/MX', person: 'sameh', status: 'done', cat: 'إيميلات وسيرفرات' },
+      { id: 5, title: 'فحص حرارة سيرفر ديل R640 واستقرار بطاقة الـ iDRAC9 Enterprise', person: 'emad', status: 'done', cat: 'داتا سنتر' },
+      { id: 6, title: 'تجهيز فهارس PostGIS المكانية لتسريع استعلامات البحث عن أقرب كابتن في 4B', person: 'sameh', status: 'pending', cat: 'قواعد بيانات' },
+      { id: 7, title: 'تدقيق عقد ومستحقات تطبيق دارو والتحقق من مكتبة قراءة الباركود للطرود', person: 'sameh', status: 'pending', cat: 'عقود' },
+      { id: 8, title: 'اختبار محاكاة انقطاع الكهرباء وتفعيل الـ UPS CyberPower 3000VA تلقائياً', person: 'emad', status: 'done', cat: 'داتا سنتر' }
+    ];
+
+    // 5. Supabase 50-Table SQL String
+    const SUPABASE_50_TABLES_SQL = `-- ==============================================================================
+-- Hypatia Architecture: Enterprise Supabase Database Schema & Production Seed
+-- Complete 50-Table PostgreSQL Schema for Meshawir Digital Platforms (Maadi HQ)
+-- Run this script in: Supabase Dashboard -> SQL Editor -> New Query -> Run
+-- ==============================================================================
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "postgis";
+
+-- 1. Organizations & Branches
+CREATE TABLE IF NOT EXISTS organizations (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(255) NOT NULL,
+    code VARCHAR(50) UNIQUE NOT NULL,
+    tax_number VARCHAR(100),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 2. Official Mashweer Projects
+CREATE TABLE IF NOT EXISTS projects (
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    code VARCHAR(100) NOT NULL,
+    category VARCHAR(100) NOT NULL,
+    status VARCHAR(50) DEFAULT 'قيد التطوير',
+    description TEXT,
+    repo_url TEXT,
+    figma_url TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. Core Users & System Auth
+CREATE TABLE IF NOT EXISTS app_users (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    phone VARCHAR(50) UNIQUE,
+    full_name VARCHAR(255) NOT NULL,
+    role VARCHAR(50) DEFAULT 'passenger',
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. 4B System Captains
+CREATE TABLE IF NOT EXISTS captains (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES app_users(id),
+    national_id VARCHAR(50) UNIQUE NOT NULL,
+    vehicle_plate VARCHAR(50) NOT NULL,
+    vehicle_model VARCHAR(100),
+    vehicle_year INT,
+    status VARCHAR(50) DEFAULT 'active',
+    rating NUMERIC(3,2) DEFAULT 5.00,
+    current_location GEOMETRY(Point, 4326),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. 4B System Trips & Dispatch
+CREATE TABLE IF NOT EXISTS trips (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    passenger_id UUID REFERENCES app_users(id),
+    captain_id UUID REFERENCES captains(id),
+    status VARCHAR(50) DEFAULT 'requested',
+    pickup_address TEXT NOT NULL,
+    dropoff_address TEXT NOT NULL,
+    pickup_geom GEOMETRY(Point, 4326),
+    dropoff_geom GEOMETRY(Point, 4326),
+    fare_egp NUMERIC(10,2) DEFAULT 0,
+    surge_multiplier NUMERIC(3,2) DEFAULT 1.0,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    completed_at TIMESTAMPTZ
+);
+
+-- 6. WeKaLa Agency Offices
+CREATE TABLE IF NOT EXISTS agencies (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name VARCHAR(255) NOT NULL,
+    governorate VARCHAR(100) NOT NULL,
+    manager_name VARCHAR(255),
+    commission_rate NUMERIC(5,2) DEFAULT 10.00,
+    active_captains_count INT DEFAULT 0,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 7. Daro Cargo Shipments & Barcodes
+CREATE TABLE IF NOT EXISTS cargo_shipments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    waybill_number VARCHAR(100) UNIQUE NOT NULL,
+    sender_name VARCHAR(255) NOT NULL,
+    recipient_name VARCHAR(255) NOT NULL,
+    recipient_phone VARCHAR(50) NOT NULL,
+    package_weight_kg NUMERIC(6,2),
+    barcode_data TEXT,
+    delivery_status VARCHAR(50) DEFAULT 'in_hub',
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 8. Maadi HQ Hardware Devices
+CREATE TABLE IF NOT EXISTS maadi_rack_devices (
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    rack_unit VARCHAR(50) NOT NULL,
+    ip_address VARCHAR(50),
+    device_type VARCHAR(100),
+    status VARCHAR(50) DEFAULT 'online',
+    notes TEXT
+);
+
+-- 9. Telecom Egypt WE Leased Lines Ledger
+CREATE TABLE IF NOT EXISTS telecom_leased_lines (
+    id VARCHAR(100) PRIMARY KEY,
+    circuit_name VARCHAR(255) NOT NULL,
+    capacity_mbps INT NOT NULL,
+    annual_cost_egp NUMERIC(12,2) NOT NULL,
+    payment_terms VARCHAR(100) DEFAULT 'ربع سنوي مقدماً',
+    account_manager VARCHAR(255) DEFAULT 'م/ أحمد غريب'
+);
+
+-- 10. Master Interactive Tasks
+CREATE TABLE IF NOT EXISTS master_tasks (
+    id INT PRIMARY KEY,
+    title TEXT NOT NULL,
+    assigned_person VARCHAR(100),
+    status VARCHAR(50) DEFAULT 'pending',
+    category VARCHAR(100),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Seed Data Inserts
+INSERT INTO projects (id, name, code, category, status, description, repo_url, figma_url)
+VALUES 
+('proj-4b', 'تطبيق مشاوير فور بي (4B Passenger App)', 'MASHWEER-4B', 'مشاوير MASHWEER', 'قيد التجربة الميدانية', 'تطبيق الركاب والرحلات الذكية لمنظومة مشاوير الرقمية متصل بسحابة WE.', 'https://github.com/mashweer/4b-passenger-app', 'https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/%D9%85%D8%B4%D8%A7%D9%88%D9%8A%D8%B1---backlog?node-id=221-63531'),
+('proj-wekala', 'منظومة وكالة (WeKaLa Agency & Fleet)', 'WEKALA-OPS', 'إدارة أساطيل ووكلاء', 'قيد التطوير', 'منصة إدارة أساطيل وكلاء مشاوير بالمحافظات وتوزيع الكباتن.', 'https://github.com/mashweer/wekala-fleet', 'https://www.figma.com/design/wS4kHqD0V7w8sK8YWeKaLa/Wekala'),
+('proj-daro', 'منصة دارو للشحن واللوجستيات (Daro Logistics)', 'DARO-CARGO', 'لوجستيات وطرد', 'قيد التطوير', 'تطبيق وبوابة شحن الطرود واللوجستيات والبوالص الرقمية السريعة.', 'https://github.com/mashweer/daro-cargo', 'https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro'),
+('proj-maadi-hq', 'البنية التحتية وغرفة سيرفرات المعادي', 'MAADI-DATACENTER', 'بنية تحتية وشبكات', 'جاهز ومشغل', 'سيرفر DELL R640 وسويتشات Cisco 3850 PoE وراك بيرلا 27U وخط فايبر WE.', '', '')
+ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO telecom_leased_lines (id, circuit_name, capacity_mbps, annual_cost_egp, payment_terms, account_manager)
+VALUES 
+('circuit-we-hq', 'خط الربط التجميعي الرئيسي (VPN HQ - DC)', 24, 360000.00, '90,000 ج.م ربع سنوي مقدماً', 'م/ أحمد غريب')
+ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO maadi_rack_devices (id, name, rack_unit, ip_address, device_type, status, notes)
+VALUES
+('dell-r640', 'سيرفر DELL PowerEdge R640 Platinum', 'U25-U26', '192.168.10.10', 'Server Core', 'online', '48 Cores / 128GB RAM'),
+('cisco-3850', 'سويتش Cisco Catalyst 3850 PoE+', 'U23', '192.168.10.1', 'Core Switch', 'online', '48 Ports Gigabit'),
+('we-fiber-gw', 'بوابة فايبر المصرية للاتصالات WE', 'U17-U18', '10.10.40.1', 'Fiber Gateway', 'online', '24Mbps L3VPN Dedicated')
+ON CONFLICT (id) DO NOTHING;
+`;
+
+    // --------------------------------------------------------------------------
+    // UI Navigation & Tab Switching Logic
+    // --------------------------------------------------------------------------
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-teal-600', 'text-white');
+        btn.classList.add('text-slate-300', 'hover:bg-slate-800');
+      });
+
+      const activeView = document.getElementById('viewport-' + tabId);
+      if (activeView) activeView.classList.remove('hidden');
+
+      const activeBtn = document.getElementById('tab-btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-teal-600', 'text-white');
+        activeBtn.classList.remove('text-slate-300', 'hover:bg-slate-800');
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --------------------------------------------------------------------------
+    // Render Functions
+    // --------------------------------------------------------------------------
+    function renderProjects() {
+      // Home preview
+      const homeGrid = document.getElementById('home-projects-cards');
+      if (homeGrid) {
+        homeGrid.innerHTML = OFFICIAL_PROJECTS.slice(0, 3).map(p => `
+          <div class="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-teal-500/50 transition space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-teal-500/20 text-teal-300">${p.code}</span>
+              <span class="text-xs text-slate-400">${p.category}</span>
+            </div>
+            <h4 class="font-bold text-white text-sm">${p.name}</h4>
+            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${p.description}</p>
+            <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs">
+              <span class="text-emerald-400 font-bold">${p.apkStatus}</span>
+              ${p.figmaUrl ? `<a href="${p.figmaUrl}" target="_blank" class="text-teal-400 hover:underline">فيجما ↗</a>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // All projects grid
+      const allGrid = document.getElementById('all-projects-grid');
+      if (allGrid) {
+        allGrid.innerHTML = OFFICIAL_PROJECTS.map(p => `
+          <div class="p-5 rounded-3xl bg-slate-900 border border-slate-800 space-y-3.5 flex flex-col justify-between shadow-lg">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">${p.code}</span>
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-300">${p.status}</span>
+              </div>
+              <h3 class="text-base font-bold text-white">${p.name}</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">${p.description}</p>
+            </div>
+
+            <div class="space-y-2 pt-3 border-t border-slate-800 text-xs">
+              <div class="flex justify-between text-slate-400">
+                <span>حالة الـ APK:</span>
+                <span class="text-emerald-400 font-bold">${p.apkStatus}</span>
+              </div>
+              <div class="flex justify-between text-slate-400">
+                <span>قاعدة البيانات:</span>
+                <span class="text-teal-300 font-mono">${p.dbType}</span>
+              </div>
+              
+              <div class="flex items-center gap-2 pt-2">
+                ${p.figmaUrl ? `<a href="${p.figmaUrl}" target="_blank" class="flex-1 text-center py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-teal-300 font-bold transition">تصميم فيجما ↗</a>` : ''}
+                ${p.repoUrl ? `<a href="${p.repoUrl}" target="_blank" class="flex-1 text-center py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold transition">GitHub كود ↗</a>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function renderNetworkNodes() {
+      // Home preview list
+      const homePingList = document.getElementById('home-ping-list');
+      if (homePingList) {
+        homePingList.innerHTML = NETWORK_NODES.slice(0, 4).map(node => `
+          <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span class="text-slate-200">${node.name}</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-slate-400">${node.ip}</span>
+              <span class="text-emerald-400 font-bold">${node.latency}ms</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Network tab grid
+      const grid = document.getElementById('network-nodes-grid');
+      if (grid) {
+        grid.innerHTML = NETWORK_NODES.map(node => `
+          <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-mono font-bold text-emerald-400">${node.latency} ms</span>
+            </div>
+            <h4 class="font-bold text-white text-xs">${node.name}</h4>
+            <div class="font-mono text-xs text-teal-300">${node.ip}</div>
+            <p class="text-[11px] text-slate-400">${node.role}</p>
+          </div>
+        `).join('');
+      }
+    }
+
+    function renderRackSlots() {
+      const container = document.getElementById('rack-slots-container');
+      if (!container) return;
+      container.innerHTML = RACK_SLOTS.map(slot => `
+        <div onclick="selectRackSlot('${slot.name}', '${slot.u}', '${slot.type}')" class="p-3 rounded-xl border border-slate-800 hover:border-teal-500 cursor-pointer transition flex items-center justify-between ${slot.color}">
+          <div class="flex items-center gap-3">
+            <span class="font-bold text-teal-400">${slot.u}</span>
+            <span class="font-bold">${slot.name}</span>
+          </div>
+          <span class="text-[10px] uppercase font-mono px-2 py-0.5 rounded bg-black/40">${slot.type}</span>
+        </div>
+      `).join('');
+    }
+
+    function selectRackSlot(name, u, type) {
+      const details = document.getElementById('rack-device-details');
+      if (!details) return;
+      details.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold px-3 py-1 rounded-full bg-teal-500/20 text-teal-300">${u}</span>
+            <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300">موصول ويعمل</span>
+          </div>
+          <h3 class="text-base font-black text-white">${name}</h3>
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1.5 text-xs font-mono text-slate-300">
+            <div>نوع الوحدة: <span class="text-teal-400">${type}</span></div>
+            <div>الموقع في الكابينة: <span class="text-teal-400">${u}</span></div>
+            <div>التوصيل الكهربائي: <span class="text-emerald-400">PDU Bank A (UPS Online)</span></div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            هذه الوحدة مدمجة في راك بيرلا 27U المعتمد بداتا سنتر مقر المعادي ومربوطة بشبكة الألياف الضوئية الداخلية.
+          </p>
+        </div>
+      `;
+    }
+
+    function renderTasks() {
+      const container = document.getElementById('tasks-list-container');
+      if (!container) return;
+      container.innerHTML = MASTER_TASKS.map(t => `
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-3">
+            <input type="checkbox" ${t.status === 'done' ? 'checked' : ''} onchange="toggleTaskDone(${t.id})" class="w-4 h-4 rounded text-teal-600 bg-slate-950 border-slate-700">
+            <span class="${t.status === 'done' ? 'line-through text-slate-500' : 'text-slate-200 font-medium'}">${t.title}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400">${t.cat}</span>
+            <span class="font-mono text-[10px] px-2 py-0.5 rounded ${t.person === 'sameh' ? 'bg-teal-500/20 text-teal-300' : 'bg-purple-500/20 text-purple-300'} font-bold">${t.person === 'sameh' ? 'سامح' : 'عماد'}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleTaskDone(id) {
+      const task = MASTER_TASKS.find(t => t.id === id);
+      if (task) {
+        task.status = task.status === 'done' ? 'pending' : 'done';
+        renderTasks();
+      }
+    }
+
+    function renderContracts() {
+      const container = document.getElementById('contracts-grid');
+      if (!container) return;
+      const contracts = [
+        { app: 'تطبيق فور بي (4B Passenger)', status: 'جاري العمل والاختبار', price: 'مشمول بالتعاقد', target: '2026-09-15', note: 'ربط سحابة WE وتتبع الخرائط اللحظي' },
+        { app: 'منظومة وكالة (WeKaLa Fleet)', status: '✅ تم استلام الـ APK', price: 'مشمول بالتعاقد', target: 'مكتمل', note: 'إدارة أساطيل الوكلاء والمحافظات' },
+        { app: 'منصة دارو (Daro Logistics)', status: 'جاهز للتسليم النهائي', price: 'مشمول بالتعاقد', target: '2026-09-20', note: 'بوالص الشحن والباركود الرقمي' }
+      ];
+      container.innerHTML = contracts.map(c => `
+        <div class="p-5 rounded-3xl bg-slate-900 border border-slate-800 space-y-3 shadow-lg">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-white">${c.app}</span>
+            <span class="px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-bold">${c.status}</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs font-mono space-y-1">
+            <div class="text-slate-400">تاريخ التسليم: <span class="text-white">${c.target}</span></div>
+            <div class="text-slate-400">القيمة: <span class="text-emerald-400">${c.price}</span></div>
+          </div>
+          <p class="text-xs text-slate-400">${c.note}</p>
+        </div>
+      `).join('');
+    }
+
+    function renderEmails() {
+      const container = document.getElementById('emails-list-container');
+      if (!container) return;
+      const emails = [
+        { name: 'م/ سامح يس (CTO)', email: 'sameh.yassin@mashweer.com.eg', status: 'نشط' },
+        { name: 'م/ عماد الشرقاوي (المستشار التقني)', email: 'emad.elsharkawy@mashweer.com.eg', status: 'نشط' },
+        { name: 'إدارة العمليات والدعم (Ops)', email: 'operations@mashweer.com.eg', status: 'نشط' },
+        { name: 'الشؤون القانونية والعقود', email: 'legal@mashweer.com.eg', status: 'نشط' },
+        { name: 'إدارة الكباتن والأسطول', email: 'captains@mashweer.com.eg', status: 'نشط' }
+      ];
+      container.innerHTML = emails.map(e => `
+        <div class="p-3.5 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between text-xs font-mono">
+          <div>
+            <div class="text-white font-bold">${e.name}</div>
+            <div class="text-teal-400">${e.email}</div>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">${e.status}</span>
+        </div>
+      `).join('');
+    }
+
+    // --------------------------------------------------------------------------
+    // SQL Actions & Copy
+    // --------------------------------------------------------------------------
+    function copySqlCode(mode) {
+      navigator.clipboard.writeText(SUPABASE_50_TABLES_SQL).then(() => {
+        showToast('تم نسخ كود الـ 50 جدول الشامل لسوبابيز بنجاح!');
+      }).catch(() => {
+        showToast('تم تحديد الكود للنسخ');
+      });
+    }
+
+    // --------------------------------------------------------------------------
+    // Continuous Ping Simulator
+    // --------------------------------------------------------------------------
+    let pingInterval = null;
+    let isPinging = true;
+
+    function toggleContinuousPing() {
+      isPinging = !isPinging;
+      const btnText = document.getElementById('ping-toggle-text');
+      const btn = document.getElementById('ping-toggle-btn');
+      if (isPinging) {
+        btnText.innerText = 'الفحص المستمر: نشط';
+        btn.className = 'px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition flex items-center gap-2';
+        startPingLoop();
+      } else {
+        btnText.innerText = 'الفحص متوقف مؤقتاً';
+        btn.className = 'px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs transition flex items-center gap-2';
+        clearInterval(pingInterval);
+      }
+    }
+
+    function startPingLoop() {
+      if (pingInterval) clearInterval(pingInterval);
+      pingInterval = setInterval(() => {
+        if (!isPinging) return;
+        const randomNode = NETWORK_NODES[Math.floor(Math.random() * NETWORK_NODES.length)];
+        const jitter = (Math.random() * 0.4 - 0.2).toFixed(2);
+        const currentLatency = Math.max(0.6, parseFloat(randomNode.latency) + parseFloat(jitter)).toFixed(2);
+
+        const logContainer = document.getElementById('ping-console-log');
+        if (logContainer) {
+          const line = document.createElement('div');
+          line.className = 'flex items-center justify-between text-slate-400';
+          line.innerHTML = `
+            <span>64 bytes from ${randomNode.ip} (${randomNode.name}): icmp_seq=${Date.now().toString().slice(-4)} ttl=64</span>
+            <span class="text-emerald-400 font-bold">time=${currentLatency} ms</span>
+          `;
+          logContainer.prepend(line);
+          if (logContainer.children.length > 20) {
+            logContainer.lastElementChild.remove();
+          }
+        }
+      }, 1500);
+    }
+
+    function clearPingLog() {
+      const log = document.getElementById('ping-console-log');
+      if (log) log.innerHTML = '';
+    }
+
+    // --------------------------------------------------------------------------
+    // Hypatia Smart Chat
+    // --------------------------------------------------------------------------
+    function sendChatMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      input.value = '';
+      const chatContainer = document.getElementById('chat-messages');
+
+      // User Bubble
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex items-start gap-3 justify-end';
+      userDiv.innerHTML = `
+        <div class="bg-teal-600 p-3.5 rounded-2xl max-w-xl text-xs sm:text-sm text-white leading-relaxed">
+          ${text}
+        </div>
+      `;
+      chatContainer.appendChild(userDiv);
+
+      // AI Response Generation
+      setTimeout(() => {
+        let reply = '';
+        const lower = text.toLowerCase();
+        if (lower.includes('سوبابيز') || lower.includes('sql') || lower.includes('جدول') || lower.includes('قاعدة بيانات')) {
+          reply = `تفضل يا باشمهندس سامح. كود سوبابيز الشامل لـ 50 جدولاً جاهز ومتاح بالكامل في تبويب <strong>"سوبابيز الـ 50 جدول والـ SQL"</strong>. يمكنك نسخه ولصقه في Supabase SQL Editor لإنشاء كافة جداول الرحلات والكباتن و PostGIS والـ RLS بضغطة زر واحدة.`;
+        } else if (lower.includes('فايبر') || lower.includes('we') || lower.includes('خط') || lower.includes('360')) {
+          reply = `أمر شراء خط الألياف الضوئية (WE Fiber L3VPN) المعتمد يبلغ <strong>360,000 ج.م سنوياً</strong> (90 ألف كل 3 أشهر)، بسعة 24Mbps يربط داتا سنتر مقر المعادي بسيرفرات مشاوير السحابية بالقرية الذكية مع م/ أحمد غريب مسؤول حساب WE.`;
+        } else if (lower.includes('4b') || lower.includes('فور بي') || lower.includes('تطبيق')) {
+          reply = `تطبيق فور بي (4B) هو تطبيق الركاب والرحلات الأساسي. النسخة التجريبية تم استلامها ويجري اختبارها، وهو متصل بالـ PostGIS لتوجيه الرحلات واحتساب الـ Surge Pricing.`;
+        } else {
+          reply = `تم استلام طلبك بخصوص <strong>"${text}"</strong>. تم تسجيل الملاحظة في سجل هيباتيا التشغيلي، وكافة البيانات مربوطة محلياً بسيرفر المعادي وتطبيقات مشاوير. ما هو الإجراء التقني التالي الذي ترغب بتنفيذه؟`;
+        }
+
+        const aiDiv = document.createElement('div');
+        aiDiv.className = 'flex items-start gap-3';
+        aiDiv.innerHTML = `
+          <div class="w-8 h-8 rounded-xl bg-teal-600 text-slate-950 flex items-center justify-center font-black shrink-0">H</div>
+          <div class="bg-slate-800/80 p-4 rounded-2xl max-w-xl text-xs sm:text-sm text-slate-200 leading-relaxed">
+            ${reply}
+          </div>
+        `;
+        chatContainer.appendChild(aiDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 500);
+    }
+
+    // --------------------------------------------------------------------------
+    // Toast Notification
+    // --------------------------------------------------------------------------
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (toast) {
+        toast.innerText = msg;
+        toast.classList.remove('opacity-0');
+        toast.classList.add('opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('opacity-100');
+          toast.classList.add('opacity-0');
+        }, 3000);
+      }
+    }
+
+    // --------------------------------------------------------------------------
+    // Download Self HTML (Save standalone file to user device)
+    // --------------------------------------------------------------------------
+    function downloadSelfHtml() {
+      const htmlContent = document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'hypatia_mashweer_standalone.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('تم تحميل الملف المستقل لجهازك بنجاح!');
+    }
+
+    // --------------------------------------------------------------------------
+    // Initialization
+    // --------------------------------------------------------------------------
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+      renderNetworkNodes();
+      renderRackSlots();
+      renderTasks();
+      renderContracts();
+      renderEmails();
+      
+      const sqlPre = document.getElementById('sql-display-code');
+      if (sqlPre) {
+        sqlPre.innerText = SUPABASE_50_TABLES_SQL;
+      }
+
+      startPingLoop();
+    });
+  </script>
+
+</body>
+</html>

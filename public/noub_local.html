@@ -1,413 +1,296 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>نوب - الربط المباشر مع Google Drive</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Kufi Arabic', sans-serif;
-    }
-    body {
-      background: #0b0f19;
-      color: #f1f5f9;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-    .card {
-      background: #131b2e;
-      border: 1px solid #1e293b;
-      border-radius: 20px;
-      max-width: 620px;
-      width: 100%;
-      padding: 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-      text-align: center;
-    }
-    .badge {
-      display: inline-block;
-      background: rgba(37, 99, 235, 0.2);
-      border: 1px solid rgba(37, 99, 235, 0.4);
-      color: #60a5fa;
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-    h1 {
-      font-size: 26px;
-      font-weight: 800;
-      margin-bottom: 12px;
-      color: #ffffff;
-    }
-    p.desc {
-      color: #94a3b8;
-      font-size: 14px;
-      line-height: 1.6;
-      margin-bottom: 28px;
-    }
-    .btn-main {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      color: #ffffff;
-      border: none;
-      padding: 16px 28px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
-    }
-    .btn-main:hover {
-      background: linear-gradient(135deg, #1d4ed8, #1e40af);
-      transform: translateY(-2px);
-    }
-    .btn-main:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-    .status-box {
-      margin-top: 24px;
-      padding: 16px;
-      border-radius: 12px;
-      font-size: 14px;
-      display: none;
-      text-align: right;
-      line-height: 1.6;
-    }
-    .status-box.info {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #93c5fd;
-      display: block;
-    }
-    .status-box.success {
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.4);
-      color: #86efac;
-      display: block;
-    }
-    .status-box.error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-      display: block;
-    }
-    .link-btn {
-      display: inline-block;
-      margin-top: 14px;
-      background: #16a34a;
-      color: #ffffff;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 800;
-      font-size: 14px;
-      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
-    }
-    .upload-zone {
-      margin-top: 24px;
-      border: 2px dashed #334155;
-      border-radius: 14px;
-      padding: 24px;
-      display: none;
-      background: rgba(15, 23, 42, 0.5);
-    }
-    .upload-zone.active {
-      display: block;
-    }
-    .file-input {
-      display: none;
-    }
-    .file-label {
-      background: #1e293b;
-      border: 1px solid #334155;
-      color: #f1f5f9;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 13px;
-      font-weight: 700;
-      display: inline-block;
-      margin-top: 10px;
-    }
-    .footer-note {
-      margin-top: 24px;
-      font-size: 12px;
-      color: #64748b;
-    }
-  </style>
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>Cookie check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
 
-  <div class="card">
-    <div class="badge">ملف التشغيل المباشر المستقل • نوب</div>
-    <h1>إنشاء وإدارة مجلد «نوب» على Google Drive</h1>
-    <p class="desc">
-      يعمل هذا الملف محلياً على جهازك مباشرة بدون خوادم وبدون أكواد إضافية.
-      اضغط الزر أدناه لتسجيل الدخول بحساب Google وإنشاء مجلد «نوب» بضغطة واحدة.
-    </p>
+      body {
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        background: light-dark(#F8F8F7, #191919);
+        color: light-dark(#1f1f1f, #e3e3e3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+      }
 
-    <button id="auth-btn" class="btn-main" onclick="handleAuthAndCreate()">
-      <span>🚀 تسجيل الدخول وإنشاء مجلد «نوب» في درايف</span>
-    </button>
+      .container {
+        background: light-dark(#FFFFFF, #1F1F1F);
+        padding: 32px;
+        border-radius: 16px;
+        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
+        max-width: min(80%, 500px);
+        width: 100%;
+        color: light-dark(#2B2D31, #D4D4D4);
+      }
 
-    <div id="status-box" class="status-box"></div>
+      h1 {
+        font-size: 20px;
+        font-weight: 500;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: light-dark(#2B2D31, #D4D4D4);
+      }
 
-    <!-- Upload section appears after folder creation -->
-    <div id="upload-zone" class="upload-zone">
-      <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #38bdf8;">
-        📦 رفع ملفات مباشرة إلى مجلد «نوب» (مثل ملف APK وكالة)
-      </div>
-      <p style="color: #94a3b8; font-size: 12px; margin-bottom: 12px;">
-        اختر ملف الـ APK أو أي ملف وسيرفع مباشرة إلى مجلدك على Google Drive.
-      </p>
-      <input type="file" id="file-uploader" class="file-input" onchange="uploadSelectedFile(event)">
-      <label for="file-uploader" class="file-label">📁 اختر ملفاً لرفعه الآن</label>
-      <div id="upload-progress" style="margin-top: 10px; font-size: 12px; color: #e2e8f0;"></div>
-    </div>
+      p {
+        font-size: 14px;
+        color: light-dark(#2B2D31, #D4D4D4);
+        line-height: 21px;
+        margin: 0 0 1.5rem 0;
+      }
 
-    <div class="footer-note">
-      تم الربط الرسمي عبر Google Identity Services و Google Drive API • حساب المالك: noub.platform@gmail.com
-    </div>
-  </div>
+      .icon {
+        margin-bottom: 1rem;
+        line-height: 0;
+      }
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+      .button-container {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 2rem;
+      }
 
-    const firebaseConfig = {
-      projectId: "gen-lang-client-0459127194",
-      appId: "1:502551850440:web:e03faaee0744fae75724fd",
-      apiKey: "AIzaSyDZJcWcNpwpT4qIwrCTwovrtaL-9vV187A",
-      authDomain: "gen-lang-client-0459127194.firebaseapp.com",
-      storageBucket: "gen-lang-client-0459127194.firebasestorage.app",
-      messagingSenderId: "502551850440"
-    };
+      button {
+        background-color: light-dark(#fff, #323232);
+        color: light-dark(#2B2D31, #FCFCFC);
+        border: 1px solid light-dark(#E2E3E4, #3E3E3E);
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 21px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        font-weight: 400;
+        font-family: 'Inter', Helvetica, Arial, sans-serif;
+        width: 100%;
+      }
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const provider = new GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/drive");
+      button:hover {
+        background-color: light-dark(#EAEAEB, #424242);
+      }
 
-    let driveToken = null;
-    let createdFolderId = null;
+      .hidden {
+        display: none;
+      }
 
-    window.onload = function() {
-      if (window.location.protocol === "file:") {
-        const status = document.getElementById("status-box");
-        status.className = "status-box info";
-        status.style.display = "block";
-        status.innerHTML = `
-          <div style="font-weight: 800; font-size: 15px; color: #f59e0b; margin-bottom: 8px;">⚠️ تنبيه هام حول تشغيل الملف محلياً (file:///):</div>
-          <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1;">
-            متصفح Chrome و Google يمنعان تسجيل الدخول عبر مسارات <code style="background:#1e293b; padding:2px 6px; border-radius:4px; color:#f43f5e;">file:///</code> المباشرة لأسباب أمنية.
-            <br><br>
-            <strong>للإنشاء الفوري والعمل المباشر:</strong>
-            <br>
-            1. افتح الرابط المباشر الرسمي عبر الإنترنت (يعمل فوراً بدون أي إعدادات):
-            <div style="margin-top: 10px;">
-              <a href="https://ais-dev-6hiumomebsvvdma6vbminz-575434046927.europe-west2.run.app" target="_blank" class="link-btn" style="background:#2563eb; display:inline-flex; align-items:center; gap:6px;">
-                <span>🌐 فتح الرابط المباشر والإنشاء الآن ↗</span>
-              </a>
-            </div>
-            <br>
-            2. أو لتشغيله محلياً عبر جهازك (Localhost): شغّل ملف <code style="background:#1e293b; padding:2px 6px; border-radius:4px; color:#38bdf8;">run_local.bat</code> المرفق لفتحه على <code style="color:#38bdf8;">http://localhost:8080</code>.
+      /* Loading Spinner Animation */
+      .spinner {
+        margin: 0 auto 1.5rem auto;
+        width: 40px;
+        height: 40px;
+        border: 4px solid light-dark(#f0f0f0, #262626);
+        border-top: 4px solid light-dark(#076eff, #87a9ff); /* Blue color */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      .logo {
+        border-radius: 10px;
+        display: block;
+        margin: 0 auto 2rem auto;
+      }
+
+      .logo.hidden {
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        class="logo"
+        src="https://www.gstatic.com/images/branding/productlogos/ai_studio/v1/web-512dp/logo_ai_studio_color_1x_web_512dp.png"
+        alt="AI Studio Logo"
+        width="256"
+        height="256"
+      />
+      <div class="spinner"></div>
+      <div id="error-ui" class="hidden">
+        <div class="icon">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="48px"
+            height="48px"
+            fill="#D73A49"
+          >
+            <path
+              d="M12,2C6.486,2,2,6.486,2,12s4.486,10,10,10s10-4.486,10-10S17.514,2,12,2z M13,17h-2v-2h2V17z M13,13h-2V7h2V13z"
+            />
+          </svg>
+        </div>
+        <div id="stepOne" class="text-container">
+          <h1>Action required to load your app</h1>
+          <p>
+            It looks like your browser is blocking a required security cookie, which is common on
+            older versions of iOS and Safari.
+          </p>
+          <div class="button-container">
+            <button id="authInSeparateWindowButton" onclick="redirectToReturnUrl(true)">Authenticate in new window</button>
           </div>
-        `;
-      }
-    };
-    window.connectGoogleDriveAndCreateFolder = async function() {
-      const btn = document.getElementById("auth-btn");
-      const status = document.getElementById("status-box");
-      btn.disabled = true;
-      btn.innerHTML = "<span>⏳ جاري تسجيل الدخول بحساب Google...</span>";
-      status.className = "status-box info";
-      status.style.display = "block";
-      status.innerText = "جاري فتح نافذة التحقق من Google...";
+        </div>
+        <div id="stepTwo" class="text-container hidden">
+          <h1>Action required to load your app</h1>
+          <p>
+            It looks like your browser is blocking a required security cookie, which is common on
+            older versions of iOS and Safari.
+          </p>
+          <div class="button-container">
+            <button id="interactButton" onclick="redirectToReturnUrl(false)">Close and continue</button>
+          </div>
+        </div>
+        <div id="stepThree" class="text-container hidden">
+          <h1>Almost there!</h1>
+          <p>
+            Grant permission for the required security cookie below.
+          </p>
+          <div class="button-container">
+            <button id="grantPermissionButton" onclick="grantStorageAccess()">Grant permission</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const AUTH_FLOW_TEST_COOKIE_NAME = '__SECURE-aistudio_auth_flow_may_set_cookies';
+      const COOKIE_VALUE = 'true';
 
-      try {
-        const result = await signInWithPopup(auth, provider);
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        driveToken = credential ? credential.accessToken : null;
-
-        if (!driveToken) {
-          throw new Error("لم نتمكن من استخراج رمز المرور لـ Google Drive");
-        }
-
-        status.innerText = "تم تسجيل الدخول بنجاح! جاري إنشاء هيكل NOUB والمجلدات بالكامل في حسابك...";
-        btn.innerHTML = "<span>⏳ جاري إنشاء هيكل NOUB...</span>";
-
-        // Helper to find or create folder
-        async function getOrCreateFolder(name, parentId = null) {
-          let q = `name = '${name}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false`;
-          if (parentId) {
-            q += ` and '${parentId}' in parents`;
+      function getCookie(name) {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+          let cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+            return cookie.substring(name.length + 1);
           }
-          const searchRes = await fetch(`https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(q)}&fields=files(id,name,webViewLink)`, {
-            headers: { "Authorization": `Bearer ${driveToken}` }
-          });
-          const searchData = await searchRes.json();
-          if (searchData.files && searchData.files.length > 0) {
-            return searchData.files[0];
-          }
-
-          const body = { name, mimeType: "application/vnd.google-apps.folder" };
-          if (parentId) body.parents = [parentId];
-
-          const createRes = await fetch("https://www.googleapis.com/drive/v3/files?fields=id,name,webViewLink", {
-            method: "POST",
-            headers: { "Authorization": `Bearer ${driveToken}`, "Content-Type": "application/json" },
-            body: JSON.stringify(body)
-          });
-          return await createRes.json();
         }
-
-        // Helper to upload text/csv
-        async function uploadFile(filename, parentId, mimeType, content) {
-          const boundary = "-------314159265358979323846";
-          const delimiter = "\r\n--" + boundary + "\r\n";
-          const closeDelim = "\r\n--" + boundary + "--";
-
-          const metadata = { name: filename, mimeType, parents: [parentId] };
-          const multipartRequestBody =
-            delimiter +
-            "Content-Type: application/json; charset=UTF-8\r\n\r\n" +
-            JSON.stringify(metadata) +
-            delimiter +
-            `Content-Type: ${mimeType}; charset=UTF-8\r\n\r\n` +
-            content +
-            closeDelim;
-
-          const uploadRes = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${driveToken}`,
-              "Content-Type": `multipart/related; boundary=${boundary}`
-            },
-            body: multipartRequestBody
-          });
-          return await uploadRes.json();
-        }
-
-        // 1. Create main folder "NOUB"
-        const noubFolder = await getOrCreateFolder("NOUB");
-        createdFolderId = noubFolder.id;
-
-        // 2. Subfolders
-        const fFleet = await getOrCreateFolder("01_MASHWEER_FLEET", createdFolderId);
-        const f4b = await getOrCreateFolder("01_4B_PASSENGER", fFleet.id);
-        await getOrCreateFolder("01_SOURCE_CODE_AND_BUILDS", f4b.id);
-        await getOrCreateFolder("02_FIGMA_AND_DESIGNS", f4b.id);
-        await getOrCreateFolder("03_OWNER_REQUESTS_AND_TASKS", f4b.id);
-        await getOrCreateFolder("04_MEETINGS_AND_LINKS", f4b.id);
-        await getOrCreateFolder("05_BACKUPS_AND_DATABASE", f4b.id);
-
-        const fWekala = await getOrCreateFolder("02_WEKALA_AGENCY_APK", fFleet.id);
-        await getOrCreateFolder("01_APK_RELEASES", fWekala.id);
-        await getOrCreateFolder("02_DASHBOARD_SPECS", fWekala.id);
-        await getOrCreateFolder("03_FIGMA_AND_DESIGNS", fWekala.id);
-        await getOrCreateFolder("04_OWNER_REQUESTS_AND_TASKS", fWekala.id);
-        await getOrCreateFolder("05_MEETINGS_AND_LINKS", fWekala.id);
-
-        const fDaro = await getOrCreateFolder("03_DARO_CARGO", fFleet.id);
-        await getOrCreateFolder("01_SOURCE_CODE_AND_BUILDS", fDaro.id);
-        await getOrCreateFolder("02_BARCODE_AND_SHIPPING_SPECS", fDaro.id);
-
-        const fSports = await getOrCreateFolder("02_SPORTS_ACADEMIES", createdFolderId);
-        await getOrCreateFolder("01_OFFICIAL_DOCUMENTS", fSports.id);
-        const fData = await getOrCreateFolder("02_ACADEMIES_DATA", fSports.id);
-        await getOrCreateFolder("01_SWIMMING", fData.id);
-        await getOrCreateFolder("02_TENNIS", fData.id);
-        await getOrCreateFolder("03_EQUESTRIAN_HORSES", fData.id);
-        await getOrCreateFolder("04_FOOTBALL", fData.id);
-
-        const fFin = await getOrCreateFolder("03_FINANCIAL_OPERATIONS", createdFolderId);
-        await getOrCreateFolder("01_TRADING_ROOM", fFin.id);
-        await getOrCreateFolder("02_PAYCORE_GATEWAY", fFin.id);
-        const fSub = await getOrCreateFolder("03_SUBSCRIPTIONS", fFin.id);
-
-        const fPlatforms = await getOrCreateFolder("04_PLATFORMS_GAMES", createdFolderId);
-        await getOrCreateFolder("01_NOUB_MAIN_CORE", fPlatforms.id);
-        await getOrCreateFolder("02_TOMB_PUZZLES_GAME", fPlatforms.id);
-        await getOrCreateFolder("03_HYPATIA_ENGINE", fPlatforms.id);
-
-        // Upload Master text & CSVs
-        await uploadFile("NOUB_MASTER_SYSTEM.txt", createdFolderId, "text/plain", "NOUB Master Platform Ecosystem - Single Source of Truth\nOwner: Sameh (noub.platform@gmail.com)\nCreated: " + new Date().toLocaleString("ar-EG"));
-        await uploadFile("subscriptions.csv", createdFolderId, "text/csv", "Subscription_ID,Project_Code,Project_Name,Subscriber_Name,Amount_EGP,Billing_Cycle,Next_Renewal_Date\nSUB-SP-001,proj-noub-sports,NOUB Sports Academies,Cairo Olympic Club,12500,Monthly,2026-10-01\nSUB-MS-001,proj-4b,4B Passenger,Delta Fleet Group,15000,Monthly,2026-10-01\nSUB-WK-001,proj-wekala,WeKaLa Agency,Alexandria Central,30000,Annual,2027-01-01\n");
-        await uploadFile("ALL_PROJECTS_LINKS.csv", createdFolderId, "text/csv", "Project_Code,Project_Name,Resource_Type,URL_Or_Path\nproj-4b,4B Passenger,Figma,https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6\nproj-4b,4B Passenger,Dashboard,https://dashboard.mashawer.com.eg\nproj-wekala,WeKaLa Agency,Figma,https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala\nproj-daro,Daro Cargo,Figma,https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro\nproj-noub-sports,NOUB Sports,Dashboard,https://sports.noub.org\n");
-
-        // Display Success
-        status.className = "status-box success";
-        status.innerHTML = `
-          <div style="font-weight: 800; font-size: 16px; margin-bottom: 6px;">🎉 مبروك! تم إنشاء وتجهيز مستودع NOUB بالكامل!</div>
-          <div>تم إنشاء مجلد NOUB وكافة المجلدات الفرعية العميقة (4B، وكالة، دارو، نوب سبورتس) وملفات التوثيق والإكسيل بنجاح.</div>
-          <a href="${noubFolder.webViewLink || 'https://drive.google.com'}" target="_blank" class="link-btn">
-            📂 فتح مجلد NOUB الآن على Google Drive ↗
-          </a>
-        `;
-
-        btn.style.display = "none";
-        document.getElementById("upload-zone").classList.add("active");
-
-      } catch (err) {
-        console.error(err);
-        status.className = "status-box error";
-        status.innerText = "حدث خطأ: " + (err.message || err);
-        btn.disabled = false;
-        btn.innerHTML = "<span>🔄 إعادة المحاولة</span>";
+        return null;
       }
-    };
 
-    window.uploadSelectedFile = async function(e) {
-      const file = e.target.files[0];
-      if (!file || !createdFolderId || !driveToken) return;
+      function setAuthFlowTestCookie() {
+        // Set the cookie's TTL to 1 minute. This is a short lived cookie because it is only used
+        // when the user does not have an auth token or their auth token needs to be reset.
+        // Making this cookie too long-lived allows the user to get into a state where they can't
+        // mint a new auth token.
+        document.cookie = `${AUTH_FLOW_TEST_COOKIE_NAME}=${COOKIE_VALUE}; Path=/; Secure; SameSite=None; Domain=${window.location.hostname}; Partitioned; Max-Age=60;`;
+      }
 
-      const progress = document.getElementById("upload-progress");
-      progress.innerText = `جاري رفع الملف (${file.name})... يرجى الانتظار`;
+      /**
+       * Returns true if the test cookie is set, false otherwise.
+       */
+      function authFlowTestCookieIsSet() {
+        return getCookie(AUTH_FLOW_TEST_COOKIE_NAME) === COOKIE_VALUE;
+      }
 
-      try {
-        const metadata = {
-          name: file.name,
-          mimeType: file.type || "application/octet-stream",
-          parents: [createdFolderId]
-        };
+      /**
+       * Redirects to the return url. If autoClose is true, then the return url will be opened in a
+       * new window, and it will be closed automatically when the page loads.
+       * Options:
+       *   storageAccessGranted: if true, appends __storage_access_granted=1 to
+       *   the return url so the Lua auth script can set the test cookie
+       *   server-side (needed for Safari/iOS where document.cookie is blocked).
+       */
+      async function redirectToReturnUrl(autoClose, storageAccessGranted = false) {
+        const initialReturnUrlStr = new URLSearchParams(window.location.search).get('return_url');
+        const returnUrl = initialReturnUrlStr ? new URL(initialReturnUrlStr) : null;
 
-        const form = new FormData();
-        form.append("metadata", new Blob([JSON.stringify(metadata)], { type: "application/json" }));
-        form.append("file", file);
+        // Prevent potentially malicious URLs from being used
+        if (returnUrl.protocol.toLowerCase() === 'javascript:') {
+          console.error('Potentially malicious return URL blocked');
+          return;
+        }
 
-        const uploadRes = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${driveToken}`
-          },
-          body: form
-        });
+        if (storageAccessGranted) {
+          returnUrl.searchParams.set('__storage_access_granted', '1');
+        }
 
-        const resData = await uploadRes.json();
-        if (uploadRes.ok) {
-          progress.innerHTML = `<span style="color: #4ade80; font-weight: 700;">✅ تم رفع ملف ${file.name} بنجاح إلى مجلد «نوب»!</span>`;
+        if (autoClose) {
+          returnUrl.searchParams.set('__auto_close', '1');
+          const url = new URL(window.location.href);
+          url.searchParams.set('return_url', returnUrl.toString());
+          // Land on the cookie check page first, so the user can interact with it before proceeding
+          // to the return url where cookies can be set.
+          window.open(url.toString(), '_blank');
+          const hasAccess = await document.hasStorageAccess();
+          document.querySelector('#stepOne').classList.add('hidden');
+          if (!hasAccess) {
+            document.querySelector('#stepThree').classList.remove('hidden');
+          } else {
+            window.location.reload();
+          }
         } else {
-          progress.innerText = "فشل الرفع: " + (resData.error?.message || "خطأ غير معروف");
+          window.location.href = returnUrl.toString();
         }
-      } catch (err) {
-        progress.innerText = "خطأ أثناء الرفع: " + err.message;
       }
-    };
-  </script>
-</body>
+
+      /**
+       * Grants the browser permission to set cookies. If successful, then it redirects to the
+       * return url.
+       */
+      async function grantStorageAccess() {
+        try {
+          await document.requestStorageAccess();
+          // Recent Safari/iOS versions block document.cookie entirely in
+          // cross-site iframes, even after requestStorageAccess(). Only
+          // server-side Set-Cookie headers work. Signal to the Lua auth script
+          // via query param so it can set the test cookie server-side.
+          redirectToReturnUrl(false, /* storageAccessGranted= */ true);
+        } catch (err) {
+          console.log('error after button click: ', err);
+        }
+      }
+
+      /**
+       * Verifies that the browser can set cookies. If it can, then it redirects to the return url.
+       * If it can't, then it shows the error UI.
+       */
+      function verifyCanSetCookies() {
+        setAuthFlowTestCookie();
+        if (authFlowTestCookieIsSet()) {
+          // Check if we are on the auto-close flow, and if so show the interact button.
+          const returnUrl = new URLSearchParams(window.location.search).get('return_url');
+          const autoClose = new URL(returnUrl).searchParams.has('__auto_close');
+          if (autoClose) {
+            document.querySelector('#stepOne').classList.add('hidden');
+            document.querySelector('#stepTwo').classList.remove('hidden');
+          } else {
+            redirectToReturnUrl(false);
+            return;
+          }
+        }
+        // The cookie could not be set, so initiate the recovery flow.
+        document.querySelector('.logo').classList.add('hidden');
+        document.querySelector('.spinner').classList.add('hidden');
+        document.querySelector('#error-ui').classList.remove('hidden');
+      }
+
+      // Start the cookie verification process.
+      verifyCanSetCookies();
+    </script>
+  </body>
 </html>

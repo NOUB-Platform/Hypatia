@@ -859,7 +859,7 @@ export default function App() {
           {currentTab === 'meshawir_network' && (
             <MeshawirNetworkPingTab
               onAskHypatia={(prompt) => handleAskHypatiaFromAnywhere(prompt, activeProject)}
-              onNavigateToTab={setCurrentTab}
+              onNavigateToTab={(tab) => setCurrentTab(tab as TabType)}
             />
           )}
         </div>

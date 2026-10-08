@@ -38,7 +38,8 @@ import {
   Flame,
   Thermometer,
   Radio,
-  Activity
+  Activity,
+  Download
 } from 'lucide-react';
 import { ProjectItem } from '../types';
 import { ZWorkstationAndCoresModal } from './ZWorkstationAndCoresModal';
@@ -585,6 +586,17 @@ export const HomeTab: React.FC<HomeTabProps> = ({
             <Server className="w-3.5 h-3.5 text-cyan-400" />
             <span>الراك (27U)</span>
           </button>
+
+          {/* Download Standalone Single-File HTML */}
+          <a
+            href="/api/system/download-standalone-html"
+            download="hypatia_mashweer_standalone.html"
+            className="px-3.5 py-2 rounded-2xl bg-teal-600 hover:bg-teal-500 text-white text-xs font-bold transition flex items-center gap-1.5 shadow-sm active:scale-95"
+            title="تحميل المنظومة بالكامل كملف HTML واحد مستقل يعمل على أي متصفح بدون خوادم أو Node.js"
+          >
+            <Download className="w-3.5 h-3.5" />
+            <span>تحميل نسخة HTML مستقلة</span>
+          </a>
 
           {/* Z Workstation & Cores Licensing Button */}
           <button
