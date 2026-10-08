@@ -404,26 +404,28 @@ export default function App() {
     }
   };
 
-  // Automatic Cloud Sync: Hydrate local state from Supabase if available
+  // Automatic Cloud Sync: Hydrate local state from Supabase ONLY if remote data has records
   useEffect(() => {
     let isMounted = true;
     fetchAllDataFromSupabase().then((data) => {
       if (!isMounted || !data) return;
-      if (data.projects && data.projects.length > 0) {
+      if (Array.isArray(data.projects) && data.projects.length > 0) {
         setProjects(data.projects);
       }
-      if (data.providers && data.providers.length > 0) {
+      if (Array.isArray(data.providers) && data.providers.length > 0) {
         setServiceProviders(data.providers);
       }
-      if (data.contracts && data.contracts.length > 0) {
+      if (Array.isArray(data.contracts) && data.contracts.length > 0) {
         setContracts(data.contracts);
       }
-      if (data.emails && data.emails.length > 0) {
+      if (Array.isArray(data.emails) && data.emails.length > 0) {
         setMashweerEmails(data.emails);
       }
-      if (data.tasks && data.tasks.length > 0) {
+      if (Array.isArray(data.tasks) && data.tasks.length > 0) {
         setTasks(data.tasks);
       }
+    }).catch((err) => {
+      console.warn('Silent fallback to local data on Supabase sync failure:', err);
     });
     return () => {
       isMounted = false;
