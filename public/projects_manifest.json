@@ -1,0 +1,249 @@
+{
+  "system": "NOUB_PLATFORM_ECOSYSTEM",
+  "version": "2.4.0",
+  "lastUpdated": "2026-09-11",
+  "platformOwner": "Sameh (noub.platform@gmail.com)",
+  "engine": "Hypatia Senior Operations Engine",
+  "storageStandard": "Google Drive /NOUB/",
+  "totalProjects": 10,
+  "projects": [
+    {
+      "id": "proj-4b",
+      "number": "#001",
+      "nameEn": "4B Passenger & Fleet",
+      "nameAr": "فور بي",
+      "category": "Mobility & Fleet",
+      "status": "In Field Testing",
+      "websiteUrl": "https://mashawer.com.eg",
+      "dashboardUrl": "https://dashboard.mashawer.com.eg",
+      "apkStatus": "Received - Under Field Trial",
+      "dashboardStatus": "Received - Fully Audited",
+      "figmaProgress": 95,
+      "figmaUrl": "https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/mashweer---backlog?node-id=221-63531",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/",
+      "officialEmails": [
+        "admin@4b-app.com",
+        "support@4b-app.com",
+        "team@4b-app.com",
+        "operations@4b-app.com"
+      ],
+      "activeTasks": [
+        "Audit automated promotional discount rules and payment push notifications",
+        "Verify live GPS map polling latency and driver dispatch accuracy"
+      ],
+      "technicalNotes": "Testing mobile APK build directly alongside operations dashboard to verify real-time data sync."
+    },
+    {
+      "id": "proj-wekala",
+      "number": "#002",
+      "nameEn": "WeKaLa Agency & Fleet",
+      "nameAr": "وكالة",
+      "category": "Agency Logistics",
+      "status": "APK Received (Pending Dashboard)",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "Received - Latest revised APK build received officially",
+      "dashboardStatus": "Pending delivery from vendor",
+      "figmaProgress": 80,
+      "figmaUrl": "https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/02_WEKALA_AGENCY_APK/",
+      "officialEmails": [
+        "contact@wekala.com",
+        "dev@wekala.com",
+        "partner@wekala.com"
+      ],
+      "activeTasks": [
+        "Comprehensive testing on received APK build following recent revisions",
+        "Store and version latest APK in Google Drive NOUB folder",
+        "Inspect upcoming agency commission & office management web dashboard",
+        "Review agent onboarding flow and branch hub mapping"
+      ],
+      "technicalNotes": "Highest operational priority. Raw APK build received from development vendor and ready for testing."
+    },
+    {
+      "id": "proj-daro",
+      "number": "#003",
+      "nameEn": "Daro Cargo & Shipping",
+      "nameAr": "دارو",
+      "category": "Inter-City Logistics",
+      "status": "In Development",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "In Development - Not Yet Delivered",
+      "dashboardStatus": "Pending Delivery",
+      "figmaProgress": 70,
+      "figmaUrl": "https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/03_DARO_CARGO/",
+      "officialEmails": [
+        "cargo@mashawer.com.eg",
+        "operations@daro.com"
+      ],
+      "activeTasks": [
+        "Test barcode and QR scanner responsiveness upon parcel intake",
+        "Implement automated digital waybill issuance and customer SMS notification"
+      ],
+      "technicalNotes": "Inter-city freight and distribution logistics relying on barcode parcel intake."
+    },
+    {
+      "id": "proj-noub-sports",
+      "number": "#004",
+      "nameEn": "NOUB Sports Academies",
+      "nameAr": "نوب سبورتس",
+      "category": "Sports Tech & Academies",
+      "status": "Production & Field Testing",
+      "websiteUrl": "https://sports.noub.org",
+      "dashboardUrl": "https://sports.noub.org",
+      "apkStatus": "Received - Deployed to Partner Clubs",
+      "dashboardStatus": "100% Operational & Production-Ready",
+      "figmaProgress": 95,
+      "figmaUrl": "https://www.figma.com/design/sports-noub-screens",
+      "driveFolderPath": "NOUB/02_SPORTS_ACADEMIES/",
+      "officialEmails": [
+        "noub.platform@gmail.com",
+        "sports@noub.com",
+        "academies@noub.com"
+      ],
+      "activeTasks": [
+        "Finalize tournament group seeding for seasonal championships",
+        "Generate weekly attendance analytics for equestrian and swimming branches",
+        "Store technical specifications and academy contracts in Google Drive"
+      ],
+      "technicalNotes": "Full sports ecosystem with dynamic ELO player rating calculations across swimming, tennis, equestrian, and football."
+    },
+    {
+      "id": "proj-noub-main",
+      "number": "#005",
+      "nameEn": "NOUB Core Platform",
+      "nameAr": "نوب الأساسي",
+      "category": "Digital Identity & Central Portal",
+      "status": "100% Production Live",
+      "websiteUrl": "https://noub.org",
+      "dashboardUrl": "https://noub.org",
+      "apkStatus": "N/A - Progressive Web App Architecture",
+      "dashboardStatus": "100% Live",
+      "figmaProgress": 100,
+      "figmaUrl": "https://www.figma.com/design/noub-main-portal",
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/01_NOUB_MAIN_CORE/",
+      "officialEmails": [
+        "info@noub.org",
+        "admin@noub.org",
+        "citizens@noub.org"
+      ],
+      "activeTasks": [
+        "Publish updated citizen digital verification and charter documentation"
+      ],
+      "technicalNotes": "Central digital identity provider for all citizen and member accounts."
+    },
+    {
+      "id": "proj-trading-ops",
+      "number": "#006",
+      "nameEn": "Financial Trading Ops",
+      "nameAr": "غرفة التداول",
+      "category": "Capital Markets & FIX Protocol",
+      "status": "Proprietary Live Operations",
+      "websiteUrl": "https://trading.noub.org",
+      "dashboardUrl": "https://trading.noub.org",
+      "apkStatus": "Proprietary Desktop Operation Terminals",
+      "dashboardStatus": "100% Operational",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/03_FINANCIAL_OPERATIONS/01_TRADING_ROOM/",
+      "officialEmails": [
+        "trading@noub.org",
+        "mcdr-liaison@noub.org"
+      ],
+      "activeTasks": [
+        "Bi-monthly failover audit of redundant fiber line with MCDR clearing"
+      ],
+      "technicalNotes": "Sub-12ms low latency FIX protocol feed connected to EGX and MCDR."
+    },
+    {
+      "id": "proj-noub-game",
+      "number": "#007",
+      "nameEn": "NOUB Tomb Puzzles Game",
+      "nameAr": "لعبة نوب",
+      "category": "Mobile Cultural Gaming",
+      "status": "Prototype In Review",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "Prototype Build Received",
+      "dashboardStatus": "Pending Delivery",
+      "figmaProgress": 85,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/02_TOMB_PUZZLES_GAME/",
+      "officialEmails": [],
+      "activeTasks": [
+        "Finalize spatial audio sound FX for stone doors and hieroglyphic locks",
+        "Verify offline puzzle persistence across device reboots"
+      ],
+      "technicalNotes": "62 Valley of Kings tomb logic puzzles featuring offline SQLite state storage."
+    },
+    {
+      "id": "proj-hypatia-ops",
+      "number": "#008",
+      "nameEn": "Hypatia Ops Engine",
+      "nameAr": "هيباتيا",
+      "category": "Senior Ops & AI Engine",
+      "status": "100% Active 24/7",
+      "websiteUrl": "https://hypatia.noub.org",
+      "dashboardUrl": "https://hypatia.noub.org",
+      "apkStatus": "Web & Responsive Portal",
+      "dashboardStatus": "100% Active",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/03_HYPATIA_ENGINE/",
+      "officialEmails": [
+        "hypatia@noub.org"
+      ],
+      "activeTasks": [
+        "Keep single source of truth protocol synchronized with owner directives"
+      ],
+      "technicalNotes": "Central intelligence engine maintaining documentation, roadmaps, and prompt dossiers."
+    },
+    {
+      "id": "proj-paycore",
+      "number": "#009",
+      "nameEn": "PayCore Gateway",
+      "nameAr": "بوابة الدفع",
+      "category": "Fintech Settlement",
+      "status": "100% Live In Production",
+      "websiteUrl": "https://pay.noub.org",
+      "dashboardUrl": "https://pay.noub.org",
+      "apkStatus": "Embedded SDK Inside Mobile Clients",
+      "dashboardStatus": "100% Live (99.2% Success Rate)",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/03_FINANCIAL_OPERATIONS/02_PAYCORE_GATEWAY/",
+      "officialEmails": [
+        "pay@noub.org",
+        "finance@noub.org"
+      ],
+      "activeTasks": [
+        "Annual rotation of banking webhook SSL certificates"
+      ],
+      "technicalNotes": "Multi-tenant payment settlement gateway for all ecosystem transactions."
+    },
+    {
+      "id": "proj-academy-pro",
+      "number": "#010",
+      "nameEn": "Academy Pro",
+      "nameAr": "أكاديمي برو",
+      "category": "Sports Coaching & Biometrics",
+      "status": "Field Trial",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "Coach Tablet Client Received",
+      "dashboardStatus": "Integrated With NOUB Sports",
+      "figmaProgress": 90,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/02_SPORTS_ACADEMIES/03_APKS/",
+      "officialEmails": [
+        "coaches@noub.com"
+      ],
+      "activeTasks": [
+        "Test biometric sync with wearable swimming monitors"
+      ],
+      "technicalNotes": "Elite athlete biometric telemetry application for professional academy coaches."
+    }
+  ]
+}

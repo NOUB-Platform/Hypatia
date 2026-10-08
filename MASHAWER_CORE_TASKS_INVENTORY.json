@@ -1,0 +1,469 @@
+{
+  "inventoryVersion": "3.0.0",
+  "generatedDate": "2026-09-11",
+  "coreFocus": "Mashawer Mobility & Fleet (4B, WiKaLa, Daro)",
+  "totalEcosystemTasks": 70,
+  "topPriorityMashawerTasks": 40,
+  "tasks": [
+    {
+      "id": "TASK-01",
+      "project": "4B Passenger",
+      "category": "Regulatory & Legal",
+      "title": "Coordinate directly with Telecom Egypt (WE) technical liaison per LTRA directive",
+      "status": "In Progress",
+      "owner": "Sameh & Legal/Telecom team",
+      "priority": "P0 - Blocker",
+      "notes": "LTRA incoming letter 1422 mandates connection with WE."
+    },
+    {
+      "id": "TASK-02",
+      "project": "4B Passenger",
+      "category": "Regulatory & Legal",
+      "title": "Sign fiber leased-line SLA with WE for real-time national security access",
+      "status": "In Progress",
+      "owner": "Legal & Infrastructure Lead",
+      "priority": "P0 - Blocker",
+      "notes": "Compliance with Law 87/2018 Articles 9 & 10."
+    },
+    {
+      "id": "TASK-03",
+      "project": "Mashawer Corporate",
+      "category": "Corporate & Legal",
+      "title": "Finalize and receive D-U-N-S Number from Dun & Bradstreet",
+      "status": "In Progress (Lawyer handling)",
+      "owner": "Company Lawyer / Sameh",
+      "priority": "P0 - Blocker",
+      "notes": "Required for Google Play Developer Organization and Apple Enterprise accounts."
+    },
+    {
+      "id": "TASK-04",
+      "project": "Mashawer Corporate",
+      "category": "App Stores",
+      "title": "Review Google Play Developer account rejection emails and prepare appeal",
+      "status": "Pending Emails from Sameh",
+      "owner": "Hypatia Operations / Sameh",
+      "priority": "P0 - Blocker",
+      "notes": "Verification failed due to passport mismatch on Organization account; need D-U-N-S + Commercial Register."
+    },
+    {
+      "id": "TASK-05",
+      "project": "Mashawer Corporate",
+      "category": "App Stores",
+      "title": "Unlock Google Play Developer Console verification button",
+      "status": "Blocked by Task 03 & 04",
+      "owner": "Operations Lead",
+      "priority": "P0 - Blocker",
+      "notes": "Submit official corporate filing once D-U-N-S is assigned."
+    },
+    {
+      "id": "TASK-06",
+      "project": "Mashawer Corporate",
+      "category": "App Stores",
+      "title": "Enroll in Apple Developer Enterprise Program using D-U-N-S",
+      "status": "Pending D-U-N-S",
+      "owner": "Technical Director",
+      "priority": "P1 - High",
+      "notes": "Enables in-house deployment and Captain iOS distribution."
+    },
+    {
+      "id": "TASK-07",
+      "project": "Mashawer Corporate",
+      "category": "Legal & IP",
+      "title": "Receive signed & stamped Certificates of Origin from software vendor",
+      "status": "Letter Dispatched to Vendor",
+      "owner": "Sameh / Legal Counsel",
+      "priority": "P1 - High",
+      "notes": "Covering 4B, WiKaLa, and Daro."
+    },
+    {
+      "id": "TASK-08",
+      "project": "Mashawer Corporate",
+      "category": "Legal & IP",
+      "title": "Deposit origin certificates at Commercial Registry & reserve .com.eg domains",
+      "status": "Pending Task 07",
+      "owner": "Company Lawyer",
+      "priority": "P1 - High",
+      "notes": "Reserving 4b.com.eg, wikala.com.eg, daro.com.eg, mashawer.com.eg."
+    },
+    {
+      "id": "TASK-09",
+      "project": "4B Passenger",
+      "category": "Technical Architecture",
+      "title": "Audit mobile & backend tech stack (NestJS, Prisma, Next.js, PostgreSQL 16 + PostGIS, Redis 7)",
+      "status": "Verified via Developer Handover (Doc 1)",
+      "owner": "Technical Director",
+      "priority": "P1 - High",
+      "notes": "Backend: Node 22, NestJS 10/11, Prisma, Socket.IO + Redis adapter. Admin: Next.js 14 SSR on port 3001. DB: PostgreSQL 16 + PostGIS 3.4. Cache: Redis 7. Mobile apps integrate with Maps SDK, FCM v1, and Twilio/Fawry."
+    },
+    {
+      "id": "TASK-10",
+      "project": "4B Passenger",
+      "category": "Source Code & Repos",
+      "title": "Obtain Git repository access (GitLab/GitHub) for Passenger & Captain apps",
+      "status": "Pending Repo Links",
+      "owner": "Technical Director / Vendor Lead",
+      "priority": "P1 - High",
+      "notes": "Verify commit history, branches, CI/CD pipeline."
+    },
+    {
+      "id": "TASK-11",
+      "project": "4B Passenger",
+      "category": "UI/UX & Design",
+      "title": "Audit 95% complete Figma design file and RTL Arabic localization",
+      "status": "Figma Link Registered",
+      "owner": "Design QA Lead",
+      "priority": "P2 - Medium",
+      "notes": "Inspect edge cases, dark/light modes, trip cancellation modals."
+    },
+    {
+      "id": "TASK-12",
+      "project": "4B Passenger",
+      "category": "QA & Testing",
+      "title": "Perform smoke and end-to-end testing on 4B release candidate APK",
+      "status": "In Field Trial",
+      "owner": "Sameh & QA Field Testers",
+      "priority": "P1 - High",
+      "notes": "Test login, OTP, trip ordering, captain bidding, payment settlement."
+    },
+    {
+      "id": "TASK-13",
+      "project": "4B Passenger",
+      "category": "Mobile & GPS",
+      "title": "Measure live GPS polling ping latency and background battery drain",
+      "status": "In Progress",
+      "owner": "Mobile Tech Lead",
+      "priority": "P1 - High",
+      "notes": "Ensure driver background tracking satisfies LTRA continuous ping criteria."
+    },
+    {
+      "id": "TASK-14",
+      "project": "4B Passenger",
+      "category": "Business Logic",
+      "title": "Audit automated promotional discount rules, coupons, and peak multipliers",
+      "status": "In Progress",
+      "owner": "Operations Manager",
+      "priority": "P2 - Medium",
+      "notes": "Validate fare calculation math and discount caps."
+    },
+    {
+      "id": "TASK-15",
+      "project": "4B Passenger",
+      "category": "Telecommunications",
+      "title": "Integrate BroadNet Local Egyptian SMS Gateway & Twilio A2P Sender ID ('4B')",
+      "status": "In Progress (Account: mashawer, 25 test credits added)",
+      "owner": "Backend Lead / BroadNet Support",
+      "priority": "P1 - High",
+      "notes": "BroadNet (support@broadnetme.com, broadnet.me). Test credits active. Direct local carrier route for OTP and alerts."
+    },
+    {
+      "id": "TASK-16",
+      "project": "4B Passenger",
+      "category": "Fintech & Payments",
+      "title": "Finalize Fawry Merchant Agreement for Acceptance and Captain Disbursement Payouts",
+      "status": "In Onboarding Process",
+      "owner": "Sameh / Fintech Lead",
+      "priority": "P0 - Blocker",
+      "notes": "Fawry webhook at /api/v1/webhooks/fawry. Payouts to captains + payment collection."
+    },
+    {
+      "id": "TASK-17",
+      "project": "4B Passenger",
+      "category": "Web Dashboard",
+      "title": "Audit 4B Web Operations Dashboard (https://dashboard.mashawer.com.eg / admin.4b.com.eg)",
+      "status": "Audited - Port 3001 Next.js 14",
+      "owner": "Operations Lead",
+      "priority": "P2 - Medium",
+      "notes": "Admin map currently on Leaflet/OSM, migration to Google Maps JS API required."
+    },
+    {
+      "id": "TASK-18",
+      "project": "4B Passenger",
+      "category": "Infrastructure & Hosting",
+      "title": "Await Telecom Egypt (WE) Official Price Quotation for 3 Linux VMs, F5 LB/WAF & 20Mbps Line",
+      "status": "Submitted to WE - Quotation Pending (1-2 Days)",
+      "owner": "Sameh / Telecom Egypt (WE)",
+      "priority": "P0 - Blocker",
+      "notes": "Requested: 4B-App-Server (4vCPU/8GB), 4B-DB-Server (4vCPU/8GB/PostGIS), 4B-Cache-Server (2vCPU/2GB/Redis), F5 LB (443->3000/3001), 20Mbps line, 7 SSL VPNs, 180-day backup."
+    },
+    {
+      "id": "TASK-19",
+      "project": "4B Passenger",
+      "category": "Infrastructure & Hosting",
+      "title": "Verify WE Disaster Recovery (DR) secondary standby server automated sync",
+      "status": "Pending Primary Setup",
+      "owner": "DevOps Lead",
+      "priority": "P1 - High",
+      "notes": "RPO < 5 minutes, RTO < 15 minutes."
+    },
+    {
+      "id": "TASK-20",
+      "project": "4B Passenger",
+      "category": "Cybersecurity",
+      "title": "Harden API endpoints against DDOS, rate limit OTP, and enforce JWT renewal",
+      "status": "In Progress",
+      "owner": "Security Architect",
+      "priority": "P1 - High",
+      "notes": "Protect captain bidding and location endpoints."
+    },
+    {
+      "id": "TASK-20B",
+      "project": "4B Passenger",
+      "category": "Marketing & Growth",
+      "title": "Finalize 4B Marketing & Creative Agency contract for social media reels and posts",
+      "status": "In Vendor Selection (Finalizing Tomorrow)",
+      "owner": "Sameh / Marketing Lead",
+      "priority": "P1 - High",
+      "notes": "Agency will handle branding, daily WhatsApp/Instagram/Facebook posts, and short video reels."
+    },
+    {
+      "id": "TASK-21",
+      "project": "WiKaLa Agency",
+      "category": "Release & Storage",
+      "title": "Store and version newly received revised APK in Google Drive",
+      "status": "Pending Upload from Sameh",
+      "owner": "Sameh / Technical Director",
+      "priority": "P1 - High",
+      "notes": "Path: NOUB/01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/01_APK_RELEASES/wikala_release_v1.0.apk"
+    },
+    {
+      "id": "TASK-22",
+      "project": "WiKaLa Agency",
+      "category": "Technical Architecture",
+      "title": "Audit mobile framework, package name, and dependencies of WiKaLa APK",
+      "status": "Awaiting APK file or manifest",
+      "owner": "Technical Director",
+      "priority": "P1 - High",
+      "notes": "Confirm Flutter vs React Native vs Native Android."
+    },
+    {
+      "id": "TASK-23",
+      "project": "WiKaLa Agency",
+      "category": "QA & Testing",
+      "title": "Conduct smoke tests on WiKaLa APK (branch onboarding & wallet balances)",
+      "status": "Awaiting Testing Execution",
+      "owner": "Sameh / QA Tester",
+      "priority": "P1 - High",
+      "notes": "Check commission distribution and offline mode."
+    },
+    {
+      "id": "TASK-24",
+      "project": "WiKaLa Agency",
+      "category": "Web Dashboard",
+      "title": "Follow up with software vendor on agency commission web dashboard delivery",
+      "status": "Pending Delivery",
+      "owner": "Sameh / Product Manager",
+      "priority": "P1 - High",
+      "notes": "Vendor promised delivery following APK revision."
+    },
+    {
+      "id": "TASK-25",
+      "project": "WiKaLa Agency",
+      "category": "UI/UX & Design",
+      "title": "Complete remaining 20% of WiKaLa Figma designs (franchise branch views)",
+      "status": "Figma Active (80%)",
+      "owner": "Design Lead",
+      "priority": "P2 - Medium",
+      "notes": "URL: https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1"
+    },
+    {
+      "id": "TASK-26",
+      "project": "WiKaLa Agency",
+      "category": "Cloud & Media",
+      "title": "Configure Cloudinary CDN integration for agency KYC contracts and IDs",
+      "status": "In Progress",
+      "owner": "Backend Lead",
+      "priority": "P2 - Medium",
+      "notes": "Secure encrypted bucket for agency commercial records."
+    },
+    {
+      "id": "TASK-27",
+      "project": "WiKaLa Agency",
+      "category": "Database Architecture",
+      "title": "Verify ledger audit trail schema for franchise payouts and agent commissions",
+      "status": "Design Phase",
+      "owner": "Database Architect",
+      "priority": "P1 - High",
+      "notes": "Double-entry bookkeeping table structure."
+    },
+    {
+      "id": "TASK-28",
+      "project": "WiKaLa Agency",
+      "category": "Push & Alerts",
+      "title": "Configure Firebase Cloud Messaging (FCM) & SMS alerts for agency wallets",
+      "status": "In Progress",
+      "owner": "Backend Lead",
+      "priority": "P2 - Medium",
+      "notes": "Real-time alerts when sub-captains complete trips."
+    },
+    {
+      "id": "TASK-29",
+      "project": "WiKaLa Agency",
+      "category": "Security & RBAC",
+      "title": "Audit Role-Based Access Control: Super Admin vs Branch Owner vs Field Agent",
+      "status": "In Progress",
+      "owner": "Security Architect",
+      "priority": "P2 - Medium",
+      "notes": "Prevent unauthorized fund withdrawals."
+    },
+    {
+      "id": "TASK-30",
+      "project": "WiKaLa Agency",
+      "category": "Coordination",
+      "title": "Hold weekly tech sync with development vendor (Sundays 6:30 PM)",
+      "status": "Active Schedule",
+      "owner": "Sameh & Development Team",
+      "priority": "P2 - Medium",
+      "notes": "Review APK bugs and dashboard milestones."
+    },
+    {
+      "id": "TASK-31",
+      "project": "Daro Cargo",
+      "category": "UI/UX & Design",
+      "title": "Finalize remaining 30% of Daro Figma screens (waybill, barcode intake)",
+      "status": "Figma Active (70%)",
+      "owner": "Design Lead",
+      "priority": "P2 - Medium",
+      "notes": "URL: https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1"
+    },
+    {
+      "id": "TASK-32",
+      "project": "Daro Cargo",
+      "category": "Technical Architecture",
+      "title": "Confirm barcode scanner library selection (ML Kit vs ZXing) with vendor",
+      "status": "Open Question to Vendor",
+      "owner": "Technical Director",
+      "priority": "P1 - High",
+      "notes": "Must support Code128, QR, and DataMatrix scanning under low light."
+    },
+    {
+      "id": "TASK-33",
+      "project": "Daro Cargo",
+      "category": "Builds & APK",
+      "title": "Receive alpha APK build with integrated camera barcode scanner",
+      "status": "In Development",
+      "owner": "Software Development Vendor",
+      "priority": "P1 - High",
+      "notes": "Expected after Figma completion."
+    },
+    {
+      "id": "TASK-34",
+      "project": "Daro Cargo",
+      "category": "Business Logic",
+      "title": "Define digital waybill layout, recipient signature capture, and PDF output",
+      "status": "In Progress",
+      "owner": "Product Lead",
+      "priority": "P2 - Medium",
+      "notes": "Thermal printer compatibility (58mm/80mm)."
+    },
+    {
+      "id": "TASK-35",
+      "project": "Daro Cargo",
+      "category": "Database Architecture",
+      "title": "Model inter-city staging hub database schema (warehouses, transfers, routes)",
+      "status": "In Progress",
+      "owner": "Database Architect",
+      "priority": "P2 - Medium",
+      "notes": "Package state machine: Checked-In -> In-Transit -> At-Hub -> Out-for-Delivery -> Delivered."
+    },
+    {
+      "id": "TASK-36",
+      "project": "Daro Cargo",
+      "category": "Customer Experience",
+      "title": "Develop public parcel tracking endpoint for senders and recipients",
+      "status": "Planned",
+      "owner": "Backend Lead",
+      "priority": "P2 - Medium",
+      "notes": "Accessible via tracking number on daro.com.eg."
+    },
+    {
+      "id": "TASK-37",
+      "project": "Daro Cargo",
+      "category": "Cloud & Media",
+      "title": "Integrate Cloudinary/S3 object storage for package intake condition photos",
+      "status": "Planned",
+      "owner": "Backend Lead",
+      "priority": "P2 - Medium",
+      "notes": "Damage liability protection."
+    },
+    {
+      "id": "TASK-38",
+      "project": "Daro Cargo",
+      "category": "Telecommunications",
+      "title": "Configure automated customer SMS notifications upon parcel staging and delivery",
+      "status": "Planned",
+      "owner": "Backend Lead",
+      "priority": "P2 - Medium",
+      "notes": "Send tracking link and OTP collection PIN."
+    },
+    {
+      "id": "TASK-39",
+      "project": "Daro Cargo",
+      "category": "Fleet Operations",
+      "title": "Establish cargo truck dispatching rules based on volume and payload limits",
+      "status": "In Progress",
+      "owner": "Operations Lead",
+      "priority": "P2 - Medium",
+      "notes": "Optimize route consolidation between Cairo, Alexandria, and Delta."
+    },
+    {
+      "id": "TASK-40",
+      "project": "Daro Super App",
+      "category": "Coordination",
+      "title": "Hold weekly cargo & super app sync with development team (Mondays 4:30 PM)",
+      "status": "Active Schedule",
+      "owner": "Sameh & Development Team",
+      "priority": "P2 - Medium",
+      "notes": "Review multi-service integrations and barcode scanner milestones."
+    },
+    {
+      "id": "TASK-HQ-01",
+      "project": "Maadi Headquarters",
+      "category": "Hardware & Workstations",
+      "title": "Procure and commission remaining 5 Dell OptiPlex desktop PCs for operations staff",
+      "status": "Purchasing Tomorrow (3 Deployed Today)",
+      "owner": "Sameh / IT Operations",
+      "priority": "P1 - High",
+      "notes": "Installed with 128GB NVMe SSD and Windows 11 Pro, dedicated wired CAT6 Ethernet."
+    },
+    {
+      "id": "TASK-HQ-02",
+      "project": "Maadi Headquarters",
+      "category": "Hardware & Server",
+      "title": "Procure and mount on-premises local server in the 140cm rack cabinet",
+      "status": "Purchasing Tomorrow",
+      "owner": "Sameh / Technical Director",
+      "priority": "P1 - High",
+      "notes": "Role: Automated nightly local backup vault for database dumps from WE, Git repos, and Cloudinary media."
+    },
+    {
+      "id": "TASK-HQ-03",
+      "project": "Maadi Headquarters",
+      "category": "Network Infrastructure",
+      "title": "Complete suspended ceiling CAT6 structured cabling, 24-port PoE switch, IP Cameras, and IP PBX",
+      "status": "In Progress (Cabling Underway)",
+      "owner": "Network Contractor / Sameh",
+      "priority": "P1 - High",
+      "notes": "Wired gigabit connection to every workstation, PoE power for IP phones and cameras."
+    },
+    {
+      "id": "TASK-HQ-04",
+      "project": "Maadi Headquarters",
+      "category": "Cloud & Identity",
+      "title": "Provision Zoho Workplace business email accounts for company domains",
+      "status": "In Planning",
+      "owner": "Sameh / Operations Lead",
+      "priority": "P2 - Medium",
+      "notes": "Web-based login for employees, zero local Active Directory overhead."
+    },
+    {
+      "id": "TASK-HQ-05",
+      "project": "Maadi Headquarters",
+      "category": "Remote Management",
+      "title": "Deploy AnyDesk / RustDesk / RDP client profiles for remote desktop support on all 8 workstations",
+      "status": "Pending PC Commissioning",
+      "owner": "Technical Director",
+      "priority": "P2 - Medium",
+      "notes": "Enables remote admin access to staff machines for maintenance and troubleshooting."
+    }
+  ]
+}

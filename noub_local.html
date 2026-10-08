@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>نوب - الربط المباشر مع Google Drive</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Kufi Arabic', sans-serif;
+    }
+    body {
+      background: #0b0f19;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: #131b2e;
+      border: 1px solid #1e293b;
+      border-radius: 20px;
+      max-width: 620px;
+      width: 100%;
+      padding: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.2);
+      border: 1px solid rgba(37, 99, 235, 0.4);
+      color: #60a5fa;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+    p.desc {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .btn-main {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      border: none;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    }
+    .btn-main:hover {
+      background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      transform: translateY(-2px);
+    }
+    .btn-main:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .status-box {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 14px;
+      display: none;
+      text-align: right;
+      line-height: 1.6;
+    }
+    .status-box.info {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #93c5fd;
+      display: block;
+    }
+    .status-box.success {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: #86efac;
+      display: block;
+    }
+    .status-box.error {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      display: block;
+    }
+    .link-btn {
+      display: inline-block;
+      margin-top: 14px;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.4);
+    }
+    .upload-zone {
+      margin-top: 24px;
+      border: 2px dashed #334155;
+      border-radius: 14px;
+      padding: 24px;
+      display: none;
+      background: rgba(15, 23, 42, 0.5);
+    }
+    .upload-zone.active {
+      display: block;
+    }
+    .file-input {
+      display: none;
+    }
+    .file-label {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f1f5f9;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .footer-note {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="badge">ملف التشغيل المباشر المستقل • نوب</div>
+    <h1>إنشاء وإدارة مجلد «نوب» على Google Drive</h1>
+    <p class="desc">
+      يعمل هذا الملف محلياً على جهازك مباشرة بدون خوادم وبدون أكواد إضافية.
+      اضغط الزر أدناه لتسجيل الدخول بحساب Google وإنشاء مجلد «نوب» بضغطة واحدة.
+    </p>
+
+    <button id="auth-btn" class="btn-main" onclick="handleAuthAndCreate()">
+      <span>🚀 تسجيل الدخول وإنشاء مجلد «نوب» في درايف</span>
+    </button>
+
+    <div id="status-box" class="status-box"></div>
+
+    <!-- Upload section appears after folder creation -->
+    <div id="upload-zone" class="upload-zone">
+      <div style="font-weight: 700; font-size: 15px; margin-bottom: 6px; color: #38bdf8;">
+        📦 رفع ملفات مباشرة إلى مجلد «نوب» (مثل ملف APK وكالة)
+      </div>
+      <p style="color: #94a3b8; font-size: 12px; margin-bottom: 12px;">
+        اختر ملف الـ APK أو أي ملف وسيرفع مباشرة إلى مجلدك على Google Drive.
+      </p>
+      <input type="file" id="file-uploader" class="file-input" onchange="uploadSelectedFile(event)">
+      <label for="file-uploader" class="file-label">📁 اختر ملفاً لرفعه الآن</label>
+      <div id="upload-progress" style="margin-top: 10px; font-size: 12px; color: #e2e8f0;"></div>
+    </div>
+
+    <div class="footer-note">
+      تم الربط الرسمي عبر Google Identity Services و Google Drive API • حساب المالك: noub.platform@gmail.com
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      projectId: "gen-lang-client-0459127194",
+      appId: "1:502551850440:web:e03faaee0744fae75724fd",
+      apiKey: "AIzaSyDZJcWcNpwpT4qIwrCTwovrtaL-9vV187A",
+      authDomain: "gen-lang-client-0459127194.firebaseapp.com",
+      storageBucket: "gen-lang-client-0459127194.firebasestorage.app",
+      messagingSenderId: "502551850440"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    provider.addScope("https://www.googleapis.com/auth/drive");
+
+    let driveToken = null;
+    let createdFolderId = null;
+
+    window.onload = function() {
+      if (window.location.protocol === "file:") {
+        const status = document.getElementById("status-box");
+        status.className = "status-box info";
+        status.style.display = "block";
+        status.innerHTML = `
+          <div style="font-weight: 800; font-size: 15px; color: #f59e0b; margin-bottom: 8px;">⚠️ تنبيه هام حول تشغيل الملف محلياً (file:///):</div>
+          <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1;">
+            متصفح Chrome و Google يمنعان تسجيل الدخول عبر مسارات <code style="background:#1e293b; padding:2px 6px; border-radius:4px; color:#f43f5e;">file:///</code> المباشرة لأسباب أمنية.
+            <br><br>
+            <strong>للإنشاء الفوري والعمل المباشر:</strong>
+            <br>
+            1. افتح الرابط المباشر الرسمي عبر الإنترنت (يعمل فوراً بدون أي إعدادات):
+            <div style="margin-top: 10px;">
+              <a href="https://ais-dev-6hiumomebsvvdma6vbminz-575434046927.europe-west2.run.app" target="_blank" class="link-btn" style="background:#2563eb; display:inline-flex; align-items:center; gap:6px;">
+                <span>🌐 فتح الرابط المباشر والإنشاء الآن ↗</span>
+              </a>
+            </div>
+            <br>
+            2. أو لتشغيله محلياً عبر جهازك (Localhost): شغّل ملف <code style="background:#1e293b; padding:2px 6px; border-radius:4px; color:#38bdf8;">run_local.bat</code> المرفق لفتحه على <code style="color:#38bdf8;">http://localhost:8080</code>.
+          </div>
+        `;
+      }
+    };
+    window.connectGoogleDriveAndCreateFolder = async function() {
+      const btn = document.getElementById("auth-btn");
+      const status = document.getElementById("status-box");
+      btn.disabled = true;
+      btn.innerHTML = "<span>⏳ جاري تسجيل الدخول بحساب Google...</span>";
+      status.className = "status-box info";
+      status.style.display = "block";
+      status.innerText = "جاري فتح نافذة التحقق من Google...";
+
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        driveToken = credential ? credential.accessToken : null;
+
+        if (!driveToken) {
+          throw new Error("لم نتمكن من استخراج رمز المرور لـ Google Drive");
+        }
+
+        status.innerText = "تم تسجيل الدخول بنجاح! جاري إنشاء هيكل NOUB والمجلدات بالكامل في حسابك...";
+        btn.innerHTML = "<span>⏳ جاري إنشاء هيكل NOUB...</span>";
+
+        // Helper to find or create folder
+        async function getOrCreateFolder(name, parentId = null) {
+          let q = `name = '${name}' and mimeType = 'application/vnd.google-apps.folder' and trashed = false`;
+          if (parentId) {
+            q += ` and '${parentId}' in parents`;
+          }
+          const searchRes = await fetch(`https://www.googleapis.com/drive/v3/files?q=${encodeURIComponent(q)}&fields=files(id,name,webViewLink)`, {
+            headers: { "Authorization": `Bearer ${driveToken}` }
+          });
+          const searchData = await searchRes.json();
+          if (searchData.files && searchData.files.length > 0) {
+            return searchData.files[0];
+          }
+
+          const body = { name, mimeType: "application/vnd.google-apps.folder" };
+          if (parentId) body.parents = [parentId];
+
+          const createRes = await fetch("https://www.googleapis.com/drive/v3/files?fields=id,name,webViewLink", {
+            method: "POST",
+            headers: { "Authorization": `Bearer ${driveToken}`, "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          });
+          return await createRes.json();
+        }
+
+        // Helper to upload text/csv
+        async function uploadFile(filename, parentId, mimeType, content) {
+          const boundary = "-------314159265358979323846";
+          const delimiter = "\r\n--" + boundary + "\r\n";
+          const closeDelim = "\r\n--" + boundary + "--";
+
+          const metadata = { name: filename, mimeType, parents: [parentId] };
+          const multipartRequestBody =
+            delimiter +
+            "Content-Type: application/json; charset=UTF-8\r\n\r\n" +
+            JSON.stringify(metadata) +
+            delimiter +
+            `Content-Type: ${mimeType}; charset=UTF-8\r\n\r\n` +
+            content +
+            closeDelim;
+
+          const uploadRes = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${driveToken}`,
+              "Content-Type": `multipart/related; boundary=${boundary}`
+            },
+            body: multipartRequestBody
+          });
+          return await uploadRes.json();
+        }
+
+        // 1. Create main folder "NOUB"
+        const noubFolder = await getOrCreateFolder("NOUB");
+        createdFolderId = noubFolder.id;
+
+        // 2. Subfolders
+        const fFleet = await getOrCreateFolder("01_MASHWEER_FLEET", createdFolderId);
+        
+        // 4B
+        const f4b = await getOrCreateFolder("01_4B_PASSENGER", fFleet.id);
+        const f4bBuilds = await getOrCreateFolder("01_SOURCE_CODE_AND_BUILDS", f4b.id);
+        const f4bFigma = await getOrCreateFolder("02_FIGMA_AND_DESIGNS", f4b.id);
+        const f4bTasks = await getOrCreateFolder("03_OWNER_REQUESTS_AND_TASKS", f4b.id);
+        const f4bMeetings = await getOrCreateFolder("04_MEETINGS_AND_LINKS", f4b.id);
+        const f4bBackups = await getOrCreateFolder("05_BACKUPS_AND_DATABASE", f4b.id);
+        const f4bLtra = await getOrCreateFolder("06_GOVERNMENT_LICENSING_LTRA", f4b.id);
+        const f4bWe = await getOrCreateFolder("07_TELECOM_EGYPT_WE_HOSTING", f4b.id);
+        const f4bSms = await getOrCreateFolder("08_EGYPTIAN_SMS_OTP_GATEWAY", f4b.id);
+        const f4bOrigin = await getOrCreateFolder("09_CERTIFICATES_OF_ORIGIN_AND_DOMAINS", f4b.id);
+
+        // WiKaLa
+        const fWekala = await getOrCreateFolder("02_WIKALA_AGENCY_APK", fFleet.id);
+        const fWekalaApk = await getOrCreateFolder("01_APK_RELEASES", fWekala.id);
+        const fWekalaDash = await getOrCreateFolder("02_DASHBOARD_SPECS", fWekala.id);
+        const fWekalaFigma = await getOrCreateFolder("03_FIGMA_AND_DESIGNS", fWekala.id);
+        const fWekalaTasks = await getOrCreateFolder("04_OWNER_REQUESTS_AND_TASKS", fWekala.id);
+        const fWekalaMeetings = await getOrCreateFolder("05_MEETINGS_AND_LINKS", fWekala.id);
+        const fWekalaCloud = await getOrCreateFolder("06_CLOUD_AND_CLOUDINARY", fWekala.id);
+        const fWekalaOrigin = await getOrCreateFolder("07_CERTIFICATES_OF_ORIGIN_AND_DOMAINS", fWekala.id);
+
+        // Daro
+        const fDaro = await getOrCreateFolder("03_DARO_CARGO", fFleet.id);
+        const fDaroBuilds = await getOrCreateFolder("01_SOURCE_CODE_AND_BUILDS", fDaro.id);
+        const fDaroBarcode = await getOrCreateFolder("02_BARCODE_AND_SHIPPING_SPECS", fDaro.id);
+        const fDaroFigma = await getOrCreateFolder("03_FIGMA_AND_DESIGNS", fDaro.id);
+        const fDaroTasks = await getOrCreateFolder("04_OWNER_REQUESTS_AND_TASKS", fDaro.id);
+        const fDaroMeetings = await getOrCreateFolder("05_MEETINGS_AND_LINKS", fDaro.id);
+        const fDaroCloud = await getOrCreateFolder("06_CLOUD_AND_STORAGE", fDaro.id);
+        const fDaroOrigin = await getOrCreateFolder("07_CERTIFICATES_OF_ORIGIN_AND_DOMAINS", fDaro.id);
+
+        // Corporate Legal & DUNS
+        const fCorp = await getOrCreateFolder("04_CORPORATE_LEGAL_AND_DUNS", fFleet.id);
+
+        // Sports
+        const fSports = await getOrCreateFolder("02_SPORTS_ACADEMIES", createdFolderId);
+        const fDocs = await getOrCreateFolder("01_OFFICIAL_DOCUMENTS", fSports.id);
+        const fData = await getOrCreateFolder("02_ACADEMIES_DATA", fSports.id);
+        const fSwim = await getOrCreateFolder("01_SWIMMING", fData.id);
+        const fTennis = await getOrCreateFolder("02_TENNIS", fData.id);
+        const fHorses = await getOrCreateFolder("03_EQUESTRIAN_HORSES", fData.id);
+        const fFootball = await getOrCreateFolder("04_FOOTBALL", fData.id);
+        const fElo = await getOrCreateFolder("03_ELO_RATING_SYSTEM", fSports.id);
+        const fTourn = await getOrCreateFolder("04_TOURNAMENTS_AND_BRACKETS", fSports.id);
+        const fCoaches = await getOrCreateFolder("05_MOBILE_APKS_AND_COACHES", fSports.id);
+
+        // Financial
+        const fFin = await getOrCreateFolder("03_FINANCIAL_OPERATIONS", createdFolderId);
+        const fTrading = await getOrCreateFolder("01_TRADING_ROOM", fFin.id);
+        const fPayCore = await getOrCreateFolder("02_PAYCORE_GATEWAY", fFin.id);
+        const fSub = await getOrCreateFolder("03_SUBSCRIPTIONS", fFin.id);
+
+        // Platforms & Games
+        const fPlatforms = await getOrCreateFolder("04_PLATFORMS_GAMES", createdFolderId);
+        const fCore = await getOrCreateFolder("01_NOUB_MAIN_CORE", fPlatforms.id);
+        const fGame = await getOrCreateFolder("02_TOMB_PUZZLES_GAME", fPlatforms.id);
+        const fHypatia = await getOrCreateFolder("03_HYPATIA_ENGINE", fPlatforms.id);
+
+        // Upload Master text & CSVs to Root
+        await uploadFile("NOUB_MASTER_SYSTEM.txt", createdFolderId, "text/plain", "NOUB Master Platform Ecosystem - Single Source of Truth\nOwner: Sameh (noub.platform@gmail.com)\nUpdated with LTRA Compliance, WE Hosting, and Origin Certificates.\nCreated: " + new Date().toLocaleString("ar-EG"));
+        await uploadFile("subscriptions.csv", createdFolderId, "text/csv", "Subscription_ID,Project_Code,Project_Name,Subscriber_Name,Amount_EGP,Billing_Cycle,Next_Renewal_Date\nSUB-SP-001,proj-noub-sports,NOUB Sports Academies,Cairo Olympic Club,12500,Monthly,2026-10-01\nSUB-MS-001,proj-4b,4B Passenger,Delta Fleet Group,15000,Monthly,2026-10-01\nSUB-WK-001,proj-wikala,WiKaLa Agency,Alexandria Central,30000,Annual,2027-01-01\n");
+        await uploadFile("ALL_PROJECTS_LINKS.csv", createdFolderId, "text/csv", "Project_Code,Project_Name,Category,Resource_Type,URL_Or_Path\nproj-4b,4B Passenger,Mobility,Figma,https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6\nproj-4b,4B Passenger,Mobility,Dashboard,https://dashboard.mashawer.com.eg\nproj-wikala,WiKaLa Agency,Logistics,Figma,https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala\nproj-daro,Daro Cargo,Logistics,Figma,https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro\nproj-noub-sports,NOUB Sports,Sports,Dashboard,https://sports.noub.org\ngov-ltra,LTRA Authority,Regulation,Official Portal,https://ltra.gov.eg\ninfra-we,Telecom Egypt WE,Infrastructure,Datacenter,https://te.eg\ncorp-duns,Mashawer S.A.E.,Corporate,DUNS Portal,https://www.dnb.com\n");
+        await uploadFile("subscriptions.csv", fSub.id, "text/csv", "Subscription_ID,Project_Code,Project_Name,Subscriber_Name,Amount_EGP,Billing_Cycle,Next_Renewal_Date\nSUB-SP-001,proj-noub-sports,NOUB Sports Academies,Cairo Olympic Club,12500,Monthly,2026-10-01\nSUB-MS-001,proj-4b,4B Passenger,Delta Fleet Group,15000,Monthly,2026-10-01\nSUB-WK-001,proj-wikala,WiKaLa Agency,Alexandria Central,30000,Annual,2027-01-01\n");
+
+        // Populate Subfolder Documentation
+        // 4B
+        await uploadFile("LTRA_OFFICIAL_DIRECTIVE_AND_LAW_COMPLIANCE.md", f4bLtra.id, "text/markdown", "# LTRA Compliance & Licensing\n- Authority: Ministry of Transport - LTRA\n- Laws: Law 87/2018 Articles 9,10 & Decree 2180/2019 Articles 33,34\n- Direct Leased Line with Telecom Egypt (WE) for National Security Access\n- Signed by Eng. Diaa El-Din Mostafa Youssef");
+        await uploadFile("WE_PRIMARY_AND_DR_SERVER_SPECIFICATIONS.md", f4bWe.id, "text/markdown", "# Telecom Egypt (WE) Tier III/IV Datacenter\n- Primary App & DB Server + Redundant Disaster Recovery Server\n- Dedicated direct fiber link in Smart Village, Egypt");
+        await uploadFile("LOCAL_SMS_OTP_GATEWAY_INTEGRATION.md", f4bSms.id, "text/markdown", "# Egyptian Licensed SMS Gateway\n- Compliant local OTP delivery for passenger and captain verification");
+        await uploadFile("CERTIFICATE_OF_ORIGIN_AND_4B_COM_EG.md", f4bOrigin.id, "text/markdown", "# Certificate of Origin & 4b.com.eg\n- Official letter submitted for Commercial Registry deposit and 4b.com.eg allocation");
+        await uploadFile("BUILD_AND_RELEASE_SPECS.md", f4bBuilds.id, "text/markdown", "# 4B Builds & APKs\nUpload latest release builds here.");
+        await uploadFile("FIGMA_UI_SYSTEM_AND_SCREENS.md", f4bFigma.id, "text/markdown", "# 4B Figma UI: https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6");
+        await uploadFile("OWNER_TASKS_AND_BACKLOG.md", f4bTasks.id, "text/markdown", "# 4B Owner Tasks\n1. Promo code testing\n2. GPS polling latency check");
+        await uploadFile("MEETINGS_AND_COORDINATION.md", f4bMeetings.id, "text/markdown", "# 4B Coordination: Weekly Saturdays 5:00 PM");
+        await uploadFile("DATABASE_AND_SECURITY_POLICIES.md", f4bBackups.id, "text/markdown", "# PostgreSQL on Telecom Egypt WE Servers");
+
+        // WeKaLa
+        await uploadFile("APK_TESTING_AND_REVISION_LOG.md", fWekalaApk.id, "text/markdown", "# WeKaLa APK Releases\nLatest revised APK build received from vendor.");
+        await uploadFile("AGENCY_COMMISSION_AND_BRANCH_DASHBOARD.md", fWekalaDash.id, "text/markdown", "# WeKaLa Dashboard Specs\nAwaiting delivery from external team.");
+        await uploadFile("WEKALA_CLOUD_SERVICES_AND_CLOUDINARY.md", fWekalaCloud.id, "text/markdown", "# WeKaLa Cloud & Cloudinary KYC Storage");
+        await uploadFile("CERTIFICATE_OF_ORIGIN_AND_WEKALA_COM_EG.md", fWekalaOrigin.id, "text/markdown", "# WeKaLa Origin & wekala.com.eg Domain");
+
+        // Daro
+        await uploadFile("DARO_ARCHITECTURE_OVERVIEW.md", fDaroBuilds.id, "text/markdown", "# Daro Inter-city Cargo Architecture");
+        await uploadFile("WAYBILL_BARCODE_AND_SCANNER_SPECS.md", fDaroBarcode.id, "text/markdown", "# Barcode Scanner & Digital Waybill Specs");
+        await uploadFile("DARO_CLOUD_STORAGE_AND_TRACKING.md", fDaroCloud.id, "text/markdown", "# Daro Cloud Storage for Waybill Photos");
+        await uploadFile("CERTIFICATE_OF_ORIGIN_AND_DARO_COM_EG.md", fDaroOrigin.id, "text/markdown", "# Daro Origin & daro.com.eg Domain");
+
+        // Corporate
+        await uploadFile("DUNS_NUMBER_AND_APPLE_ENTERPRISE.md", fCorp.id, "text/markdown", "# D-U-N-S Number for Mashawer Digital Platforms S.A.E.");
+        await uploadFile("COMMERCIAL_REGISTER_AND_ORIGIN_LETTERS.md", fCorp.id, "text/markdown", "# Commercial Register & Origin Letters for 4B, WeKaLa, and Daro");
+
+        // Sports
+        await uploadFile("ACADEMIES_REGULATION_AND_GOVERNANCE.md", fDocs.id, "text/markdown", "# NOUB Sports Charters: https://sports.noub.org");
+        await uploadFile("SWIMMING_ACADEMY_ROSTER_AND_TIMES.md", fSwim.id, "text/markdown", "# Swimming Academy Times");
+        await uploadFile("TENNIS_ACADEMY_RANKINGS_AND_COURTS.md", fTennis.id, "text/markdown", "# Tennis Academy Rankings");
+        await uploadFile("EQUESTRIAN_TRAINING_AND_STABLES.md", fHorses.id, "text/markdown", "# Equestrian Academy Stables");
+        await uploadFile("FOOTBALL_LEAGUES_AND_ACADEMIES.md", fFootball.id, "text/markdown", "# Football Academy Leagues");
+        await uploadFile("ELO_ALGORITHM_AND_TIERS.md", fElo.id, "text/markdown", "# ELO Skill Benchmarks");
+        await uploadFile("TOURNAMENT_SCHEDULE_AND_RULES.md", fTourn.id, "text/markdown", "# Tournament Calendar");
+        await uploadFile("COACHES_APP_SPECS_AND_APK.md", fCoaches.id, "text/markdown", "# Coaches Companion App");
+
+        // Financial & Platforms
+        await uploadFile("MCDR_CLEARING_AND_FIX_PROTOCOL.md", fTrading.id, "text/markdown", "# FIX Engine & MCDR Clearing Desk");
+        await uploadFile("PAYCORE_SETTLEMENT_AND_BANK_CERTIFICATES.md", fPayCore.id, "text/markdown", "# PayCore Gateway Specs");
+        await uploadFile("NOUB_DIGITAL_IDENTITY_PORTAL.md", fCore.id, "text/markdown", "# NOUB Core Identity: https://noub.org");
+        await uploadFile("TOMB_PUZZLES_GAME_DESIGN_KV62.md", fGame.id, "text/markdown", "# Tomb Puzzles: 62 Pharaoh Tombs");
+        await uploadFile("HYPATIA_PROMPT_ENGINEERING_AND_OPS.md", fHypatia.id, "text/markdown", "# Hypatia Single Source of Truth Engine");
+
+        // Display Success
+        status.className = "status-box success";
+        status.innerHTML = `
+          <div style="font-weight: 800; font-size: 16px; margin-bottom: 6px;">🎉 مبروك! تم إنشاء وتجهيز مستودع NOUB بالكامل!</div>
+          <div>تم إنشاء مجلد NOUB وكافة المجلدات الفرعية العميقة (4B، وكالة، دارو، نوب سبورتس) وملفات التوثيق والإكسيل بنجاح.</div>
+          <a href="${noubFolder.webViewLink || 'https://drive.google.com'}" target="_blank" class="link-btn">
+            📂 فتح مجلد NOUB الآن على Google Drive ↗
+          </a>
+        `;
+
+        btn.style.display = "none";
+        document.getElementById("upload-zone").classList.add("active");
+
+      } catch (err) {
+        console.error(err);
+        status.className = "status-box error";
+        status.innerText = "حدث خطأ: " + (err.message || err);
+        btn.disabled = false;
+        btn.innerHTML = "<span>🔄 إعادة المحاولة</span>";
+      }
+    };
+
+    window.uploadSelectedFile = async function(e) {
+      const file = e.target.files[0];
+      if (!file || !createdFolderId || !driveToken) return;
+
+      const progress = document.getElementById("upload-progress");
+      progress.innerText = `جاري رفع الملف (${file.name})... يرجى الانتظار`;
+
+      try {
+        const metadata = {
+          name: file.name,
+          mimeType: file.type || "application/octet-stream",
+          parents: [createdFolderId]
+        };
+
+        const form = new FormData();
+        form.append("metadata", new Blob([JSON.stringify(metadata)], { type: "application/json" }));
+        form.append("file", file);
+
+        const uploadRes = await fetch("https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${driveToken}`
+          },
+          body: form
+        });
+
+        const resData = await uploadRes.json();
+        if (uploadRes.ok) {
+          progress.innerHTML = `<span style="color: #4ade80; font-weight: 700;">✅ تم رفع ملف ${file.name} بنجاح إلى مجلد «نوب»!</span>`;
+        } else {
+          progress.innerText = "فشل الرفع: " + (resData.error?.message || "خطأ غير معروف");
+        }
+      } catch (err) {
+        progress.innerText = "خطأ أثناء الرفع: " + err.message;
+      }
+    };
+  </script>
+</body>
+</html>

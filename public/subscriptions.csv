@@ -1,0 +1,12 @@
+Subscription_ID,Project_Code,Project_Name,Subscriber_Name,Tier_Or_Service,Amount_EGP,Billing_Cycle,Start_Date,Next_Renewal_Date,Payment_Status,Payment_Method,Notes
+SUB-SP-001,proj-noub-sports,NOUB Sports Academies,Cairo Olympic Club,Equestrian Academy Track,12500,Monthly,2026-01-01,2026-10-01,Active,Bank Transfer,Includes 25 trainee slots and arena scheduling
+SUB-SP-002,proj-noub-sports,NOUB Sports Academies,Gezira Sports Club,Swimming Pro Squad,18000,Monthly,2026-02-15,2026-10-15,Active,Direct Debit,Full digital attendance + ELO score tracking
+SUB-SP-003,proj-noub-sports,NOUB Sports Academies,Smouha Tennis Hub,Junior Tennis Master,9500,Monthly,2026-03-01,2026-10-01,Active,Credit Card,Quarterly tournament bracket integration
+SUB-SP-004,proj-noub-sports,NOUB Sports Academies,Al Ahly Academy Partner,Football Youth League,22000,Quarterly,2026-01-01,2026-10-01,Active,Bank Transfer,Custom scouting module included
+SUB-MS-001,proj-4b,4B Passenger & Fleet,Delta Fleet Group,Fleet Dispatch Tier A,15000,Monthly,2026-04-01,2026-10-01,Active,PayCore Wallet,50 vehicle real-time GPS tracking license
+SUB-MS-002,proj-4b,4B Passenger & Fleet,Upper Egypt Transport,Fleet Dispatch Tier B,8500,Monthly,2026-05-10,2026-10-10,Active,Direct Debit,25 vehicle quota
+SUB-WK-001,proj-wekala,WeKaLa Agency & Fleet,Alexandria Central Agency,Franchise Agency Hub,30000,Annual,2026-01-01,2027-01-01,Active,Bank Transfer,Regional distribution and captain onboarding
+SUB-WK-002,proj-wekala,WeKaLa Agency & Fleet,Giza West Hub,Franchise Agency Branch,20000,Annual,2026-06-01,2027-06-01,Active,Bank Transfer,Awaiting dashboard release
+SUB-DR-001,proj-daro,Daro Cargo & Shipping,Nile Express Cargo,Inter-city Logistics API,14000,Monthly,2026-08-01,2026-10-01,Pending Integration,PayCore Gateway,Staging barcode scanner integration
+SUB-TR-001,proj-trading-ops,Financial Trading Ops,Alpha Capital Desk,FIX Protocol Market Feed,45000,Monthly,2026-01-01,2026-10-01,Active,MCDR Clearing Direct,Sub-12ms direct dedicated feed
+SUB-PC-001,proj-paycore,PayCore Gateway,NOUB Unified Ecosystem,Internal Settlement Core,0,Internal,2026-01-01,2027-01-01,Active,Internal Engine,Charges 1.8% + 2.50 EGP per external card transaction

@@ -1,0 +1,535 @@
+================================================================================
+                       NOUB ECOSYSTEM & PLATFORM PROTOCOL
+                       MASTER ARCHITECTURAL & OPERATIONAL SYSTEM
+================================================================================
+Document: NOUB_MASTER_SYSTEM.txt
+Platform Owner: Sameh (noub.platform@gmail.com)
+System Identity: Hypatia Senior Tech & Ops Engine
+Classification: Official Single Source of Truth
+Last Updated: September 2026
+Language Standard: English Naming Taxonomy with Bilingual Metadata
+
+--------------------------------------------------------------------------------
+SECTION 1: ARCHITECTURAL PROTOCOL & PHILOSOPHY
+--------------------------------------------------------------------------------
+1. Single Source of Truth:
+   All operational records, project states, task roadmaps, and configurations
+   are centralized within this master protocol and backed by structured JSON/CSV.
+   No fragmented third-party dependencies (GitHub workflows and Supabase removed).
+
+2. Storage Hierarchy on Google Drive:
+   Root Directory: /NOUB/
+   ├── 01_MASHWEER_FLEET/
+   │   ├── 01_4B_PASSENGER/          (Passenger App, Fleet Tracking, Driver Portal)
+   │   ├── 02_WEKALA_AGENCY_APK/      (Latest Wekala APK builds, Agency Dashboards)
+   │   └── 03_DARO_CARGO/             (Inter-city Cargo, Barcode Scanning, Shipping Notes)
+   ├── 02_SPORTS_ACADEMIES/
+   │   ├── 01_DOCUMENTS/              (Specifications, Academies contracts, ELO rules)
+   │   ├── 02_ACADEMIES_DATA/         (Attendance, Swimming, Tennis, Equestrian logs)
+   │   └── 03_APKS/                   (Mobile Coach/Player client builds)
+   ├── 03_FINANCIAL_OPERATIONS/
+   │   ├── 01_TRADING_ROOM/           (EGX/MCDR Clearing certs, FIX protocol, Fiber DR)
+   │   ├── 02_PAYCORE_GATEWAY/        (Payment gateways, Webhooks, Wallet settlement)
+   │   └── 03_SUBSCRIPTIONS/          (subscriptions.csv, Billing cycles, Revenue logs)
+   └── 04_PLATFORMS_GAMES/
+       ├── 01_NOUB_MAIN_CORE/         (noub.org portal, Digital Identity, Citizen credentials)
+       ├── 02_TOMB_PUZZLES_GAME/      (62 Valley of Kings tomb puzzles, offline sound FX)
+       └── 03_HYPATIA_ENGINE/         (AI Prompts engine, Operational logs, Summaries)
+
+--------------------------------------------------------------------------------
+SECTION 2: COMPLETE INVENTORY OF ALL 10 OFFICIAL PROJECTS
+--------------------------------------------------------------------------------
+
+[#001] PROJECT: 4B Passenger & Fleet (فور بي)
+- ID: proj-4b
+- Category: Fleet & Mobility (In Testing)
+- Website: https://mashawer.com.eg | Dashboard: https://dashboard.mashawer.com.eg
+- Official Emails:
+  * admin@4b-app.com
+  * support@4b-app.com
+  * team@4b-app.com
+  * operations@4b-app.com
+- Status:
+  * APK: Received - Under field testing on Android devices.
+  * Dashboard: Received - Operational for live ride auditing.
+  * Figma UI: 95% complete (Backlog flow, passenger ride booking).
+- Active Backlog & Tasks:
+  1. Audit automatic discount rules and payment push notifications.
+  2. Test real-time GPS map polling latency and captain dispatch accuracy.
+- Notes:
+  Testing mobile APK alongside backend operations dashboard to verify real-time data sync.
+
+---
+
+[#002] PROJECT: WiKaLa Agency & Fleet (وكالة)
+- ID: proj-wikala
+- Category: Agency Logistics & Franchise Management
+- Website: N/A (Dedicated Agency Portal planned: https://wikala.com.eg)
+- Dashboard Admin Panel: https://wikala-admin-panel.vercel.app/login (Live Vercel Deployment)
+- Official Emails:
+  * contact@wikala.com
+  * dev@wikala.com
+  * partner@wikala.com
+- Status:
+  * APK: Received - Latest APK build received following the recent revisions.
+  * Dashboard: Received & Audited by Sameh - Comprehensive UI, operational workflow, and technical audit completed with detailed report generated; live admin panel accessible on Vercel.
+  * Figma UI: 80% complete (Agent registration, Commission breakdown, Fleet view).
+- Active Backlog & Tasks:
+  1. Comprehensive manual/smoke testing on the received APK build.
+  2. Store and version latest APK in /NOUB/01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/.
+  3. Archive and integrate Sameh's dashboard audit report and recommendations into the master system.
+  4. Perform login authentication and permissions test on https://wikala-admin-panel.vercel.app/login.
+  5. Review agent onboarding flow and branch hub mapping.
+- Notes:
+  Crucial priority project. Dashboard live on Vercel. Ready for user to archive the raw APK binary into Google Drive and integrate audit notes.
+
+---
+
+[#003] PROJECT: Daro Cargo & Shipping (دارو)
+- ID: proj-daro
+- Category: Freight & Inter-city Logistics (In Development)
+- Official Emails:
+  * cargo@mashawer.com.eg
+  * operations@daro.com
+- Status:
+  * APK: In Development - Not yet delivered.
+  * Dashboard: Pending vendor delivery.
+  * Figma UI: 70% complete (Waybill generator, scanner interface, drop-off stations).
+- Active Backlog & Tasks:
+  1. Optimize barcode and QR scanner responsiveness upon parcel intake.
+  2. Implement automated digital waybill issuance and customer SMS notification.
+- Notes:
+  Designed for regional logistics between cities relying on physical staging hubs.
+
+---
+
+[#004] PROJECT: NOUB Sports Academies (نوب سبورتس)
+- ID: proj-noub-sports
+- Category: Sports Management & Athlete Rating Engine
+- Website & Dashboard: https://sports.noub.org (Production)
+- Official Emails:
+  * noub.platform@gmail.com
+  * sports@noub.com
+  * academies@noub.com
+- Status:
+  * APK: Received - Mobile app deployed for field trial across partner clubs.
+  * Dashboard: 100% Operational & Production-Ready.
+  * Figma UI: 95% complete.
+- Core Modules & Architectural Specs:
+  1. ELO Player Rating Engine: Dynamic recalculation after tournaments and matches.
+  2. Academy disciplines: Swimming, Tennis, Football, Equestrian (خيل وركوب), Martial Arts.
+  3. Attendance Tracking: Weekly QR-based check-in for trainees and instructors.
+  4. Tournament scheduler: Automatic round-robin and bracket generator.
+- Active Backlog & Tasks:
+  1. Finalize tournament group seeds for upcoming seasonal championships.
+  2. Generate weekly attendance analytics report for equestrian and swimming branches.
+  3. Archive official technical specs in /NOUB/02_SPORTS_ACADEMIES/01_DOCUMENTS/.
+
+---
+
+[#005] PROJECT: NOUB Core Platform (نوب الأساسي)
+- ID: proj-noub-main
+- Category: Digital Identity & Central Portal
+- Website: https://noub.org (Production)
+- Official Emails:
+  * info@noub.org
+  * admin@noub.org
+  * citizens@noub.org
+- Status:
+  * Architecture: Progressive Web App (PWA) / Responsive Web (No native store APK needed).
+  * Dashboard: 100% Complete & Live in Production.
+  * Figma UI: 100% complete.
+- Active Backlog & Tasks:
+  1. Publish updated citizen digital verification and charter documentation.
+- Notes:
+  The nerve center of the entire ecosystem; governs unified identity and authentication.
+
+---
+
+[#006] PROJECT: Financial Trading Ops (غرفة التداول)
+- ID: proj-trading-ops
+- Category: High-Frequency Clearing & Capital Markets (Proprietary Ops)
+- Website: https://trading.noub.org (Internal / Secure Tunnel)
+- Official Emails:
+  * trading@noub.org
+  * mcdr-liaison@noub.org
+- Status:
+  * Client: Dedicated desktop operations terminal for the trading desk.
+  * Dashboard: 100% Complete & Live in Production.
+- Technical Specs:
+  1. FIX Protocol (Financial Information eXchange) direct market data feeds.
+  2. MCDR (Misr for Central Clearing, Depository and Registry) liaison line.
+  3. Redundant fiber optic disaster recovery (DR) link (<12ms latency SLA).
+- Active Backlog & Tasks:
+  1. Bi-monthly failover audit of the redundant fiber line with MCDR.
+
+---
+
+[#007] PROJECT: NOUB Tomb Puzzles Game (لعبة نوب)
+- ID: proj-noub-game
+- Category: Mobile Cultural Puzzle & Educational Gaming
+- Title: Tomb Puzzles of Egypt (ألغاز مقابر الفراعنة)
+- Status:
+  * APK: Prototype build received.
+  * Figma UI: 85% complete.
+- Technical Specs:
+  1. 62 historically authenticated tombs in the Valley of the Kings.
+  2. 100% offline capability with local SQLite game progress state.
+  3. Collectible NOUB treasure cards unlockable upon puzzle completion.
+- Active Backlog & Tasks:
+  1. Finalize spatial audio sound FX for stone doors, gears, and hieroglyphic locks.
+  2. Verify logic puzzle state persistence across device reboots without internet.
+
+---
+
+[#008] PROJECT: Hypatia Ops (هيباتيا)
+- ID: proj-hypatia-ops
+- Category: Senior Technical & Operations AI Engine
+- Website: https://hypatia.noub.org
+- Official Emails:
+  * hypatia@noub.org
+- Status:
+  * State: 100% Active, resilient, 24/7 continuous operational availability.
+- Core Responsibilities:
+  1. Maintaining this single source of truth document.
+  2. Managing task roadmaps, architectural compliance, and security safeguards.
+  3. Generating one-click AI prompt dossiers and operational briefing notes.
+
+---
+
+[#009] PROJECT: PayCore Gateway (بوابة الدفع والمحافظ)
+- ID: proj-paycore
+- Category: Fintech & Multi-Tenant Payment Settlement
+- Website: https://pay.noub.org (Production Gateway)
+- Official Emails:
+  * pay@noub.org
+  * finance@noub.org
+- Status:
+  * Format: Modular Payment SDK embedded inside 4B, Wekala, and NOUB Sports.
+  * Dashboard: 100% Live in Production (99.2% transaction success rate).
+- Active Backlog & Tasks:
+  1. Annual rotation of bank webhook SSL/TLS verification certificates.
+
+---
+
+[#010] PROJECT: Academy Pro (أكاديمي برو)
+- ID: proj-academy-pro
+- Category: Elite Athlete Performance & Biometric Metrics
+- Target Audience: Professional coaches, Olympic trainers, specialized sports staff.
+- Status:
+  * Integration: Companion application to #004 NOUB Sports.
+  * APK: Received - Coach tablet version under field trial.
+
+---
+
+[#011] PROJECT: Agouza Grill Restaurant & POS (مطعم المشويات بالعجوزة)
+- ID: proj-restaurant-pos
+- Category: Commercial Hospitality & Point of Sale (POS)
+- Facility: مطعم المشويات - العجوزة، الجيزة (Agouza Grill Restaurant)
+- Leadership & Governance:
+  * Commercial & Operations Lead: Mr. Hany (CFO) - Assigned specifically to follow up on all restaurant affairs.
+  * Enterprise Owner & Sponsor: Abu Khaled (صاحب الشركة كلها) - Direct strategic oversight alongside Mr. Hany.
+  * Technical Advisory: Sameh (Head of Tech) & Eng. Emad El Sharkawy (Senior Technical Consultant).
+- Technical Partner & Hardware Supplier: Eng. Ali (بشمهندس علي)
+- Supplier Scope & Deliverables:
+  1. Restaurant POS & Management Software System (سيستم إدارة وتشغيل المطعم ونقاط البيع) - [عرض الأسعار استُلم].
+  2. Electronic Cashier Cash Drawer (درج الكاشير الإلكتروني).
+  3. Thermal Receipt & Kitchen Order Printers (ماكينات الطباعة الصغيرة للفواتير وأوامر التشغيل بالمطبخ والكاشير).
+  4. Restaurant CCTV Surveillance Camera System (نظام وشبكة كاميرات المراقبة الخاصة بالمطعم) - [عرض أسعار التركيب والتوريد استُلم].
+- Headquarters Infrastructure Synergy:
+  * In addition to the restaurant, the same supplier and installation team (Eng. Ali) will supply and install the high-resolution IP CCTV cameras for Maadi Headquarters, unifying the procurement, maintenance contract, spare parts, and camera management system across both sites ("تبقى الدنيا كلها واحد").
+- Status:
+  * Price Quotations: Received for POS system software/hardware and for restaurant CCTV installation.
+  * Equipment Sourcing & Contract Review: Under review by Mr. Hany, Abu Khaled, and Sameh.
+  * Integration: Preparing network cabling, PoE switch ports, and power feeds for both sites.
+
+--------------------------------------------------------------------------------
+SECTION 3: SUBSCRIPTIONS & COMMERCIAL ENGINE (subscriptions.csv)
+--------------------------------------------------------------------------------
+All subscription revenues, recurring fee structures, and vendor obligations
+are mapped in 'subscriptions.csv'.
+
+Key Subscription Categories:
+1. Sports Academies (Trainee monthly dues, Private coaching, Tournament fees)
+2. Mashweer Fleet (Captain daily booking commissions, Agency branch fees)
+3. Trading Floor (Dedicated direct market data feed licenses)
+4. PayCore Gateway (Merchant transaction processing margin: 1.8% + 2.50 EGP)
+
+File Location: /NOUB/03_FINANCIAL_OPERATIONS/03_SUBSCRIPTIONS/subscriptions.csv
+
+--------------------------------------------------------------------------------
+SECTION 4: GOOGLE DRIVE UPLOAD DIRECTORY & USER INSTRUCTIONS
+--------------------------------------------------------------------------------
+As agreed, you (Sameh) will upload your raw proprietary documents and APKs
+directly into your Google Drive under the clean English folder structure:
+
+1. WiKaLa Latest APK:
+   Upload to: /NOUB/01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/01_APK_RELEASES/
+   Recommended File Name: wikala_release_v1.0.apk
+
+2. 4B Passenger APK:
+   Upload to: /NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/01_SOURCE_CODE_AND_BUILDS/
+   Recommended File Name: 4b_passenger_release.apk
+
+3. NOUB Sports Technical Documents & Branding Assets:
+   Upload to: /NOUB/02_SPORTS_ACADEMIES/01_OFFICIAL_DOCUMENTS/
+   Files: Logos, Academy rosters, Tournament brackets, PDF guidelines.
+
+4. Trading Network Specs & Contracts:
+   Upload to: /NOUB/03_FINANCIAL_OPERATIONS/01_TRADING_ROOM/
+
+--------------------------------------------------------------------------------
+SECTION 5: REGULATORY COMPLIANCE, HOSTING ARCHITECTURE & CORPORATE ASSETS
+--------------------------------------------------------------------------------
+
+1. GOVERNMENT REGULATION & LICENSING (MINISTRY OF TRANSPORT / LTRA):
+   - Regulatory Authority: Land Transport Regulatory Authority (LTRA)
+     (وزارة النقل - جهاز تنظيم النقل البري الداخلي والدولي)
+   - Governing Laws & Decrees:
+     * Law No. 87 of 2018 (قانون تنظيم النقل البري للركاب باستخدام تكنولوجيا المعلومات)
+     * Prime Minister Decree No. 2180 of 2019 (قرار رئيس مجلس الوزراء رقم 2180 لسنة 2019)
+     * Mandatory Articles: Articles (9, 10) of Law 87/2018 and Articles (33, 34) of Decree 2180/2019
+       governing data retention, cybersecurity, and providing real-time data access to National Security Entities.
+   - Official Directives:
+     * Letter Reference: Incoming Ref #1422 dated 2026/5/6 with updated Commercial Register.
+     * Executive Mandate: Directive signed by Eng. Diaa El-Din Mostafa Youssef (CEO of LTRA)
+       mandating direct coordination with Telecom Egypt (WE) to establish the direct integration leased lines.
+     * Address: Ministry of Transport Building, Government District, New Administrative Capital.
+     * Official LTRA Email: ltra@lhps.gov.eg
+
+2. HOSTING DIVISION STRATEGY (WE vs. CLOUD):
+   - PROJECT 4B (PASSENGER MOBILITY):
+     * EXCLUSIVELY HOSTED ON TELECOM EGYPT (WE) TIER III/IV DATACENTER IN EGYPT.
+     * Infrastructure: Primary application & database server + Local Disaster Recovery (DR) server.
+     * Leased Line: Direct fiber leased-line integration for real-time security and LTRA oversight.
+     * Data Sovereignty: 100% of ride, passenger, and GPS data resides on Egyptian soil.
+   - PROJECTS WIKALA & DARO (LOGISTICS & AGENCY):
+     * Hosted on scalable Managed Cloud Infrastructure (GCP / AWS) selected by the development team.
+     * Media & Attachments: Cloudinary CDN for cargo waybill photos, KYC documents, and contracts.
+     * Communications: Cloud APIs and scalable database clusters.
+
+3. SMS & OTP TELECOM COMPLIANCE:
+   - For 4B Passenger App: Integrated with an Accredited Egyptian Local SMS Gateway
+     to satisfy Ministry of Transport and LTRA compliance mandates for passenger OTP verification,
+     ride authentication, and emergency captain notifications.
+   - For WiKaLa & Daro: Standard Twilio / Egyptian SMS dual fallback routing.
+
+4. CERTIFICATES OF ORIGIN & COMMERCIAL REGISTER (السجل التجاري وشهادات المنشأ):
+   - Targeted Applications: 4B (فور بي), WiKaLa (وكالة), Daro (دارو).
+   - Legal Procedure: Official letters dispatched to the software development vendor
+     certifying that the source code and IP were engineered exclusively for "شركة مشاوير للمنصات الرقمية".
+   - Commercial Register Endorsement: Depositing origin certificates at the Commercial Registry
+     to legally establish software title and origin.
+   - Domain Allocation: Prerequisite to reserve local country-code top-level domains:
+     * 4b.com.eg
+     * wikala.com.eg
+     * daro.com.eg
+     * mashawer.com.eg
+
+5. D-U-N-S NUMBER (DUN & BRADSTREET) & ENTERPRISE CREDENTIALS:
+   - In-progress international D-U-N-S registration for "شركة مشاوير للمنصات الرقمية".
+   - Objective: Unlocking Apple Developer Enterprise accounts, international gateway certifications,
+     and global corporate verification.
+
+6. GOOGLE PLAY DEVELOPER CONSOLE ORGANIZATION VERIFICATION (CRITICAL APPEAL):
+   - Status: Developer Organization verification rejected; verification button disabled/locked.
+   - Root Cause: Submitting personal passport photo for an Organization (Company) Account without D-U-N-S and Commercial Register matching corporate entity name.
+   - Corrective Action: Appeal logged; awaiting D-U-N-S number delivery to submit matching Commercial Register (السجل التجاري) and Corporate Articles of Incorporation.
+
+--------------------------------------------------------------------------------
+SECTION 6: MASTER PRIORITIZED TASK INVENTORY (70 TASKS TOTAL)
+--------------------------------------------------------------------------------
+PRIORITY TIER 1: MASHAWER CORE FLEET (#001 4B, #002 WiKaLa, #003 Daro) - 40 TASKS
+
+[GROUP A: LEGAL, REGULATORY & STORE VERIFICATION] (Tasks 01 to 08)
+01. [4B/LTRA] Execute direct technical coordination with Telecom Egypt (WE) technical liaison engineer per LTRA Book 1422.
+02. [4B/LTRA] Draft and execute fiber leased-line SLA with WE for real-time national security data access (Law 87/2018 Articles 9, 10).
+03. [Mashawer/DUNS] Follow up and obtain final D-U-N-S number certificate from Dun & Bradstreet representative.
+04. [Stores/GooglePlay] Ingest Google support appeal emails and prepare Corporate identity dossier (DUNS + Commercial Register + Power of Attorney).
+05. [Stores/GooglePlay] Request Google Play developer console verification button unlock once DUNS is active.
+06. [Stores/Apple] Complete Apple Developer Enterprise Organization enrollment using D-U-N-S number.
+07. [Legal/Origin] Receive signed & stamped Certificates of Origin from software development vendor for 4B, WiKaLa, and Daro.
+08. [Legal/Domains] Deposit origin certificates at Commercial Registry and file registration for 4b.com.eg, wikala.com.eg, and daro.com.eg.
+
+[GROUP B: 4B PASSENGER - TECHNICAL & OPERATIONAL] (Tasks 09 to 20)
+09. [4B/Architecture] Audit mobile tech stack (Java/Kotlin Native vs Flutter vs React Native) from development team.
+10. [4B/SourceCode] Secure GitLab/GitHub repository access and commit history for 4B Passenger & Captain codebases.
+11. [4B/Figma] Audit 95% complete Figma design system (components, design tokens, error states, Arabic RTL screens).
+12. [4B/Testing] Execute smoke testing on 4B release candidate APK (login, OTP, ride request, driver bid acceptance).
+13. [4B/GPS] Measure GPS polling ping latency and background battery consumption on driver app during field testing.
+14. [4B/Pricing] Verify automated dynamic pricing rules, peak multipliers, and promo discount calculations.
+15. [4B/SMS] Integrate licensed Egyptian SMS Gateway API credentials into backend for passenger OTP and captain dispatch.
+16. [4B/Payments] Verify PayCore payment gateway tokenization and credit card 3D Secure checkout.
+17. [4B/Dashboard] Complete operational audit on 4B Web Operations Dashboard (https://dashboard.mashawer.com.eg).
+18. [4B/Hosting-WE] Inspect Telecom Egypt primary server hardware specs, OS image, and PostgreSQL 16 PostGIS master configuration.
+19. [4B/DR-WE] Validate automated failover replication to Telecom Egypt secondary Disaster Recovery standby server.
+20. [4B/Security] Harden API endpoints against DDOS and enforce JWT token expiration for passenger and captain apps.
+
+[GROUP C: WIKALA AGENCY & FLEET - TECHNICAL & OPERATIONAL] (Tasks 21 to 30)
+21. [WiKaLa/APK] Archive and version latest revised APK build in Drive /01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/01_APK_RELEASES/.
+22. [WiKaLa/TechStack] Audit mobile framework and SDK dependencies of the received WiKaLa APK.
+23. [WiKaLa/Testing] Test agency branch creation, multi-tier agent wallet balances, and commission splits.
+24. [WiKaLa/Dashboard] Follow up with vendor for delivery schedule of agency commission & office management web dashboard.
+25. [WiKaLa/Figma] Review remaining 20% of WiKaLa Figma screens (branch territory mapping, payout requests).
+26. [WiKaLa/Cloudinary] Configure Cloudinary CDN integration for agency legal papers, tax cards, and franchisee KYC.
+27. [WiKaLa/Database] Verify database schema for agency commission ledger and transactions audit trail.
+28. [WiKaLa/Notifications] Configure dual SMS & Firebase Cloud Messaging (FCM) alerts for agent transactions.
+29. [WiKaLa/Security] Review role-based access control (RBAC): Super Admin, Regional Franchisee, Branch Agent, Fleet Captain.
+30. [WiKaLa/Coordination] Conduct weekly architecture review meeting with development team (Sundays at 6:30 PM).
+
+[GROUP D: DARO CARGO & SHIPPING - TECHNICAL & OPERATIONAL] (Tasks 31 to 40)
+31. [Daro/Figma] Audit 70% complete Daro Figma UI (waybill generator, parcel intake camera, hub drop-off screens).
+32. [Daro/TechStack] Determine barcode scanning library (ML Kit / ZXing) and camera capture latency requirements.
+33. [Daro/APK] Obtain preliminary alpha build with functional hardware barcode scanner integration.
+34. [Daro/Waybill] Specify digital waybill PDF generation format, recipient QR code, and signature capture.
+35. [Daro/Hubs] Model inter-city staging hub database schema (origin warehouse, transfer vehicle, destination hub).
+36. [Daro/Tracking] Implement real-time parcel track & trace endpoint for senders and receivers.
+37. [Daro/Media] Setup object storage / Cloudinary for parcel condition intake photos upon staging.
+38. [Daro/SMS] Configure automated customer SMS alerts upon package dispatch and arrival at regional branch.
+39. [Daro/Driver] Define cargo driver dispatch and weight/volume load management algorithms.
+40. [Daro/Coordination] Conduct weekly cargo protocol sync meeting with vendor (Mondays at 4:30 PM).
+
+---
+PRIORITY TIER 2: SECONDARY ECOSYSTEM & PERSONAL PROJECTS (Tasks 41 to 70)
+[Temporarily deferred to maintain 100% focus on Mashawer Fleet core]:
+- NOUB Sports Academies: Tasks 41 to 50 (ELO algorithms, swimming/tennis/equestrian rosters, tournament brackets).
+- Financial Operations: Tasks 51 to 60 (Trading desk FIX protocol, MCDR clearing, PayCore merchant settlements, Subscriptions).
+- Platforms & Games: Tasks 61 to 70 (NOUB Identity portal, Tomb Puzzles KV62 game design, Hypatia AI engine).
+
+--------------------------------------------------------------------------------
+SECTION 7: GORIDE (4B) DEVELOPER HANDOVER & TELECOM EGYPT (WE) RFQ SPECIFICATIONS
+--------------------------------------------------------------------------------
+1. VERIFIED TECH STACK & PROCESS ARCHITECTURE:
+   - Internal Codename: GoRide (Engineered as the 4B Core Mobility Platform).
+   - Backend Architecture: Node.js 22 LTS, NestJS 10.x/11, Prisma ORM (22 migrations incl PostGIS).
+   - Processes (Ubuntu 22.04/24.04):
+     * API: PROCESS_ROLE=api node dist/src/main (Port 3000, HTTP/WebSockets).
+     * Worker: PROCESS_ROLE=worker node dist/src/worker (BullMQ 21 queues, OTP, payouts, cron).
+     * Admin: next start -p 3001 (Port 3001, Next.js 14 SSR, admin.4b.com.eg).
+   - Database: PostgreSQL 16 + PostGIS 3.4 (geospatial indexes, nearby captain search).
+   - Cache: Redis 7 (persistence ON, maxmemory-policy=noeviction).
+   - Payments: Fawry (Acceptance + Captain Disbursement Payouts, webhook /api/v1/webhooks/fawry).
+   - OTP: Twilio A2P SMS (Egypt Sender ID '4B') + WhatsApp Cloud API.
+   - Media: Cloudinary (Signed authenticated delivery with ?exp=&sig= HMAC). No AWS S3.
+   - Face-Match KYC: CompreFace (Self-hosted Docker ~2GB on Egyptian soil under Law 151/2018).
+   - Push Notifications: Firebase Cloud Messaging (FCM v1).
+   - Maps: Google Maps Platform (Android, iOS, Web JS, Places, Directions, Distance Matrix).
+
+2. TELECOM EGYPT (WE) QUOTATION & FINANCIAL OFFER (OFFICIALLY RECEIVED):
+   - Status: Technical sizing accepted (10 MB LB/WAF throughput confirmed; backup reconciled to 1-month retention and VM disk sizes).
+   - Financial Proposal: Official financial quotation (العرض المالي) delivered by Eng. Ahmed Moharam (المصرية للاتصالات WE Cloud).
+   - Technical Review: Sameh has shared all WE communications, technical files, and financial proposals with Senior Technical Consultant Eng. Emad El Sharkawy for joint audit and validation.
+   - Sized Linux Virtual Machines:
+     * 4B-App-Server: 4 vCPU, 8 GB RAM, 40 GB SSD (Ubuntu 22/24)
+     * 4B-DB-Server: 4 vCPU, 8 GB RAM, 100 GB SSD (PostgreSQL 16 + PostGIS 3.4)
+     * 4B-Cache-Server: 2 vCPU, 2 GB RAM, 20 GB SSD (Redis 7)
+   - F5 Load Balancer & WAF (4B-VS):
+     * VIP Port 443 -> Node Ports 3000 & 3001.
+     * 1000 Concurrent Sessions, 10 MB Throughput estimate, Cookie persistence, X-Forwarded-For.
+     * WebSocket upgrade on /socket.io (proxy_read_timeout >= 600s).
+     * WAF enabled (disallowing .env, .git, wp-admin; 5 MiB body limit).
+   - Connectivity: 20 Mbps Internet/MPLS VPN, 7 SSL VPN admin accounts.
+   - Backup Policy: Weekly Full, Daily Incremental, 1-month maximum retention (100 GB DB, 20 GB Cache, 40 GB App) + nightly pull to Maadi HQ local backup vault.
+
+3. IMPORTANT PROJECT DISAMBIGUATION (PER DEVELOPER):
+   - 4B (GoRide): Uses PostgreSQL + PostGIS, Fawry, Twilio, CompreFace. NO Agora VoIP, NO OpenAI moderation.
+   - WiKaLa / Classifieds App: Uses MongoDB, Agora (VoIP Calling), OpenAI moderation, Paymob/Stripe, Google Cloud Vision. Dashboard on Vercel: https://wikala-admin-panel.vercel.app/login.
+
+--------------------------------------------------------------------------------
+SECTION 8: MAADI HEADQUARTERS, BROADNET SMS & MARKETING VENDORS
+--------------------------------------------------------------------------------
+1. MAADI HQ HARDWARE & INFRASTRUCTURE (مقر المعادي):
+   - Joint Technical Execution (3-Month Horizon): Sameh and Eng. Emad El Sharkawy will collaborate side-by-side over the next 3 months to build out, commission, and interconnect the Maadi Headquarters properly with all government authorities (LTRA), telecom entities (WE Cloud), and local network systems.
+   - Current Deployed Workstations: 3x Dell OptiPlex 3090, 128 GB NVMe SSD, Windows 11 Pro.
+   - Next Day Purchase: 1x Local Rack/Tower Server + 5x additional Dell OptiPlex PCs (Total: 8 workstations).
+   - Server Rack: 140 cm installed rack cabinet.
+   - Facility Works: Suspended ceiling cabling (CAT6) for IP PBX Telephony, IP CCTV Cameras, and Gigabit LAN.
+   - CCTV Camera Surveillance Supplier: Eng. Ali (بشمهندس علي) - contracted to supply the high-resolution IP CCTV cameras for Maadi HQ, utilizing the exact same camera specs and installer as the Agouza Restaurant project to ensure uniform maintenance and unified spares ("تبقى الدنيا كلها واحد").
+   - IT Architectural Decision: CANCELED local Windows Server Domain Controller.
+     * Rationale: SaaS email on Zoho Workplace, dashboards on HTTPS with RBAC, zero single-point-of-failure risk.
+     * Server Role: Centralized On-Premises Automated Backup Vault (NAS) for nightly offsite DB dumps from WE, Git repos, and Cloudinary sync.
+     * Remote IT Maintenance: Fast remote support via AnyDesk / RustDesk / LAN RDP.
+
+2. LOCAL EGYPTIAN SMS PROVIDER - BROADNET:
+   - Provider: BroadNet Technologies (support@broadnetme.com, broadnet.me / broadnetme.com).
+   - Account ID: mashawer.
+   - Active Status: 25 initial test credits provisioned.
+   - Purpose: Local A2P Egyptian OTP SMS delivery & captain/passenger notification dispatch under LTRA rules.
+
+3. 4B MARKETING & CREATIVE AGENCY:
+   - Status: Vendor selection in progress; contract decision finalized.
+   - Scope: 4B Passenger brand identity, social media creative design, viral short video reels (WhatsApp, Instagram, Facebook).
+
+4. DARO (داره) REBRANDING & SUPER APP SCOPE:
+   - Name: "داره" (Daro) - 4 letters exclusively (Not Daro Cargo).
+   - Architecture: Multi-service Super App encompassing logistics, multi-modal parcel delivery, and interconnected fleet services.
+   - Status: Figma 70% complete with multi-service UI.
+
+5. HARDWARE & SYSTEMS PROCUREMENT PARTNER:
+   - Partner: Eng. Ali (بشمهندس علي).
+   - Mandate: End-to-end procurement and installation for Restaurant POS System, Cashier Drawer, Thermal Printers, and dual-site CCTV Cameras (Restaurant & Maadi HQ).
+
+--------------------------------------------------------------------------------
+SECTION 9: OPERATIONS TEAM, VERIFIED FIGMA TOKENS, AND AUDIT PROTOCOLS
+--------------------------------------------------------------------------------
+1. CORE TEAM STRUCTURE & STRATEGIC GOVERNANCE:
+   - Abu Khaled (أبو خالد): Company & Enterprise Owner (صاحب الشركة كلها) - Primary corporate investor and strategic leader; directly oversees and partners with Mr. Hany on the Agouza grill restaurant venture and long-term business expansions.
+   - Sameh (سامح): Head of Tech & IT / Acting CTO (Master Architecture, Infrastructure, and Operational Execution).
+   - Eng. Emad El Sharkawy (المهندس عماد الشرقاوي): Senior External Technical Consultant (استشاري خارجي أول) - Longtime trusted friend and high-level senior technical consultant to Sameh; collaborating side-by-side during the upcoming 3-month sprint to establish and commission Maadi HQ, interconnect with external entities and government bodies, and audit Telecom Egypt (WE) cloud servers and networks.
+   - Mr. Hany (أستاذ هاني): Chief Financial Officer (CFO) & Commercial Restaurant Lead - In charge of corporate finance, Fawry contracts, merchant settlements, and exclusively assigned to lead the Agouza restaurant project operations, systems, and camera rollout with Abu Khaled and Sameh.
+   - Amr & Mowaffaq: 4B Core Mobility Operations Leads (10+ years ex-Uber & Careem operational leadership).
+   - Support & Call Center Team: 5 specialists for passenger inquiries, captain onboarding, and live crisis management.
+   - Data Analyst: 1 specialist for PostgreSQL queries, heatmaps, and captain bonus models.
+   - Hardware Match: The 8 operational staff (Amr, Mowaffaq, 5 Support, 1 Analyst) correspond directly to the 8 Dell OptiPlex workstations (3 active today + 5 buying tomorrow).
+
+2. VERIFIED FIGMA DESIGNS & LIVE ACCESS TOKENS:
+   - 4B Passenger (مشاوير - Backlog):
+     URL: https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/%D9%85%D8%B4%D8%A7%D9%88%D9%8A%D8%B1---backlog?node-id=221-63531&t=uCzHJZbEM1gi1Zz8-0
+     Progress: 95% complete.
+   - WiKaLa Agency & Fleet (وكالة):
+     URL: https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1&t=rbE4CPeGiTAMMin2-1
+     Progress: 80% complete.
+     Live Dashboard: https://wikala-admin-panel.vercel.app/login
+   - Daro Super App (داره):
+     URL: https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1&t=HFGqvAl4RPmlMliu-1
+     Progress: 70% complete.
+
+3. ACTIVE AUDIT PROTOCOLS & GOOGLE DRIVE INVENTORY:
+   - NOUB_MASTER_SYSTEM.txt: Complete architectural system protocol (this document).
+   - SYSTEM_RELATIONSHIP_DIAGRAM.json: Full node-to-node relational graph (A feeds A, A serves A).
+   - MASHAWER_TEAM_AND_ORG_CHART.md: Comprehensive team roles, responsibilities, and hardware assignments.
+   - MASHAWER_TECHNICAL_AUDIT_PLAYBOOK.md: Technical audit rules, fatal blocker checklist, and DB review guidelines.
+   - MASHAWER_FIGMA_TECHNICAL_AUDIT_REPORT.md: Screen-by-screen UX, state machine, and edge-case audit for 4B, WiKaLa, and Daro.
+   - 4B_GORIDE_TECHNICAL_HANDOVER.md: Verified developer handover documentation (NestJS, Prisma, PostGIS, Fawry).
+   - NOUB_WE_QUOTATION_SPECIFICATIONS.json: Technical RFQ submitted to Telecom Egypt for Smart Village datacenter hosting.
+   - MAADI_HQ_INFRASTRUCTURE_AND_HARDWARE.md: Complete hardware inventory, cabling specifications, and backup vault setup.
+   - MASHAWER_VENDORS_AND_OPERATIONS.md: Vendors status (BroadNet, Twilio, WE, Marketing, Official Emails).
+   - ALL_PROJECTS_LINKS.csv: All projects URLs, dashboards, Figma files, and Meet links.
+   - MASHAWER_CORE_TASKS_INVENTORY.json: The complete 70-task roadmap with active priority groupings.
+
+--------------------------------------------------------------------------------
+SECTION 10: RECENT OPERATIONAL MILESTONES & BASELINE ADOPTION (SEPTEMBER 2026)
+--------------------------------------------------------------------------------
+1. TELECOM EGYPT (WE) CLOUD FINANCIAL QUOTATION RECEIVED:
+   - Following technical sizing approval (10 MB throughput, 1-month retention, disk-matched backups), official financial offer delivered by Eng. Ahmed Moharam.
+   - Joint technical and financial audit initiated by Sameh and Eng. Emad El Sharkawy.
+
+2. ONBOARDING OF SENIOR CONSULTANT ENG. EMAD EL SHARKAWY:
+   - Profile formally opened; 3-month collaborative mandate launched with Sameh to build out Maadi HQ and connect all external and governmental entities.
+   - Access to WE communications, cloud proposals, and infrastructure roadmap provisioned.
+
+3. WIKALA DASHBOARD VERCEL DEPLOYMENT & AUDIT:
+   - WiKaLa Admin Panel live at https://wikala-admin-panel.vercel.app/login.
+   - Comprehensive audit completed by Sameh; findings and operational notes logged.
+
+4. AGOUZA RESTAURANT VENTURE & DUAL-SITE SURVEILLANCE SYNERGY:
+   - Price quotations received for Restaurant POS software/system and Restaurant CCTV surveillance.
+   - Project operations assigned exclusively to Mr. Hany in coordination with Abu Khaled (Company Owner).
+   - Hardware procurement synergy confirmed: Eng. Ali to supply matching IP CCTV cameras for Maadi HQ.
+
+5. OFFICIAL STATUS:
+   - This document and its associated files on Google Drive are designated by Sameh as the Official Master Baseline for all future tech and operational execution.
+
+================================================================================
+                    END OF NOUB MASTER SYSTEM PROTOCOL
+================================================================================

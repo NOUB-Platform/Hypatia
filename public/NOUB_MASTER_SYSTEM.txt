@@ -1,0 +1,258 @@
+================================================================================
+                       NOUB ECOSYSTEM & PLATFORM PROTOCOL
+                       MASTER ARCHITECTURAL & OPERATIONAL SYSTEM
+================================================================================
+Document: NOUB_MASTER_SYSTEM.txt
+Platform Owner: Sameh (noub.platform@gmail.com)
+System Identity: Hypatia Senior Tech & Ops Engine
+Classification: Official Single Source of Truth
+Last Updated: September 2026
+Language Standard: English Naming Taxonomy with Bilingual Metadata
+
+--------------------------------------------------------------------------------
+SECTION 1: ARCHITECTURAL PROTOCOL & PHILOSOPHY
+--------------------------------------------------------------------------------
+1. Single Source of Truth:
+   All operational records, project states, task roadmaps, and configurations
+   are centralized within this master protocol and backed by structured JSON/CSV.
+   No fragmented third-party dependencies (GitHub workflows and Supabase removed).
+
+2. Storage Hierarchy on Google Drive:
+   Root Directory: /NOUB/
+   ├── 01_MASHWEER_FLEET/
+   │   ├── 01_4B_PASSENGER/          (Passenger App, Fleet Tracking, Driver Portal)
+   │   ├── 02_WEKALA_AGENCY_APK/      (Latest Wekala APK builds, Agency Dashboards)
+   │   └── 03_DARO_CARGO/             (Inter-city Cargo, Barcode Scanning, Shipping Notes)
+   ├── 02_SPORTS_ACADEMIES/
+   │   ├── 01_DOCUMENTS/              (Specifications, Academies contracts, ELO rules)
+   │   ├── 02_ACADEMIES_DATA/         (Attendance, Swimming, Tennis, Equestrian logs)
+   │   └── 03_APKS/                   (Mobile Coach/Player client builds)
+   ├── 03_FINANCIAL_OPERATIONS/
+   │   ├── 01_TRADING_ROOM/           (EGX/MCDR Clearing certs, FIX protocol, Fiber DR)
+   │   ├── 02_PAYCORE_GATEWAY/        (Payment gateways, Webhooks, Wallet settlement)
+   │   └── 03_SUBSCRIPTIONS/          (subscriptions.csv, Billing cycles, Revenue logs)
+   └── 04_PLATFORMS_GAMES/
+       ├── 01_NOUB_MAIN_CORE/         (noub.org portal, Digital Identity, Citizen credentials)
+       ├── 02_TOMB_PUZZLES_GAME/      (62 Valley of Kings tomb puzzles, offline sound FX)
+       └── 03_HYPATIA_ENGINE/         (AI Prompts engine, Operational logs, Summaries)
+
+--------------------------------------------------------------------------------
+SECTION 2: COMPLETE INVENTORY OF ALL 10 OFFICIAL PROJECTS
+--------------------------------------------------------------------------------
+
+[#001] PROJECT: 4B Passenger & Fleet (فور بي)
+- ID: proj-4b
+- Category: Fleet & Mobility (In Testing)
+- Website: https://mashawer.com.eg | Dashboard: https://dashboard.mashawer.com.eg
+- Official Emails:
+  * admin@4b-app.com
+  * support@4b-app.com
+  * team@4b-app.com
+  * operations@4b-app.com
+- Status:
+  * APK: Received - Under field testing on Android devices.
+  * Dashboard: Received - Operational for live ride auditing.
+  * Figma UI: 95% complete (Backlog flow, passenger ride booking).
+- Active Backlog & Tasks:
+  1. Audit automatic discount rules and payment push notifications.
+  2. Test real-time GPS map polling latency and captain dispatch accuracy.
+- Notes:
+  Testing mobile APK alongside backend operations dashboard to verify real-time data sync.
+
+---
+
+[#002] PROJECT: WeKaLa Agency & Fleet (وكالة)
+- ID: proj-wekala
+- Category: Agency Logistics & Franchise Management
+- Website: N/A (Dedicated Agency Portal planned)
+- Official Emails:
+  * contact@wekala.com
+  * dev@wekala.com
+  * partner@wekala.com
+- Status:
+  * APK: Received - Latest APK build received following the recent revisions.
+  * Dashboard: Pending delivery from development vendor.
+  * Figma UI: 80% complete (Agent registration, Commission breakdown, Fleet view).
+- Active Backlog & Tasks:
+  1. Comprehensive manual/smoke testing on the received APK build.
+  2. Store and version latest APK in /NOUB/01_MASHWEER_FLEET/02_WEKALA_AGENCY_APK/.
+  3. Await and inspect agency commission & office management web dashboard.
+  4. Review agent onboarding flow and branch hub mapping.
+- Notes:
+  Crucial priority project. Ready for user to archive the raw APK binary into Google Drive.
+
+---
+
+[#003] PROJECT: Daro Cargo & Shipping (دارو)
+- ID: proj-daro
+- Category: Freight & Inter-city Logistics (In Development)
+- Official Emails:
+  * cargo@mashawer.com.eg
+  * operations@daro.com
+- Status:
+  * APK: In Development - Not yet delivered.
+  * Dashboard: Pending vendor delivery.
+  * Figma UI: 70% complete (Waybill generator, scanner interface, drop-off stations).
+- Active Backlog & Tasks:
+  1. Optimize barcode and QR scanner responsiveness upon parcel intake.
+  2. Implement automated digital waybill issuance and customer SMS notification.
+- Notes:
+  Designed for regional logistics between cities relying on physical staging hubs.
+
+---
+
+[#004] PROJECT: NOUB Sports Academies (نوب سبورتس)
+- ID: proj-noub-sports
+- Category: Sports Management & Athlete Rating Engine
+- Website & Dashboard: https://sports.noub.org (Production)
+- Official Emails:
+  * noub.platform@gmail.com
+  * sports@noub.com
+  * academies@noub.com
+- Status:
+  * APK: Received - Mobile app deployed for field trial across partner clubs.
+  * Dashboard: 100% Operational & Production-Ready.
+  * Figma UI: 95% complete.
+- Core Modules & Architectural Specs:
+  1. ELO Player Rating Engine: Dynamic recalculation after tournaments and matches.
+  2. Academy disciplines: Swimming, Tennis, Football, Equestrian (خيل وركوب), Martial Arts.
+  3. Attendance Tracking: Weekly QR-based check-in for trainees and instructors.
+  4. Tournament scheduler: Automatic round-robin and bracket generator.
+- Active Backlog & Tasks:
+  1. Finalize tournament group seeds for upcoming seasonal championships.
+  2. Generate weekly attendance analytics report for equestrian and swimming branches.
+  3. Archive official technical specs in /NOUB/02_SPORTS_ACADEMIES/01_DOCUMENTS/.
+
+---
+
+[#005] PROJECT: NOUB Core Platform (نوب الأساسي)
+- ID: proj-noub-main
+- Category: Digital Identity & Central Portal
+- Website: https://noub.org (Production)
+- Official Emails:
+  * info@noub.org
+  * admin@noub.org
+  * citizens@noub.org
+- Status:
+  * Architecture: Progressive Web App (PWA) / Responsive Web (No native store APK needed).
+  * Dashboard: 100% Complete & Live in Production.
+  * Figma UI: 100% complete.
+- Active Backlog & Tasks:
+  1. Publish updated citizen digital verification and charter documentation.
+- Notes:
+  The nerve center of the entire ecosystem; governs unified identity and authentication.
+
+---
+
+[#006] PROJECT: Financial Trading Ops (غرفة التداول)
+- ID: proj-trading-ops
+- Category: High-Frequency Clearing & Capital Markets (Proprietary Ops)
+- Website: https://trading.noub.org (Internal / Secure Tunnel)
+- Official Emails:
+  * trading@noub.org
+  * mcdr-liaison@noub.org
+- Status:
+  * Client: Dedicated desktop operations terminal for the trading desk.
+  * Dashboard: 100% Complete & Live in Production.
+- Technical Specs:
+  1. FIX Protocol (Financial Information eXchange) direct market data feeds.
+  2. MCDR (Misr for Central Clearing, Depository and Registry) liaison line.
+  3. Redundant fiber optic disaster recovery (DR) link (<12ms latency SLA).
+- Active Backlog & Tasks:
+  1. Bi-monthly failover audit of the redundant fiber line with MCDR.
+
+---
+
+[#007] PROJECT: NOUB Tomb Puzzles Game (لعبة نوب)
+- ID: proj-noub-game
+- Category: Mobile Cultural Puzzle & Educational Gaming
+- Title: Tomb Puzzles of Egypt (ألغاز مقابر الفراعنة)
+- Status:
+  * APK: Prototype build received.
+  * Figma UI: 85% complete.
+- Technical Specs:
+  1. 62 historically authenticated tombs in the Valley of the Kings.
+  2. 100% offline capability with local SQLite game progress state.
+  3. Collectible NOUB treasure cards unlockable upon puzzle completion.
+- Active Backlog & Tasks:
+  1. Finalize spatial audio sound FX for stone doors, gears, and hieroglyphic locks.
+  2. Verify logic puzzle state persistence across device reboots without internet.
+
+---
+
+[#008] PROJECT: Hypatia Ops (هيباتيا)
+- ID: proj-hypatia-ops
+- Category: Senior Technical & Operations AI Engine
+- Website: https://hypatia.noub.org
+- Official Emails:
+  * hypatia@noub.org
+- Status:
+  * State: 100% Active, resilient, 24/7 continuous operational availability.
+- Core Responsibilities:
+  1. Maintaining this single source of truth document.
+  2. Managing task roadmaps, architectural compliance, and security safeguards.
+  3. Generating one-click AI prompt dossiers and operational briefing notes.
+
+---
+
+[#009] PROJECT: PayCore Gateway (بوابة الدفع والمحافظ)
+- ID: proj-paycore
+- Category: Fintech & Multi-Tenant Payment Settlement
+- Website: https://pay.noub.org (Production Gateway)
+- Official Emails:
+  * pay@noub.org
+  * finance@noub.org
+- Status:
+  * Format: Modular Payment SDK embedded inside 4B, Wekala, and NOUB Sports.
+  * Dashboard: 100% Live in Production (99.2% transaction success rate).
+- Active Backlog & Tasks:
+  1. Annual rotation of bank webhook SSL/TLS verification certificates.
+
+---
+
+[#010] PROJECT: Academy Pro (أكاديمي برو)
+- ID: proj-academy-pro
+- Category: Elite Athlete Performance & Biometric Metrics
+- Target Audience: Professional coaches, Olympic trainers, specialized sports staff.
+- Status:
+  * Integration: Companion application to #004 NOUB Sports.
+  * APK: Received - Coach tablet version under field trial.
+
+--------------------------------------------------------------------------------
+SECTION 3: SUBSCRIPTIONS & COMMERCIAL ENGINE (subscriptions.csv)
+--------------------------------------------------------------------------------
+All subscription revenues, recurring fee structures, and vendor obligations
+are mapped in 'subscriptions.csv'.
+
+Key Subscription Categories:
+1. Sports Academies (Trainee monthly dues, Private coaching, Tournament fees)
+2. Mashweer Fleet (Captain daily booking commissions, Agency branch fees)
+3. Trading Floor (Dedicated direct market data feed licenses)
+4. PayCore Gateway (Merchant transaction processing margin: 1.8% + 2.50 EGP)
+
+File Location: /NOUB/03_FINANCIAL_OPERATIONS/03_SUBSCRIPTIONS/subscriptions.csv
+
+--------------------------------------------------------------------------------
+SECTION 4: GOOGLE DRIVE UPLOAD DIRECTORY & USER INSTRUCTIONS
+--------------------------------------------------------------------------------
+As agreed, you (Sameh) will upload your raw proprietary documents and APKs
+directly into your Google Drive under the clean English folder structure:
+
+1. Wekala Latest APK:
+   Upload to: /NOUB/01_MASHWEER_FLEET/02_WEKALA_AGENCY_APK/
+   Recommended File Name: wekala_release_v1.0.apk
+
+2. 4B Passenger APK:
+   Upload to: /NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/
+   Recommended File Name: 4b_passenger_release.apk
+
+3. NOUB Sports Technical Documents & Branding Assets:
+   Upload to: /NOUB/02_SPORTS_ACADEMIES/01_DOCUMENTS/
+   Files: Logos, Academy rosters, Tournament brackets, PDF guidelines.
+
+4. Trading Network Specs & Contracts:
+   Upload to: /NOUB/03_FINANCIAL_OPERATIONS/01_TRADING_ROOM/
+
+================================================================================
+                    END OF NOUB MASTER SYSTEM PROTOCOL
+================================================================================

@@ -1,0 +1,329 @@
+{
+  "system": "NOUB_PLATFORM_ECOSYSTEM",
+  "version": "2.4.0",
+  "lastUpdated": "2026-09-11",
+  "platformOwner": "Sameh (noub.platform@gmail.com)",
+  "engine": "Hypatia Senior Operations Engine",
+  "storageStandard": "Google Drive /NOUB/",
+  "totalProjects": 11,
+  "projects": [
+    {
+      "id": "proj-4b",
+      "number": "#001",
+      "nameEn": "4B Passenger & Fleet",
+      "nameAr": "فور بي",
+      "category": "Mobility & Fleet",
+      "status": "In Field Testing",
+      "websiteUrl": "https://mashawer.com.eg",
+      "dashboardUrl": "https://dashboard.mashawer.com.eg",
+      "apkStatus": "Received - Under Field Trial",
+      "dashboardStatus": "Received - Fully Audited",
+      "figmaProgress": 95,
+      "figmaUrl": "https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/%D9%85%D8%B4%D8%A7%D9%88%D9%8A%D8%B1---backlog?node-id=221-63531&t=uCzHJZbEM1gi1Zz8-0",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/",
+      "officialEmails": [
+        "admin@4b-app.com",
+        "support@4b-app.com",
+        "team@4b-app.com",
+        "operations@4b-app.com"
+      ],
+      "activeTasks": [
+        "Audit automated promotional discount rules and payment push notifications",
+        "Verify live GPS map polling latency and driver dispatch accuracy"
+      ],
+      "technicalNotes": "Backend: Node 22, NestJS 10/11, Prisma, Socket.IO, BullMQ (21 queues). Admin: Next.js 14 SSR (:3001). DB: PostgreSQL 16 + PostGIS 3.4. Cache: Redis 7. Storage: Cloudinary (Signed HMAC). OTP: Twilio Egypt Sender ID + WhatsApp API. Payments: Fawry. Biometrics: CompreFace.",
+      "infrastructure": {
+        "hostingProvider": "Telecom Egypt (WE) Tier III/IV Datacenter (Smart Village)",
+        "quotationStatus": "Submitted to WE - Price quote pending (1-2 days)",
+        "requestedVMs": [
+          "4B-App-Server (4 vCPU, 8 GB RAM, 40 GB SSD - Ubuntu 22/24)",
+          "4B-DB-Server (4 vCPU, 8 GB RAM, 100 GB SSD - PostgreSQL 16 + PostGIS 3.4)",
+          "4B-Cache-Server (2 vCPU, 2 GB RAM, 20 GB SSD - Redis 7 noeviction)"
+        ],
+        "loadBalancerAndWAF": "F5 Load Balancer (4B-VS), VIP 443 -> 3000/3001, 1000 sessions, WebSocket upgrade /socket.io, WAF enabled",
+        "connectivity": "20 Mbps Internet/MPLS VPN, 7 SSL VPN accounts",
+        "backupRetention": "180 days (Weekly Full, Nightly Incremental)",
+        "paymentGateway": "Fawry (Acceptance & Disbursement Payouts)",
+        "smsProvider": "BroadNet Technologies (Account: mashawer, 25 test credits, support@broadnetme.com) & Twilio A2P (Egypt Sender ID '4B')",
+        "mediaStorage": "Cloudinary (Signed private HMAC delivery)",
+        "biometricKyc": "CompreFace (Docker ~2GB RAM on WE local server - Law 151/2018)",
+        "nationalSecurityIntegration": "Mandatory Direct Leased-Line under LTRA Law 87/2018 & Decree 2180/2019",
+        "marketingAgency": {
+          "status": "In Agency Selection (Contract to be finalized tomorrow)",
+          "scope": "Brand identity, daily social media posts, short reels for WhatsApp, Instagram, Facebook"
+        },
+        "regulatoryLetter": {
+          "authority": "Land Transport Regulatory Authority (LTRA - وزارة النقل)",
+          "letterDate": "2026-05-24",
+          "incomingRef": "Book 1422 dated 2026-05-06",
+          "signatory": "Eng. Diaa El-Din Mostafa Youssef (CEO of LTRA)",
+          "mandate": "Direct integration with Telecom Egypt (WE) for national security data accessibility and compliance with Articles 9 & 10 of Law 87/2018 and Articles 33 & 34 of Decree 2180/2019"
+        },
+        "intellectualProperty": {
+          "certificateOfOriginStatus": "Official letter submitted to vendor; awaiting certified stamp for Commercial Register deposit",
+          "reservedDomain": "4b.com.eg"
+        }
+      }
+    },
+    {
+      "id": "proj-wikala",
+      "number": "#002",
+      "nameEn": "WiKaLa Agency & Fleet",
+      "nameAr": "وكالة",
+      "category": "Agency Logistics",
+      "status": "APK Received & Dashboard Audited",
+      "websiteUrl": "https://wikala.com.eg",
+      "dashboardUrl": "https://wikala-admin-panel.vercel.app/login",
+      "apkStatus": "Received - Latest revised APK build received officially",
+      "dashboardStatus": "Received - Fully Audited by Sameh (Live Vercel Admin Panel)",
+      "figmaProgress": 80,
+      "figmaUrl": "https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1&t=rbE4CPeGiTAMMin2-1",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/",
+      "officialEmails": [
+        "contact@wikala.com",
+        "dev@wikala.com",
+        "partner@wikala.com"
+      ],
+      "activeTasks": [
+        "Comprehensive testing on received APK build following recent revisions",
+        "Archive and integrate Sameh's dashboard audit report and recommendations into system",
+        "Test live admin panel authentication on https://wikala-admin-panel.vercel.app/login",
+        "Review agent onboarding flow and branch hub mapping"
+      ],
+      "technicalNotes": "Highest operational priority. Dashboard deployed on Vercel and audited by Sameh. Raw APK build received from development vendor and ready for testing.",
+      "infrastructure": {
+        "hostingProvider": "Vercel (Admin Panel) & Managed Cloud Infrastructure",
+        "mediaStorage": "Cloudinary CDN (Agent KYC, Contracts, Fleet Documents)",
+        "intellectualProperty": {
+          "certificateOfOriginStatus": "Official letter submitted to vendor; awaiting certified stamp for Commercial Register deposit",
+          "reservedDomain": "wikala.com.eg"
+        }
+      }
+    },
+    {
+      "id": "proj-daro",
+      "number": "#003",
+      "nameEn": "Daro",
+      "nameAr": "داره",
+      "category": "Super App & Multi-Service Ecosystem",
+      "status": "In Development",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "In Development - Multi-Service Architecture",
+      "dashboardStatus": "Pending Delivery",
+      "figmaProgress": 70,
+      "figmaUrl": "https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1&t=HFGqvAl4RPmlMliu-1",
+      "driveFolderPath": "NOUB/01_MASHWEER_FLEET/03_DARO_SUPER_APP/",
+      "officialEmails": [
+        "operations@daro.com",
+        "dev@daro.com.eg"
+      ],
+      "activeTasks": [
+        "Audit multi-service Super App architecture across logistics, parcels, and transport",
+        "Awaiting Figma links and recorded technical meetings from Sameh for full task mapping",
+        "Test barcode and QR scanner responsiveness upon parcel and consignment intake",
+        "Implement automated digital waybill issuance and customer SMS notification via BroadNet"
+      ],
+      "technicalNotes": "Daro (داره) is designed as a Super App offering multiple integrated everyday services.",
+      "infrastructure": {
+        "hostingProvider": "Managed Cloud Infrastructure",
+        "mediaStorage": "Cloudinary CDN",
+        "intellectualProperty": {
+          "certificateOfOriginStatus": "Official letter submitted to vendor; awaiting certified stamp for Commercial Register deposit",
+          "reservedDomain": "daro.com.eg"
+        }
+      }
+    },
+    {
+      "id": "proj-noub-sports",
+      "number": "#004",
+      "nameEn": "NOUB Sports Academies",
+      "nameAr": "نوب سبورتس",
+      "category": "Sports Tech & Academies",
+      "status": "Production & Field Testing",
+      "websiteUrl": "https://sports.noub.org",
+      "dashboardUrl": "https://sports.noub.org",
+      "apkStatus": "Received - Deployed to Partner Clubs",
+      "dashboardStatus": "100% Operational & Production-Ready",
+      "figmaProgress": 95,
+      "figmaUrl": "https://www.figma.com/design/sports-noub-screens",
+      "driveFolderPath": "NOUB/02_SPORTS_ACADEMIES/",
+      "officialEmails": [
+        "noub.platform@gmail.com",
+        "sports@noub.com",
+        "academies@noub.com"
+      ],
+      "activeTasks": [
+        "Finalize tournament group seeding for seasonal championships",
+        "Generate weekly attendance analytics for equestrian and swimming branches",
+        "Store technical specifications and academy contracts in Google Drive"
+      ],
+      "technicalNotes": "Full sports ecosystem with dynamic ELO player rating calculations across swimming, tennis, equestrian, and football."
+    },
+    {
+      "id": "proj-noub-main",
+      "number": "#005",
+      "nameEn": "NOUB Core Platform",
+      "nameAr": "نوب الأساسي",
+      "category": "Digital Identity & Central Portal",
+      "status": "100% Production Live",
+      "websiteUrl": "https://noub.org",
+      "dashboardUrl": "https://noub.org",
+      "apkStatus": "N/A - Progressive Web App Architecture",
+      "dashboardStatus": "100% Live",
+      "figmaProgress": 100,
+      "figmaUrl": "https://www.figma.com/design/noub-main-portal",
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/01_NOUB_MAIN_CORE/",
+      "officialEmails": [
+        "info@noub.org",
+        "admin@noub.org",
+        "citizens@noub.org"
+      ],
+      "activeTasks": [
+        "Publish updated citizen digital verification and charter documentation"
+      ],
+      "technicalNotes": "Central digital identity provider for all citizen and member accounts."
+    },
+    {
+      "id": "proj-trading-ops",
+      "number": "#006",
+      "nameEn": "Financial Trading Ops",
+      "nameAr": "غرفة التداول",
+      "category": "Capital Markets & FIX Protocol",
+      "status": "Proprietary Live Operations",
+      "websiteUrl": "https://trading.noub.org",
+      "dashboardUrl": "https://trading.noub.org",
+      "apkStatus": "Proprietary Desktop Operation Terminals",
+      "dashboardStatus": "100% Operational",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/03_FINANCIAL_OPERATIONS/01_TRADING_ROOM/",
+      "officialEmails": [
+        "trading@noub.org",
+        "mcdr-liaison@noub.org"
+      ],
+      "activeTasks": [
+        "Bi-monthly failover audit of redundant fiber line with MCDR clearing"
+      ],
+      "technicalNotes": "Sub-12ms low latency FIX protocol feed connected to EGX and MCDR."
+    },
+    {
+      "id": "proj-noub-game",
+      "number": "#007",
+      "nameEn": "NOUB Tomb Puzzles Game",
+      "nameAr": "لعبة نوب",
+      "category": "Mobile Cultural Gaming",
+      "status": "Prototype In Review",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "Prototype Build Received",
+      "dashboardStatus": "Pending Delivery",
+      "figmaProgress": 85,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/02_TOMB_PUZZLES_GAME/",
+      "officialEmails": [],
+      "activeTasks": [
+        "Finalize spatial audio sound FX for stone doors and hieroglyphic locks",
+        "Verify offline puzzle persistence across device reboots"
+      ],
+      "technicalNotes": "62 Valley of Kings tomb logic puzzles featuring offline SQLite state storage."
+    },
+    {
+      "id": "proj-hypatia-ops",
+      "number": "#008",
+      "nameEn": "Hypatia Ops Engine",
+      "nameAr": "هيباتيا",
+      "category": "Senior Ops & AI Engine",
+      "status": "100% Active 24/7",
+      "websiteUrl": "https://hypatia.noub.org",
+      "dashboardUrl": "https://hypatia.noub.org",
+      "apkStatus": "Web & Responsive Portal",
+      "dashboardStatus": "100% Active",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/04_PLATFORMS_GAMES/03_HYPATIA_ENGINE/",
+      "officialEmails": [
+        "hypatia@noub.org"
+      ],
+      "activeTasks": [
+        "Keep single source of truth protocol synchronized with owner directives"
+      ],
+      "technicalNotes": "Central intelligence engine maintaining documentation, roadmaps, and prompt dossiers."
+    },
+    {
+      "id": "proj-paycore",
+      "number": "#009",
+      "nameEn": "PayCore Gateway",
+      "nameAr": "بوابة الدفع",
+      "category": "Fintech Settlement",
+      "status": "100% Live In Production",
+      "websiteUrl": "https://pay.noub.org",
+      "dashboardUrl": "https://pay.noub.org",
+      "apkStatus": "Embedded SDK Inside Mobile Clients",
+      "dashboardStatus": "100% Live (99.2% Success Rate)",
+      "figmaProgress": 100,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/03_FINANCIAL_OPERATIONS/02_PAYCORE_GATEWAY/",
+      "officialEmails": [
+        "pay@noub.org",
+        "finance@noub.org"
+      ],
+      "activeTasks": [
+        "Annual rotation of banking webhook SSL certificates"
+      ],
+      "technicalNotes": "Multi-tenant payment settlement gateway for all ecosystem transactions."
+    },
+    {
+      "id": "proj-academy-pro",
+      "number": "#010",
+      "nameEn": "Academy Pro",
+      "nameAr": "أكاديمي برو",
+      "category": "Sports Coaching & Biometrics",
+      "status": "Field Trial",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": "Coach Tablet Client Received",
+      "dashboardStatus": "Integrated With NOUB Sports",
+      "figmaProgress": 90,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/02_SPORTS_ACADEMIES/03_APKS/",
+      "officialEmails": [
+        "coaches@noub.com"
+      ],
+      "activeTasks": [
+        "Test biometric sync with wearable swimming monitors"
+      ],
+      "technicalNotes": "Elite athlete biometric telemetry application for professional academy coaches."
+    },
+    {
+      "id": "proj-restaurant-pos",
+      "number": "#011",
+      "nameEn": "Agouza Grill Restaurant Venture & POS",
+      "nameAr": "مشروع مطعم المشويات بالعجوزة ونقاط البيع",
+      "category": "Hospitality & POS Ecosystem",
+      "status": "Price Quotations Received & Supplier Coordination",
+      "websiteUrl": null,
+      "dashboardUrl": null,
+      "apkStatus": null,
+      "dashboardStatus": "POS System Sourcing with Eng. Ali (Price Quote Received)",
+      "figmaProgress": null,
+      "figmaUrl": null,
+      "driveFolderPath": "NOUB/05_SIDE_VENTURES/01_RESTAURANT_POS/",
+      "officialEmails": [],
+      "stakeholders": {
+        "businessLead": "Mr. Hany (CFO)",
+        "enterpriseOwner": "Abu Khaled (Company Owner)",
+        "hardwareSupplier": "Eng. Ali",
+        "techAdvisory": "Sameh & Eng. Emad El Sharkawy"
+      },
+      "activeTasks": [
+        "Review received price quotation for Restaurant POS & Cashier System",
+        "Review received price quotation for Restaurant CCTV surveillance installation",
+        "Leverage Eng. Ali to supply matching IP CCTV cameras for Maadi Headquarters",
+        "Mr. Hany and Abu Khaled follow up operational rollout at Agouza restaurant",
+        "Receive and wire Maadi HQ IP CCTV cameras to suspended ceiling and 140cm rack"
+      ],
+      "technicalNotes": "Side project covering Agouza Grill Restaurant (مطعم المشويات بالعجوزة). Followed directly by Mr. Hany and Abu Khaled. Price quotes received for POS system and CCTV cameras. Procurement synergy established with Maadi HQ cameras via Eng. Ali."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+Project_Code,Project_Name,Category,Resource_Type,Resource_Title,URL_Or_Path,Access_Type,Notes
+proj-4b,4B Passenger & Fleet,Mobility,Figma,4B Passenger & Fleet UI,https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/mashweer---backlog?node-id=221-63531,Design File,95% Complete UI Flow
+proj-4b,4B Passenger & Fleet,Mobility,Dashboard,4B Live Operations Dashboard,https://dashboard.mashawer.com.eg,Web Portal,Production ride monitoring
+proj-4b,4B Passenger & Fleet,Mobility,Website,Mashweer Official Portal,https://mashawer.com.eg,Public Web,Main domain
+proj-4b,4B Passenger & Fleet,Mobility,Google Meet,Weekly Tech & Operations Sync,https://meet.google.com/mashweer-4b-sync,Video Meeting,Weekly Saturdays at 5:00 PM
+proj-4b,4B Passenger & Fleet,Mobility,Drive Folder,4B Passenger Folder,NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/,Google Drive,Builds and Figma backups
+proj-wekala,WeKaLa Agency & Fleet,Logistics,Figma,WeKaLa Agency Portal Design,https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1,Design File,80% Complete
+proj-wekala,WeKaLa Agency & Fleet,Logistics,APK,Latest Revised Release Build,NOUB/01_MASHWEER_FLEET/02_WEKALA_AGENCY_APK/01_APK_RELEASES/,File Binary,Received after latest revisions
+proj-wekala,WeKaLa Agency & Fleet,Logistics,Google Meet,Agency Architecture Review,https://meet.google.com/wekala-review,Video Meeting,Sundays at 6:30 PM
+proj-daro,Daro Cargo & Shipping,Logistics,Figma,Daro Cargo & Waybill UI,https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1,Design File,70% Complete
+proj-daro,Daro Cargo & Shipping,Logistics,Google Meet,Cargo Protocol & Barcode Integration,https://meet.google.com/daro-cargo-sync,Video Meeting,Mondays at 4:30 PM
+proj-noub-sports,NOUB Sports Academies,Sports,Dashboard,Sports Academies Production Portal,https://sports.noub.org,Web App,Production ready
+proj-noub-sports,NOUB Sports Academies,Sports,Figma,NOUB Sports Screen Designs,https://www.figma.com/design/sports-noub-screens,Design File,95% Complete
+proj-noub-sports,NOUB Sports Academies,Sports,Drive Folder,Academies Documents & Charters,NOUB/02_SPORTS_ACADEMIES/01_OFFICIAL_DOCUMENTS/,Google Drive,Official regulations & ELO
+proj-noub-main,NOUB Core Platform,Identity,Website,NOUB Official Portal,https://noub.org,Production Web,Identity & citizen portal
+proj-trading-ops,Financial Trading Ops,Trading,Terminal,Proprietary Trading Dashboard,https://trading.noub.org,Secure Web,Direct MCDR / EGX liaison
+proj-paycore,PayCore Gateway,Fintech,Dashboard,Payment Settlement Console,https://pay.noub.org,Gateway Web,99.2% success rate
+proj-hypatia-ops,Hypatia Ops Engine,Operations,Portal,Senior Ops & AI Prompts Engine,https://hypatia.noub.org,AI Engine,Single source of truth engine

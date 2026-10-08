@@ -1,0 +1,121 @@
+{
+  "entity": "شركة مشاوير للمنصات الرقمية (Mashawer Digital Platforms S.A.E.)",
+  "project": "4B Passenger (GoRide Core)",
+  "provider": "Telecom Egypt (المصرية للاتصالات WE)",
+  "accountManager": "Eng. Ahmed Gharib (أحمد غريب - المصرية للاتصالات) & Eng. Ahmed Moharam",
+  "accountNumber": "New Contracted Account Issued (تم إنشاء وتخصيص رقم حساب تعاقدي جديد لمشاوير)",
+  "status": "Purchase Order (PO) & Financial Quotation Received - Under Technical & Commercial Audit",
+  "submissionDate": "2026-09-11",
+  "validity": "1 Week (صلاحية العرض أسبوع واحد من تاريخ الإصدار)",
+  "financialTerms": {
+    "vat": "14% ضريبة القيمة المضافة الإلزامية (VAT)",
+    "developmentFee": "رسم تنمية الموارد المالية للدولة (DF)",
+    "setupFees": "رسوم إعداد وتجهيز لمرة واحدة (One-Time Setup Fee)",
+    "billingTerms": "شهري / ربع سنوي وفق جدول أمر الشراء المعتمد"
+  },
+  "technicalFeedbackResolved": {
+    "loadBalancerThroughput": "Confirmed 10 MB (10 Mbps) estimate",
+    "backupStorageReconciled": "DB 100 GB, Cache 20 GB, App 40 GB to match VM disk sizing",
+    "backupRetentionPolicy": "1 Month (30 Days) - Weekly Full, Daily Incremental"
+  },
+  "financialQuoteMilestone": {
+    "received": true,
+    "reviewedBy": ["Sameh (Head of Tech)", "Eng. Emad El Sharkawy (Senior Technical Consultant)"],
+    "nextStep": "Receive detailed cost breakdown (Compute, Storage, F5 WAF, Leased Line/MPLS, Setup Fees) from Sameh to log into master system."
+  },
+  "virtualMachines": [
+    {
+      "name": "4B-App-Server",
+      "function": "API, Worker, Admin Panel (تشغيل العمليات للنظام)",
+      "qty": 1,
+      "cpuCores": 4,
+      "ramGb": 8,
+      "storageGb": 40,
+      "storageType": "SSD",
+      "os": "Ubuntu 22.04/24.04 LTS x86_64",
+      "database": "None"
+    },
+    {
+      "name": "4B-DB-Server",
+      "function": "Primary Production Database (قاعدة البيانات الرئيسية)",
+      "qty": 1,
+      "cpuCores": 4,
+      "ramGb": 8,
+      "storageGb": 100,
+      "storageType": "SSD",
+      "os": "Ubuntu 22.04/24.04 LTS x86_64",
+      "database": "PostgreSQL 16 with PostGIS 3.4"
+    },
+    {
+      "name": "4B-Cache-Server",
+      "function": "Cache, Queues, Live Coordinates (إدارة الكاش، الطوابير، والمواقع الحية)",
+      "qty": 1,
+      "cpuCores": 2,
+      "ramGb": 2,
+      "storageGb": 20,
+      "storageType": "SSD",
+      "os": "Ubuntu 22.04/24.04 LTS x86_64",
+      "database": "Redis 7 (Persistence ON, maxmemory-policy=noeviction)"
+    }
+  ],
+  "loadBalancerAndWAF": {
+    "name": "4B-VS",
+    "type": "F5 Load Balancer with WAF",
+    "vipPort": 443,
+    "nodes": ["4B-App-Server"],
+    "nodePorts": [3000, 3001],
+    "healthCheck": {
+      "protocol": "http",
+      "path": "/health"
+    },
+    "loadBalancingMethod": "Least Connections (member)",
+    "concurrentSessionsEstimate": 1000,
+    "trafficThroughputEstimate": "10 MB",
+    "persistenceProfile": "Cookie",
+    "keepSourceIp": true,
+    "httpRedirection": true,
+    "wafEnabled": true,
+    "websocketUpgrade": {
+      "path": "/socket.io",
+      "proxyReadTimeoutSeconds": 600
+    },
+    "proxyHops": 1,
+    "bodySizeLimitMb": 5,
+    "domainHost": "admin.4b.com.eg"
+  },
+  "connectivity": {
+    "type": "Internet / MPLS VPN",
+    "bandwidth": "20Mbps",
+    "sslVpnAccounts": 7
+  },
+  "backupPolicy": {
+    "policyDescription": "Default WE Policy: Full weekly, incremental daily with 1-month (30 days) retention",
+    "retentionPeriod": "1 Month (30 Days)",
+    "database": {
+      "server": "4B-DB-Server",
+      "type": "PostgreSQL pg_dump / WAL",
+      "vmDiskSizeGb": 100,
+      "allocatedBackupStorageGb": 100,
+      "fullSchedule": "Weekly",
+      "incrementalSchedule": "Daily (Nightly)",
+      "retentionDays": 30
+    },
+    "cache": {
+      "server": "4B-Cache-Server",
+      "type": "Redis Snapshot (RDB)",
+      "vmDiskSizeGb": 20,
+      "allocatedBackupStorageGb": 20,
+      "fullSchedule": "Weekly",
+      "incrementalSchedule": "Daily (Nightly)",
+      "retentionDays": 30
+    },
+    "application": {
+      "server": "4B-App-Server",
+      "vmDiskSizeGb": 40,
+      "allocatedBackupStorageGb": 40,
+      "fullSchedule": "Weekly",
+      "incrementalSchedule": "Daily",
+      "retentionDays": 30
+    }
+  }
+}

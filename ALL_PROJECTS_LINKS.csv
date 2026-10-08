@@ -1,0 +1,30 @@
+Project_Code,Project_Name,Category,Resource_Type,Resource_Title,URL_Or_Path,Access_Type,Notes
+proj-4b,4B Passenger & Fleet,Mobility,Figma,4B Passenger & Fleet UI,https://www.figma.com/design/ulWwUzLnKThS2cfJWDetX6/%D9%85%D8%B4%D8%A7%D9%88%D9%8A%D8%B1---backlog?node-id=221-63531&t=uCzHJZbEM1gi1Zz8-0,Design File,95% Complete UI Flow
+proj-4b,4B Passenger & Fleet,Mobility,Dashboard,4B Live Operations Dashboard,https://dashboard.mashawer.com.eg,Web Portal,Production ride monitoring
+proj-4b,4B Passenger & Fleet,Mobility,Website,Mashweer Official Portal,https://mashawer.com.eg,Public Web,Main domain
+proj-4b,4B Passenger & Fleet,Mobility,Google Meet,Weekly Tech & Operations Sync,https://meet.google.com/mashweer-4b-sync,Video Meeting,Weekly Saturdays at 5:00 PM
+proj-4b,4B Passenger & Fleet,Mobility,Drive Folder,4B Passenger Folder,NOUB/01_MASHWEER_FLEET/01_4B_PASSENGER/,Google Drive,Builds and Figma backups
+proj-wikala,WiKaLa Agency & Fleet,Logistics,Dashboard,WiKaLa Live Admin Panel,https://wikala-admin-panel.vercel.app/login,Web Portal,Live Vercel Admin Panel audited by Sameh
+proj-wikala,WiKaLa Agency & Fleet,Logistics,Figma,WiKaLa Agency Portal Design,https://www.figma.com/design/oYxkmwZcGae674BRA5ZOen/Wikala?node-id=0-1&t=rbE4CPeGiTAMMin2-1,Design File,80% Complete
+proj-wikala,WiKaLa Agency & Fleet,Logistics,APK,Latest Revised Release Build,NOUB/01_MASHWEER_FLEET/02_WIKALA_AGENCY_APK/01_APK_RELEASES/,File Binary,Received after latest revisions
+proj-wikala,WiKaLa Agency & Fleet,Logistics,Google Meet,Agency Architecture Review,https://meet.google.com/wikala-review,Video Meeting,Sundays at 6:30 PM
+proj-daro,Daro Super App,Super App,Figma,Daro Multi-Service UI,https://www.figma.com/design/aR1aanpRzGL7aMoxROGgt5/Daro?node-id=0-1&t=HFGqvAl4RPmlMliu-1,Design File,70% Complete - Super App Scope
+proj-daro,Daro Super App,Super App,Google Meet,Super App Architecture & Services Sync,https://meet.google.com/daro-cargo-sync,Video Meeting,Mondays at 4:30 PM
+proj-noub-sports,NOUB Sports Academies,Sports,Dashboard,Sports Academies Production Portal,https://sports.noub.org,Web App,Production ready
+proj-noub-sports,NOUB Sports Academies,Sports,Figma,NOUB Sports Screen Designs,https://www.figma.com/design/sports-noub-screens,Design File,95% Complete
+proj-noub-sports,NOUB Sports Academies,Sports,Drive Folder,Academies Documents & Charters,NOUB/02_SPORTS_ACADEMIES/01_OFFICIAL_DOCUMENTS/,Google Drive,Official regulations & ELO
+proj-noub-main,NOUB Core Platform,Identity,Website,NOUB Official Portal,https://noub.org,Production Web,Identity & citizen portal
+proj-trading-ops,Financial Trading Ops,Trading,Terminal,Proprietary Trading Dashboard,https://trading.noub.org,Secure Web,Direct MCDR / EGX liaison
+proj-paycore,PayCore Gateway,Fintech,Dashboard,Payment Settlement Console,https://pay.noub.org,Gateway Web,99.2% success rate
+proj-hypatia-ops,Hypatia Ops Engine,Operations,Portal,Senior Ops & AI Prompts Engine,https://hypatia.noub.org,AI Engine,Single source of truth engine
+gov-ltra,LTRA Transport Authority,Regulation,Official Portal,Land Transport Regulatory Authority,https://ltra.gov.eg,Government Portal,Law 87/2018 & Decree 2180/2019 compliance
+infra-we,Telecom Egypt WE,Infrastructure,Datacenter,WE Primary & DR Server Hub,https://te.eg,Telecom Infrastructure,Tier III datacenter hosting for 4B
+corp-duns,Mashawer S.A.E.,Corporate,DUNS Portal,Dun & Bradstreet Verification,https://www.dnb.com/duns-number.html,Corporate Identity,Apple Enterprise & Global Partner ID
+corp-gplay,Mashawer S.A.E.,App Stores,Google Play Console,Developer Account Verification & Appeal,https://play.google.com/console,Corporate Store,Pending D-U-N-S & CR submission
+dom-4b,4B Passenger,Domains,Domain Registry,Official Reserved Domain,https://4b.com.eg,Egyptian Domain Registry,Certificate of origin pending
+dom-wikala,WiKaLa Agency,Domains,Domain Registry,Official Reserved Domain,https://wikala.com.eg,Egyptian Domain Registry,Certificate of origin pending
+dom-daro,Daro Super App,Domains,Domain Registry,Official Reserved Domain,https://daro.com.eg,Egyptian Domain Registry,Certificate of origin pending
+tel-broadnet,BroadNet Technologies,Telecommunications,SMS Gateway,BroadNet Egyptian A2P SMS Portal,https://broadnetme.com,Carrier Portal,Account: mashawer (25 test credits)
+hq-maadi,Mashawer Headquarters,Physical HQ,Facility,Maadi Operations Center & Server Vault,NOUB/05_MAADI_HEADQUARTERS/,On-Premises,Dell OptiPlex 3090 PCs + 140cm Rack + Backup Server
+proj-restaurant-pos,Agouza Grill Restaurant,Hospitality,Drive Folder,Agouza Restaurant & POS Folder,NOUB/05_SIDE_VENTURES/01_RESTAURANT_POS/,Google Drive,Quotations for POS and CCTV from Eng. Ali
+proj-restaurant-pos,Agouza Grill Restaurant,Hospitality,Hardware,POS System & Surveillance,Eng. Ali Hardware Contract,Procurement,Hany & Abu Khaled lead file

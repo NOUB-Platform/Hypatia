@@ -1,0 +1,191 @@
+{
+  "lastUpdated": "2026-09-24",
+  "organization": "شركة مشاوير للمنصات الرقمية (Mashawer Digital Platforms S.A.E.)",
+  "summary": {
+    "totalQuotations": 2,
+    "activeAuditCount": 2,
+    "totalImmediateCapExEgp": 55050,
+    "cloudHostingProvider": "المصرية للاتصالات (WE - Telecom Egypt)",
+    "securitySystemsProvider": "شركة الأصدقاء للتوريدات والتركيبات (Friends Company)"
+  },
+  "quotations": [
+    {
+      "id": "quote-we-telecom-po",
+      "title": "أمر شراء وعرض أسعار خوادم الاستضافة السحابية والربط (Telecom Egypt WE)",
+      "type": "سيرفرات سحابية وبنية تحتية (Cloud IaaS & F5 WAF)",
+      "provider": {
+        "name": "الشركة المصرية للاتصالات (WE - Telecom Egypt)",
+        "accountManager": "المهندس أحمد غريب (Eng. Ahmed Gharib)",
+        "enterpriseSales": "المهندس أحمد محرم (Eng. Ahmed Moharam)",
+        "role": "إدارة مبيعات قطاع الأعمال وكبار العملاء - الاستضافة السحابية",
+        "accountStatus": "تم إنشاء رقم حساب تعاقدي جديد لمشاوير (New Account Number Issued)"
+      },
+      "client": {
+        "entity": "شركة مشاوير للمنصات الرقمية (ش.م.م)",
+        "authorizedPersons": [
+          "سامح يس (Head of Technology & System Architect)",
+          "المهندس عماد الشرقاوي (Senior Technical Consultant)"
+        ],
+        "project": "منظومة نقل الركاب والطرود 4B (GoRide Core)"
+      },
+      "status": "مستلم - قيد التدقيق الفني والمالي واعتماد مجلس الإدارة",
+      "submissionDate": "2026-09-11",
+      "validityPeriod": "أسبوع واحد (1 Week Validity) من تاريخ الاستلام",
+      "financialTerms": {
+        "vatRate": "14% ضريبة القيمة المضافة (Value Added Tax)",
+        "developmentFee": "رسم تنمية الموارد المالية للدولة (DF)",
+        "billingCycle": "دورية شهرية / ربع سنوية حسب أمر الشراء النهائي",
+        "setupFees": "رسوم تأسيس وتجهيز لمرة واحدة (One-Time Setup Fee)",
+        "compliance": "متوافق مع الضوابط المالية لوزارة النقل وجهاز تنظيم النقل البري (LTRA)"
+      },
+      "technicalSpecifications": {
+        "dataCenterLocation": "داتا سنتر المصرية للاتصالات المعتمد (Smart Village / Suez Data Center Tier III)",
+        "virtualMachines": [
+          {
+            "name": "4B-App-Server",
+            "role": "تشغيل API و Worker وبانل الإدارة واستقبال Webhooks",
+            "qty": 1,
+            "vCpu": 4,
+            "ramGb": 8,
+            "storageGb": 40,
+            "storageType": "SSD Enterprise",
+            "os": "Ubuntu 22.04 LTS x86_64",
+            "software": "Node.js 22 LTS, NestJS 10, PM2 Cluster"
+          },
+          {
+            "name": "4B-DB-Server",
+            "role": "قاعدة البيانات الإنتاجية الحية (Production Database)",
+            "qty": 1,
+            "vCpu": 4,
+            "ramGb": 8,
+            "storageGb": 100,
+            "storageType": "SSD Enterprise",
+            "os": "Ubuntu 22.04 LTS x86_64",
+            "software": "PostgreSQL 16 مع إضافة PostGIS 3.4 لحساب مسارات الجغرافيا والخرائط"
+          },
+          {
+            "name": "4B-Cache-Server",
+            "role": "إدارة الكاش والطوابير والمواقع الحية للكباتن (Queues & Live Radar)",
+            "qty": 1,
+            "vCpu": 2,
+            "ramGb": 2,
+            "storageGb": 20,
+            "storageType": "SSD Enterprise",
+            "os": "Ubuntu 22.04 LTS x86_64",
+            "software": "Redis 7 (Persistence ON, maxmemory-policy=noeviction)"
+          }
+        ],
+        "loadBalancerAndWaf": {
+          "model": "F5 BIG-IP Load Balancer with Advanced WAF",
+          "throughput": "10 MB (10 Mbps Committed)",
+          "virtualServerName": "4B-VS",
+          "inboundPorts": [443, 80],
+          "healthCheck": "HTTP GET /api/health (كل 5 ثوانٍ)",
+          "sslOffloading": true,
+          "cookiePersistence": true,
+          "backendNodes": ["4B-App-Server:3000", "4B-App-Server:3001"]
+        },
+        "connectivityAndVpn": {
+          "networkType": "Dedicated Internet / MPLS VPN",
+          "bandwidth": "20 Mbps Dedicated",
+          "sslVpnAccounts": 7,
+          "firewallRules": "White-listed IP access only for DB (5432) and Redis (6379)"
+        },
+        "backupPolicy": {
+          "policy": "Weekly Full Backup + Daily Incremental with 30-Day Retention",
+          "totalAllocatedBackupStorage": "160 GB (DB: 100 GB, App: 40 GB, Cache: 20 GB)",
+          "retentionDays": 30
+        }
+      },
+      "auditNotes": [
+        "تم مطابقة وتنسيق سعات الباك أب لتكون 160 GB متوافقة تماماً مع مساحات أقراص السيرفرات.",
+        "تم التأكيد على م. أحمد غريب بضرورة تفعيل إضافة PostGIS 3.4 في خادم الـ DB قبل تسليم الـ SSH credentials.",
+        "تأكيد صلاحية العرض لأسبوع واحد فقط مما يتطلب استكمال التوقيع وصرف الدفعة التعاقدية لضمان حجز الموارد."
+      ]
+    },
+    {
+      "id": "quote-friends-cctv-maadi",
+      "title": "عرض أسعار توريد وتركيب منظومة كاميرات المراقبة وشبكة المقر (Friends Company)",
+      "type": "تجهيزات أمنية وشبكات داخلية (CCTV & Surveillance Infrastructure)",
+      "provider": {
+        "name": "شركة الأصدقاء للتوريدات والتركيبات (Friends Company)",
+        "representative": "المهندس علي (Eng. Ali)",
+        "role": "المقاول والمورد المعتمد للمعدات وتجهيزات المقرات",
+        "vendorAdvantage": "نفس المورد المعتمد لمنظومة مطعم المشويات بالعجوزة (توحيد قطع الغيار وعقود الصيانة والمسؤولية الفنية)"
+      },
+      "client": {
+        "entity": "شركة مشاوير للمنصات الرقمية (Mashawer)",
+        "site": "المقر الرئيسي لعمليات شركة مشاوير - المعادي، القاهرة",
+        "supervisors": [
+          "سامح يس (Head of Tech)",
+          "المهندس عماد الشرقاوي (Senior Technical Consultant)"
+        ]
+      },
+      "status": "معتمد للتنفيذ الفوري",
+      "submissionDate": "2026-09-24",
+      "currency": "EGP (جنيه مصري)",
+      "totalAmount": 55050,
+      "totalAmountFormatted": "55,050 ج.م",
+      "lineItems": [
+        {
+          "itemNumber": 1,
+          "description": "كاميرات مراقبة داخلية 2 ميجابكسل (2MP Indoor IP Dome/Bullet Cameras)",
+          "specifications": "دقة 1080p عالية النقاء، زاوية رؤية واسعة 2.8mm، رؤية ليلية بالأشعة تحت الحمراء IR Smart",
+          "quantity": 12,
+          "unit": "كاميرا",
+          "coverage": "صالات العمليات، غرف المكاتب الإدارية، الممرات الداخلية، والأبواب"
+        },
+        {
+          "itemNumber": 2,
+          "description": "كاميرات مراقبة داخلية ألوان ليلية مع تسجيل صوت 2 ميجابكسل (2MP Color Night Vision + Built-in Mic)",
+          "specifications": "تصوير ملون 24 ساعة (Full-Color) مع ميكروفون مدمج فائق الحساسية لتسجيل الصوت",
+          "quantity": 2,
+          "unit": "كاميرا",
+          "coverage": "مكتب الإدارة الرئيسي ومنطقة الاستقبال وباب الدخول الرئيسي"
+        },
+        {
+          "itemNumber": 3,
+          "description": "جهاز تسجيل شبكي 16 قناة (16-Channel NVR Network Video Recorder)",
+          "specifications": "يدعم دقة 4K Ultra HD، مخارج HDMI / VGA، ربط سحابي عبر تطبيق الموبايل، تشفير H.265+",
+          "quantity": 1,
+          "unit": "جهاز",
+          "rackMounted": "يتم تثبيته داخل راك المعادي قياس 140 سم"
+        },
+        {
+          "itemNumber": 4,
+          "description": "سويتشات شبكة 8 بورت بتقنية PoE (Two 8-Port Gigabit PoE Network Switches)",
+          "specifications": "تغذية الكاميرات بالكهرباء والبيانات معاً عبر كابل الإيثرنت (Power over Ethernet) بقوة 120W لكل سويتش",
+          "quantity": 2,
+          "unit": "سويتش",
+          "rackMounted": "يتم تركيبهما داخل حاوية الراك 140 سم"
+        },
+        {
+          "itemNumber": 5,
+          "description": "قرص صلب مخصص لأنظمة المراقبة سعة 4 تيرابايت (WD Purple 4TB Surveillance Hard Drive)",
+          "specifications": "Western Digital فئة Purple مخصص للتشغيل الشاق المستمر 24/7 لمدة شهر تسجيل متواصل دون إسقاط فريمات",
+          "quantity": 1,
+          "unit": "قرص صلب",
+          "installedIn": "داخل جهاز الـ NVR الـ 16 قناة"
+        },
+        {
+          "itemNumber": 6,
+          "description": "أعمال المصنعيات والتمديدات والأسلاك والبرمجة والتسليم (Labor, Cabling & Setup)",
+          "specifications": "تمديد كابلات CAT6 معتمدة عبر السقف المعلق، تثبيت وضبط زوايا الكاميرات الـ 14، إنهاء وتوصيل الراك، وبرمجة تطبيق الموبايل والشاشات",
+          "quantity": 1,
+          "unit": "مقطوعية شاملة التجهيز والاختبار والتسليم النهائي"
+        }
+      ],
+      "technicalCoordination": {
+        "rackIntegration": "تثبيت الـ NVR والسويتشين ووحدة الـ UPS داخل راك الـ 140 سم الموجود بالمقر",
+        "cablingPath": "مسار الأسلاك يمر عبر السقف المعلق المحمي (Suspended Ceiling) لضمان مظهر احترافي ومحمي للأجهزة",
+        "workstationIntegration": "ربط شاشات المراقبة على أجهزة الديل Dell OptiPlex 3090 في صالة العمليات",
+        "remoteMonitoring": "تهيئة المشاهدة الحية عبر تطبيق الموبايل المشفر للمدير التنفيذي سامح وفريق العمليات"
+      },
+      "auditNotes": [
+        "السعر الإجمالي الرسمي للعرض هو 55,050 ج.م شامل كافة الأجهزة والملحقات والمصنعيات.",
+        "الاعتماد يضمن توحيد الصيانة وفنيي التركيب مع فرع مطعم المشويات بالعجوزة وفق توجيهات الإدارة لتوحيد المسؤولية الفنية.",
+        "تمت المواءمة مع المهندس عماد الشرقاوي لبدء أعمال التمديد بالتوازي مع تركيب أجهزة الكمبيوتر المكتبية الـ 8."
+      ]
+    }
+  ]
+}
